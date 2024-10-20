@@ -1,0 +1,169 @@
+.board {
+  margin: 60px auto;
+  min-height: 500px;
+  background: #fff;
+  -webkit-box-shadow: 5px 5px #ccc,-5px 10px #ddd,10px -5px #dadada;
+  box-shadow: 5px 5px #ccc,-5px 10px #ddd,10px -5px #dadada;
+}
+.board > div.board-inner {
+  background: #fafafa url(http://subtlepatterns.com/patterns/geometry2.png);
+  background-size: 30%;
+}
+.board .liner {
+  height: 2px;
+  background: #ddd;
+  position: absolute;
+  width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+}
+.board p.narrow {
+  width: 60%;
+  margin: 10px auto;
+}
+.board .nav-tabs {
+  position: relative;
+  /* border-bottom: 0; */
+  /* width: 80%; */
+  margin: 40px auto 0;
+}
+.board .nav-tabs > li {
+  width: 20%;
+}
+.board .nav-tabs > li a {
+  width: 70px;
+  height: 70px;
+  margin: 20px auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+.board .nav-tabs > li a:hover {
+  background: transparent;
+}
+.board .nav-tabs > li.active > a,
+.board .nav-tabs > li.active > a:hover,
+.board .nav-tabs > li.active > a:focus {
+  color: #555555;
+  cursor: default;
+  background: none !important;
+  border-width: 0px !important;
+  border-bottom-color: transparent;
+}
+.board .nav-tabs > li.active span.round-tabs.one,
+.board .nav-tabs > li.active span.round-tabs.two,
+.board .nav-tabs > li.active span.round-tabs.three,
+.board .nav-tabs > li.active span.round-tabs.four,
+.board .nav-tabs > li.active span.round-tabs.five {
+  background: #fff !important;
+  border-color: #ddd;
+}
+.board .nav-tabs > li.active:after {
+  content: " ";
+  position: absolute;
+  left: 45%;
+  opacity: 1;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 10px solid transparent;
+  border-bottom-color: #ddd;
+}
+.board .nav-tabs > li:after {
+  content: " ";
+  position: absolute;
+  left: 45%;
+  opacity: 0;
+  margin: 0 auto;
+  bottom: 0px;
+  border: 5px solid transparent;
+  border-bottom-color: #ddd;
+  transition: 0.1s ease-in-out;
+}
+.board .tab-content .tab-pane {
+  position: relative;
+  padding-top: 50px;
+}
+.board .tab-content .tab-pane .head {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 25px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+.board:after {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid #000;
+  border-right: 20px solid #000;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid transparent;
+}
+span.round-tabs {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  font-size: 25px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+}
+span.round-tabs.one {
+  color: #22c222;
+  border-color: #22c222;
+}
+span.round-tabs.two {
+  color: #febe29;
+  border-color: #febe29;
+}
+span.round-tabs.three {
+  color: #3e5e9a;
+  border-color: #3e5e9a;
+}
+span.round-tabs.four {
+  color: #f1685e;
+  border-color: #f1685e;
+}
+span.round-tabs.five {
+  color: #999;
+  border-color: #999;
+}
+@media (max-width: 585px) {
+  .board {
+    width: 90%;
+    height: auto !important;
+  }
+  span.round-tabs {
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .tab-content .head {
+    font-size: 20px;
+  }
+  .nav-tabs > li a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+  li.active:after {
+    content: " ";
+    position: absolute;
+    left: 35%;
+  }
+}

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> @ViewData["Title"]</title>
+    <!-- Main Style -->
+    <partial name="_HeaderReferences" />
+</head>
+
+<body>
+    <partial name="_Header" />
+    <!--Side Menu Start-->
+    <partial name="_SideMenu" />
+    <!--Side Menu End-->
+    <!--Main Start-->
+    <main>
+        <!--Start container -->
+        @RenderBody()
+        <!--End container -->
+    </main>
+    <!--End Main -->
+    <!--Start Footer -->
+    <partial name="_Footer" />
+    <!--End Footer -->
+    <!-- header and nav scripts -->
+    <partial name="_FooterReferences" />
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

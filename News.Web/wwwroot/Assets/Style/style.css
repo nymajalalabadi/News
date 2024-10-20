@@ -1,0 +1,834 @@
+﻿@font-face {
+    font-family: 'IranSans';
+    src: url('/~/assets/fonts/Sansa4fran3.eot');
+    src: url('/~/assets/fonts/Sansa4fran3.woff') format('woff'), url('/~/assets/fonts/Sansa4fran3.ttf') format('truetype');
+}
+
+* {
+    font-family: 'IranSans';
+}
+
+body {
+    font-family: 'IranSans';
+    direction: rtl;
+}
+
+h1, h2, h3, h4, h5, h6, h6 a {
+    /* cursor: pointer; */
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+a, p {
+    font-size: .7rem;
+    line-height: 25px;
+    text-align: justify;
+}
+
+a, p, span, li, h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+}
+
+li {
+    list-style: src("~/assets/Img/Icon/Folder-1.png");
+}
+
+span p {
+    font-size: .8rem;
+    line-height: 35px;
+    text-align: justify;
+}
+
+h5 p {
+    text-align: justify;
+}
+
+.box > h6:before {
+    content: '';
+    display: inline-block;
+    border: 1px solid #e2e3e7;
+    width: 100%;
+    top: 13px;
+    right: 0;
+    position: absolute;
+}
+
+.box > h6 > span {
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+    .box > h6 > span:before {
+        content: '';
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin-left: 5px;
+    }
+
+.Sport-Line-Color:before {
+    background-color: #4525b9;
+}
+
+.Economic-Line-Color:before {
+    background-color: #f98f44;
+}
+
+.health-Line-Color:before {
+    background-color: #ff0c00;
+}
+
+.TopReports-Line-Color:before {
+    background-color: #4cff00;
+}
+
+.MultiMedia-Line-Color:before {
+    background-color: #ff00dc;
+}
+
+.Special-Line-Color:before {
+    background-color: rgb(31, 164, 241);
+}
+
+.HotNews-Line-Color:before {
+    background-color: #00ffff;
+}
+
+ul.HotNews > li a:hover {
+    color: #f98f44;
+}
+
+ul.HotNews > li a {
+    color: #808080;
+}
+
+.more-report {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-decoration: none;
+    font-size: .7rem;
+    color: #b5b4b4;
+}
+
+ul.HotNews > li {
+    padding: 0px;
+    margin: 0px;
+    /* list-style: inside url(/~/assets/Img/Icons/hot1.png); */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+ul.HotNews li:hover {
+    /* list-style: inside url(/~/assets/Img/Icons/hot.svg); */
+    color: rgb(31, 164, 241);
+}
+
+
+.social-Network a img:hover {
+    transform: scale(1.1);
+    transition: .2s;
+    opacity: 1;
+}
+
+/*................................................. Main container*/
+
+
+
+
+
+
+
+/*................................................. Hashtag*/
+.Hashtag ul li{
+    color: crimson; font-size: 1.4rem;
+}
+
+.Hashtag ul li span{
+    font-size: 1rem; font-weight:800; color: crimson;
+}
+.Hashtag ul li a{
+    color: #fff; font-weight:600;
+    text-decoration: none;
+}
+
+
+
+
+/*................................................. HotNewsFirst*/
+.HotNewsFirst > span a{
+    font-weight:800;
+    color: gray;
+    text-align: center;
+    text-decoration:none;
+    font-size: .8rem;
+}
+
+.tag11 {
+    height: 24px;
+    float: right;
+    line-height: 24px;
+    position: relative;
+    margin: 0 0 10px 20px;
+    padding: 0 21px 0 26px;
+    background: #333;
+    color: #a5a4a4;
+    text-decoration: none;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 2px;
+    font-size: 14px !important;
+    margin-top: 5px;
+    transition: all 0.6s ease;
+    font-family: Vazir;
+
+}
+
+    .tag11:before {
+        content: "";
+        float: left;
+        position: absolute;
+        top: 0;
+        left: -12px;
+        width: 0;
+        height: 0;
+        border-color: transparent#333 transparent transparent;
+        border-style: solid;
+        border-width: 12px 12px 12px 0;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.6s ease
+    }
+
+    .tag11::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        float: left;
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background: #fff;
+        box-shadow: -1px -1px 2px #004977
+    }
+
+/* .link_box2 li a{
+	color:#5a92a9;
+	text-decoration:none
+}
+.link_box2 li a:hover{
+	color:#c91d1d;
+	text-decoration:none;
+	text-shadow:0 0 5px #e7b0b0;
+} */
+/*استایل برای ویرایشگر متن*/
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 300px;
+}
+
+    .ck-editor__editable[role="textbox"] p {
+        /* editing area */
+        font-size: .9rem;
+    }
+
+
+.box > h6 > span {
+    padding-left: 15px;
+}
+
+.scale:hover {
+    transform: scale(101%);
+}
+
+
+
+/*................................................. Sport Component*/
+
+.body-sportcomponent {
+    max-width: 100%;
+    height: 90px;
+    max-height: 90px;
+    border-top: 2px solid #f134f1;
+    overflow: hidden;
+}
+
+    .body-sportcomponent a {
+        font-weight: 800;
+    }
+
+.body-small-sportcomponent {
+    border-right: 2px solid #f134f1;
+}
+/*................................................. Economic Component*/
+
+.body-economiccomponent {
+    max-width: 100%;
+    height: 90px;
+    max-height: 90px;
+    border-top: 2px solid #ff0000;
+    overflow: hidden;
+}
+
+    .body-economiccomponent a {
+        font-weight: 800;
+    }
+
+.body-small-economiccomponent {
+    border-right: 2px solid #ff0000;
+}
+/*................................................. Health Component*/
+
+.body-Healthcomponent {
+    max-width: 100%;
+    height: 90px;
+    max-height: 90px;
+    border-top: 2px solid rgb(31, 164, 241);
+    overflow: hidden;
+}
+
+    .body-Healthcomponent a {
+        font-weight: 800;
+    }
+
+.body-small-Healthcomponent {
+    border-right: 2px solid rgb(31, 164, 241);
+}
+/*................................................. Sport And Economic Component*/
+.img-sportANDeconomiccomponent {
+    max-width: 100%;
+    height: 130px;
+    max-height: 130px;
+}
+
+.date-sportANDeconomiccomponent {
+    top: 90%;
+}
+
+    .date-sportANDeconomiccomponent p {
+        color: #b9b9bb;
+        font-size: .6rem;
+    }
+
+        .date-sportANDeconomiccomponent p i {
+            color: #b9b9bb;
+            font-size: .6rem;
+        }
+
+.date-small-sportANDeconomiccomponent {
+    color: #b9b9bb;
+    font-size: .5rem;
+}
+
+    .date-small-sportANDeconomiccomponent i {
+        color: #b9b9bb;
+        font-size: .5rem;
+    }
+/*................................................. NavTab Component*/
+.body-text-NavTab {
+    text-align: end;
+}
+
+.text-NavTab {
+    font-size: .7rem;
+    font-weight: 700;
+    color: #b5b4b4;
+}
+
+.body-img-NavTab {
+    height: 200px;
+    max-height: 200px;
+}
+
+.body-card-NavTab {
+    text-align: justify;
+    color: #000000;
+    font-size: .8rem;
+    font-weight: 700;
+}
+/*................................................. SpecialReports First Component*/
+.body-plusfirst {
+    float: right;
+}
+
+.card-img-plusfirst {
+    width: 320px;
+    height: 150px;
+    max-height: 150px;
+}
+
+.card-body-plusfirst {
+    width: 320px;
+    height: 105px;
+    max-height: 105px;
+    border-top: 2px solid rgb(31, 164, 241);
+}
+
+.card-text-plusfirst {
+    text-decoration: none;
+    text-align: justify;
+    font-weight: 900;
+}
+/*................................................. SpecialReports Component*/
+.body-plus {
+    float: right;
+}
+
+.body-card-plus {
+    height: 112px;
+    border-top: 2px solid rgb(31, 164, 241);
+}
+
+.body-text-plus {
+    text-decoration: none;
+    color: black;
+    text-align: justify;
+    font-weight: 900;
+}
+/*................................................. LastNews & LastNews Hide*/
+.LastNews-body{
+    border-top: 10px solid coral;
+}
+.LastNews-text{
+    color: coral;
+    border-top: 2px solid #e2e3e7;
+    border-right: 2px solid #e2e3e7;
+    border-left: 2px solid #e2e3e7;
+    top: -18px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.LastNews-items{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin:0;
+}
+.LastNews-items .fa-video{
+    color: red;
+}
+.LastNews-items .fa-newspaper{
+    color: coral;
+}
+/*................................................. Ads*/
+.Ads ul li{
+    height: 100px;
+    max-height: 100px;
+}
+/*................................................. Ads Hide*/
+.Ads li{
+    height: 100px;
+    max-height: 100px;
+}
+
+/*................................................. index Page*/
+.hotnews-img-index {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 320px;
+    min-height: 320px;
+}
+
+.navtab-index button {
+    color: dodgerblue;
+}
+/*................................................. Report Page*/
+.border-style {
+    border: 1px solid #e4e4e4;
+}
+
+.item-top-report {
+    display: inline-flex;
+    padding: 10px;
+}
+
+.icon-top-report {
+    color: #b9b9bb;
+    font-size: 1rem;
+}
+
+.texticon-top-report {
+    font-size: .7rem;
+}
+
+.img-main-report {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+}
+
+.title-report {
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 30px 0px;
+}
+
+.description-report {
+    font-size: .9rem;
+    padding: 25px;
+    background: #ccc;
+}
+
+.fulltext-report p {
+    text-align: justify;
+    font-size: 1rem;
+}
+
+    .fulltext-report img {
+        width: 60%;
+    }
+
+.icon-author-report {
+    font-size: 1.1rem;
+    color: #b9b9bb;
+}
+
+.text-author-report {
+    font-size: .8rem;
+    color: #cecece;
+}
+
+.share a:hover {
+    transform: scale(1.1);
+    transition: .4s;
+    opacity: 1;
+}
+
+.share-img-report {
+    width: 30px;
+    height: 30px;
+}
+
+.share-text-report {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.tags li{
+    font-size: .8rem;
+}
+
+
+.comment-body-report {
+    padding-bottom: 70px;
+}
+
+.commentalt-icon-report {
+    color: #6d6e72;
+    font-size: 20px;
+}
+
+.commenttext-style-report {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+input.contact1-form-btn{
+    background-color: #57b846;
+    border: none;
+    margin: 20px 0px;
+    padding: 8px 50px;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+    .icon-top-report {
+        color: #b9b9bb;
+        font-size: .7rem;
+    }
+    .texticon-top-report {
+        font-size: .6rem;
+    }
+    .title-report {
+        font-size: .8rem;
+        font-weight: 800;
+        padding: 20px 0px;
+    }
+    .description-report {
+        font-size: .7rem;
+        padding: 25px;
+        background: #ccc;
+    }
+    .fulltext-report p{
+        text-align: justify;
+        font-size: .8rem;
+    }
+    .share-img-report {
+        width: 20px;
+        height: 20px;
+    }
+    .share-text-report {
+        font-size: .7rem;
+        font-weight: 600;
+    }
+    .tags li{
+        font-size: .7rem;
+    }
+    .commenttext-style-report {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
+
+/*------------------------------------------- Comments Style in Report Page*/
+.comment-box {
+    border: 1px dotted #333;
+}
+
+    .comment-box:hover {
+        border: 1px dotted #0026ff;
+    }
+
+.comment-title {
+    font-size: 0.7rem;
+}
+
+.comment-title-name {
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.comment-text {
+    max-width: 85%
+}
+
+.comment-comma-img {
+    width: 80px;
+    height: 80px;
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    .comment-title-name {
+        font-size: .7rem;
+        font-weight: 700;
+    }
+    .comment-comma-img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/*................................................. Galery page*/
+
+div.gallery {
+    border: 1px solid #ccc;
+    height: 100%;
+}
+
+    div.gallery:hover {
+        border: 2px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: 65%;
+    }
+
+
+div.desc {
+    padding: 10px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: right;
+    width: 24.99999%;
+}
+
+    .responsive:hover {
+        cursor: pointer;
+        scale: 102%;
+    }
+
+.description-gallery {
+    padding: 6px;
+}
+
+@media only screen and (max-width: 992px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+
+    div.gallery img {
+        height: 65%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+
+    div.gallery img {
+        height: 65%;
+    }
+}
+
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*------------------------------------------- Modal Style*/
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+p {
+    direction: rtl;
+}
+
+#myImg:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+
+/*------------------------------------------- Archive Page Style*/
+
+.ArchiveDescription {
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .ArchiveDescription {
+        height: 155px;
+    }
+}
+
+/*------------------------------------------- Footer Style*/
+.body-footer {
+    width: 100%;
+    padding: 10px;
+    border-top: 5px double #f17014;
+}
+
+.text-footer {
+    color: #000;
+}
+
+.comment-name-footer {
+    color: #777;
+}
+
+.img-Footer {
+    width: 70px;
+    height: 55px;
+    max-width: 60px;
+    max-height: 55px;
+    margin: 2px 0;
+}
+
+    .img-Footer:hover {
+        scale: 105%;
+        cursor: pointer;
+    }
+
