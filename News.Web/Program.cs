@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using News.DataLayer.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region context
+
+builder.Services.AddDbContext<NewsDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
+});
+
+#endregion
 
 var app = builder.Build();
 
