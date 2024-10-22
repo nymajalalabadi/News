@@ -24,8 +24,4 @@
     <ProjectReference Include="..\News.LoC\News.LoC.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
 </Project>

@@ -1,0 +1,44 @@
+﻿<div>
+    <aside id="leftsidebar" class="sidebar">
+        <div class="menu">
+            <ul class="list">
+                <li>
+                    <div class="sidebar-profile clearfix">
+                        <div class="profile-img">
+                            <img src="/Admin/assets/images/usrbig.jpg" alt="profile">
+                        </div>
+                        <div class="profile-info">
+                            <h3></h3>
+                            <p>خوش آمدید !</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="menu-icon ti-image"></i>
+                        <span> اخبار</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="report" asp-action="FilterReports">لیست اخبارات</a>
+                        </li>
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="User" asp-action="Create">افزودن کاربر</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="menu-icon ti-user"></i>
+                        <span>مدیریت تماس با ما</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="ContactUs" asp-action="List">لیست تماس با ما</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+</div>

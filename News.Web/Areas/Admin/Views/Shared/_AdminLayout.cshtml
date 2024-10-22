@@ -1,13 +1,32 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <partial name="_MetaTags" />
+    <title>ادمین | @ViewData["Title"]</title>
+
+    <partial name="_AdminHeaderRefrences" />
+
 </head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
+
+<body class="light rtl">
+
+    <partial name="_Loader" />
+
+    <div class="overlay"></div>
+
+    <partial name="_TopNavBar" />
+
+
+    @await Component.InvokeAsync("LeftSideBar")
+
+    <section class="content">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+    <partial name="_AdminFooterReferences" />
+    
 </body>
+
 </html>
