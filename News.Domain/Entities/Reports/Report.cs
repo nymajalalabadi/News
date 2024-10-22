@@ -16,8 +16,9 @@ namespace News.Domain.Entities.Reports
         public string Title { get; set; } = default!;
 
         [Display(Name = "توضیح مختصر")]
+        [Required(ErrorMessage = "عنوان {0} را وارد کنید")]
         [MaxLength(1000)]
-        public string? Description { get; set; } = default!;
+        public string Description { get; set; } = default!;
 
         [Display(Name = "متن کامل")]
         public string? FullText { get; set; } = default!;
@@ -57,9 +58,6 @@ namespace News.Domain.Entities.Reports
 
         [Display(Name = "زمان درج اخبار داغ")]
         public DateTime? HotNewsDate { get; set; } = default!;
-
-        [Display(Name = "گروه خبری")]
-        public int GroupId { get; set; } = default!;
 
         #endregion
 

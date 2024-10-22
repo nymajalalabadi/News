@@ -99,24 +99,6 @@
                     <img class="modal-content" id="img01">
                     <div id="caption"></div>
                 </div>
-                <script>
-                    var modal = document.getElementById('myModal');
-                    var img = document.getElementById('viewImg');
-                    var modalImg = document.getElementById('img01');
-                    modalImg.style.height = "90%";
-                    modalImg.style.width = "90%";
-                    var captionText = document.getElementById('caption');
-                    img.onclick = function () {
-                        modal.style.display = "block";
-                        modal.style.height = "100%";
-                        modalImg.src = this.src;
-                        captionText.innerHTML = this.alt;
-                    }
-                    var span = document.getElementsByClassName("close")[0];
-                    span.onclick = function () {
-                        modal.style.display = "none";
-                    }
-                </script>
                 <li class="d-inline-flex">
                     <img id="" src="~/assets/Img/ReportImages/e4fc8eaf-89ce-45cc-bf46-5ead54e0d812.jpg" class="rounded img-Footer" alt="مراسم ۱۳ آبان ۱۴۰۲ در کشور">
                 </li>
@@ -142,3 +124,24 @@
         </div>
     </div>
 </footer>
+
+@section Scripts {
+    <script>
+        var modal = document.getElementById('myModal');
+        var img = document.getElementById('viewImg');
+        var modalImg = document.getElementById('img01');
+        modalImg.style.height = "90%";
+        modalImg.style.width = "90%";
+        var captionText = document.getElementById('caption');
+        img.onclick = function () {
+            modal.style.display = "block";
+            modal.style.height = "100%";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+}
