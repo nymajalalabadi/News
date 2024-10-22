@@ -9,7 +9,10 @@
   <ItemGroup>
     <Folder Include="Enums\" />
     <Folder Include="InterFaces\" />
-    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
   </ItemGroup>
 
 </Project>
