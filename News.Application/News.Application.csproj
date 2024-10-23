@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-    <Folder Include="Services\Implementations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.67" />
     <PackageReference Include="HtmlSanitizer" Version="8.1.870" />
     <PackageReference Include="LazZiya.ImageResize" Version="4.1.4" />
