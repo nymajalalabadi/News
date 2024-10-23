@@ -1,4 +1,5 @@
 ﻿@using News.Domain.ViewModels.Reports;
+@using News.Domain.Entities.Reports;
 @model CreateReportViewModel
 
 @{
@@ -46,8 +47,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="file" asp-for="Image" id="Avatar" class="form-control" placeholder="عکس اصلی">
-                                    <span asp-validation-for="Image"></span>
+                                    <input type="file" asp-for="AvatarImage" id="Avatar" class="form-control" placeholder="عکس اصلی">
+                                    <span asp-validation-for="AvatarImage"></span>
                                 </div>
                             </div>
                             <img src="" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
@@ -82,15 +83,6 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
-                                    <label asp-for="Source" class="control-label"></label>
-                                    <input asp-for="Source" class="form-control" />
-                                    <span asp-validation-for="Source" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                            <div class="form-group">
-                                <div class="form-line">
                                     <label asp-for="Tags" class="control-label"></label>
                                     <input asp-for="Tags" class="form-control" />
                                     <span asp-validation-for="Tags" class="text-danger"></span>
@@ -109,10 +101,9 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
-                                   @*  <label asp-for="GroupId" class="control-label"></label>
-                                    <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId">
-                                        <option>انتخاب دسته خبری</option>
-                                    </select> *@
+                                    <label>انتخاب دسته خبری</label>
+                                    <select class="form-control" asp-for="groupId" asp-items="@(ViewData["reportGroup"] as SelectList)">
+                                    </select>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.Reports;
 
 namespace News.Web.Areas.Admin.Controllers
 {
@@ -6,9 +8,11 @@ namespace News.Web.Areas.Admin.Controllers
     {
         #region Consractor
 
-        public ReportController()
+        private readonly IReportService _reportService;
+
+        public ReportController(IReportService reportService)
         {
-            
+            _reportService = reportService;
         }
 
         #endregion
@@ -29,6 +33,14 @@ namespace News.Web.Areas.Admin.Controllers
 
         [HttpGet]
         public async Task<IActionResult> CreateReport()
+        {
+            ViewData["reportGroup"] = await _reportService.SelectedReportGroupId();
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReport(CreateReportViewModel report)
         {
             return View();
         }

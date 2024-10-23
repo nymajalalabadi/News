@@ -1,4 +1,7 @@
-﻿using News.DataLayer.Context;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using News.DataLayer.Context;
+using News.Domain.Entities.Reports;
 using News.Domain.InterFaces;
 using System;
 using System.Collections.Generic;
@@ -23,7 +26,40 @@ namespace News.DataLayer.Repositories
 
         #region Methods
 
+        #region Reports
 
+        public async Task<IQueryable<Report>> GetReportsQuery()
+        {
+            return _context.Reports.Where(u => !u.IsDelete).AsQueryable();
+        }
+
+        public async Task AddReport(Report report)
+        {
+            await _context.Reports.AddAsync(report);
+        }
+
+        #endregion
+
+        #region Group Reports
+
+        public async Task<List<SelectListItem>> SelectedReportGroupId()
+        {
+            return await _context.ReportGroups
+                .Where(p => !p.IsDelete)
+                .Select(p => new SelectListItem()
+                {
+                    Text = p.GroupName,
+                    Value = p.Id.ToString()
+                })
+                .ToListAsync();
+        }
+
+        #endregion
+
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
+        }
 
         #endregion
     }

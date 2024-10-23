@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -22,9 +23,9 @@ namespace News.Domain.ViewModels.Reports
         [Display(Name = "متن کامل")]
         public string? FullText { get; set; } = default!;
 
-        [Display(Name = "تصویر خبر")]
-        [MaxLength(100)]
-        public string? Image { get; set; } = default!;
+        [Display(Name = "عکس اصلی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public IFormFile AvatarImage { get; set; }
 
         [Display(Name = "توضیح تصویر")]
         [MaxLength(100)]
@@ -46,16 +47,13 @@ namespace News.Domain.ViewModels.Reports
         [MaxLength(100)]
         public string? Author { get; set; } = default!;
 
-        [Display(Name = "بازدید")]
-        public int? Visit { get; set; }
+        public long groupId { get; set; }
+    }
 
-        [Display(Name = "اخبار داغ")]
-        public bool IsHotNews { get; set; } = false;
-
-        [Display(Name = "وضعیت")]
-        public bool IsSuccess { get; set; } = false;
-
-        [Display(Name = "زمان درج اخبار داغ")]
-        public DateTime? HotNewsDate { get; set; } = default!;
+    public enum CreateReportResult
+    {
+        Success,
+        Error,
+        NoImage
     }
 }

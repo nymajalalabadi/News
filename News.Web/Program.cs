@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using News.DataLayer.Context;
+using News.LoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,12 @@ builder.Services.AddDbContext<NewsDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
 });
+
+#endregion
+
+#region LoC
+
+DependencyContainer.RejosterService(builder.Services);
 
 #endregion
 
