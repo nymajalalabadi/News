@@ -1,0 +1,147 @@
+﻿@using News.Domain.ViewModels.Reports;
+@model CreateReportViewModel
+
+@{
+    ViewData["Title"] = "ساخت گزارش";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    @ViewData["Title"]
+                </h2>
+            </div>
+            <div class="body">
+                <form asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Title" class="control-label"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="FullText" class="control-label"></label>
+                                    <textarea asp-for="FullText" id="editor" class="form-control"></textarea>
+                                    <span asp-validation-for="FullText" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" asp-for="Image" id="Avatar" class="form-control" placeholder="عکس اصلی">
+                                    <span asp-validation-for="Image"></span>
+                                </div>
+                            </div>
+                            <img src="" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="ImageAlt" class="control-label"></label>
+                                    <input asp-for="ImageAlt" class="form-control" />
+                                    <span asp-validation-for="ImageAlt" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="ImageTitle" class="control-label"></label>
+                                    <input asp-for="ImageTitle" class="form-control" />
+                                    <span asp-validation-for="ImageTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Source" class="control-label"></label>
+                                    <input asp-for="Source" class="form-control" />
+                                    <span asp-validation-for="Source" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Source" class="control-label"></label>
+                                    <input asp-for="Source" class="form-control" />
+                                    <span asp-validation-for="Source" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Tags" class="control-label"></label>
+                                    <input asp-for="Tags" class="form-control" />
+                                    <span asp-validation-for="Tags" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="Author" class="control-label"></label>
+                                    <input asp-for="Author" class="form-control" />
+                                    <span asp-validation-for="Author" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                   @*  <label asp-for="GroupId" class="control-label"></label>
+                                    <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId">
+                                        <option>انتخاب دسته خبری</option>
+                                    </select> *@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg m-l-15 waves-effect">ثبت</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPreview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+        $("#Avatar").change(function () {
+            readURL(this);
+        });
+    </script>
+}

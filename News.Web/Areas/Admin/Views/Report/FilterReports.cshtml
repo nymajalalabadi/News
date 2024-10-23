@@ -1,74 +1,88 @@
-﻿@{
-    ViewData["Title"] = "Index";
+﻿@using News.Application.Statics
+@using News.Domain.ViewModels.Reports;
+@model FilterReportsViewModel
+
+@{
+    ViewData["Title"] = "لیست گزارشات";
 }
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="card">
-        <div class="header">
-            <h2>
-                <strong>ردیف های</strong> راه راه
-            </h2>
-            <ul class="header-dropdown m-r--5">
-                <li class="dropdown">
-                    <a href="#" onclick="return false;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="material-icons">more_vert</i>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a href="#" onclick="return false;">اقدام</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="return false;">اقدامی دیگر</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="return false;">چیز دیگری اینجا</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    فیلتر ها
+                </h2>
+            </div>
+            <div class="body">
+                <form asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="List" method="get" id="filter-search">
+                    <input type="hidden" asp-for="CurrentPage" />
+                    <div class="row clearfix">
+                        <div class="col-sm-12  col-md-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" asp-for="Title" class="form-control">
+                                    <label asp-for="Title" class="form-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-success">جستجو</button>
+                            @if (Context.Request.QueryString.HasValue)
+                            {
+                                <a asp-area="admin" asp-controller="CustomerFeedBack" asp-action="List" class="btn btn-raised btn-primary btn-round waves-effect">حذف فیلتر</a>
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="body table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>نام اصلی</th>
-                        <th>نام خانوادگی</th>
-                        <th>نام کاربری</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>twitter</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Larry</td>
-                        <td>Jellybean</td>
-                        <td>lajelly</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Larry</td>
-                        <td>Kikat</td>
-                        <td>lakitkat</td>
-                    </tr>
-                </tbody>
-            </table>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>@ViewData["Title"]</strong>
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                @if (Model.Entities != null && Model.Entities.Any())
+                {
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>آیدی</th>
+                                <th>اسم کاربر</th>
+                                <th>توضیحات</th>
+                                <th> عکس</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var customer in Model.Entities)
+                            {
+                                <tr>
+                                    <th scope="row">@customer.Id</th>
+                                    <td>@customer.Title</td>
+                                    <td>@customer.Description</td>
+                                    <td><img src="@(string.IsNullOrEmpty(customer.ImageTitle) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + customer.Image))" alt="@customer.ImageAlt" class="border" width="100px" height="100px"></td>
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="Update" asp-route-id="@customer.Id" class="text-warning">
+                                            <i class="fa fa-pen"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <partial name="_AdminPagination" model="@Model.GetPaging()" />
+                }
+                else
+                {
+                    <partial name="_AdminNotFound" />
+                }
+            </div>
         </div>
     </div>
 </div>

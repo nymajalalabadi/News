@@ -10,7 +10,13 @@ namespace News.Application.Statics
     {
         #region DefaultNames
 
-        public static string DefaultImageName { get; set; } = "/site/img/main-photo.svg";
+        public static string DefaultImageName { get; set; } = "/Img/ProfileImages/DefaultUserImage/DefaultUserProfile.jpg";
+
+        #endregion
+
+        #region Image Report
+
+        public static string ReportImagesName { get; set; } = "/Img/ReportImages/";
 
         #endregion
     }

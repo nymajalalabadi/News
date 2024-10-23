@@ -16,10 +16,24 @@ namespace News.Web.Areas.Admin.Controllers
 
         #region report
 
+        #region Filter Reports
+
         public async Task<IActionResult> FilterReports()
         {
             return View();
         }
+
+        #endregion
+
+        #region Create Report
+
+        [HttpGet]
+        public async Task<IActionResult> CreateReport()
+        {
+            return View();
+        }
+
+        #endregion
 
         #endregion
     }
