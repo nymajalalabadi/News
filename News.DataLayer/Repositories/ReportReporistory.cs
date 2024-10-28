@@ -33,6 +33,13 @@ namespace News.DataLayer.Repositories
             return _context.Reports.Where(u => !u.IsDelete).AsQueryable();
         }
 
+        public async Task<Report?> GetReportById(long id)
+        {
+            return await _context.Reports
+                .Include(u => u.ReportGroup)
+                .FirstOrDefaultAsync(r => r.Id.Equals(id));
+        }
+
         public async Task AddReport(Report report)
         {
             await _context.Reports.AddAsync(report);

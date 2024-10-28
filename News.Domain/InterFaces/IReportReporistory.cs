@@ -16,13 +16,15 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<Report>> GetReportsQuery();
 
+        Task<Report?> GetReportById(long id);
+
         Task AddReport(Report report);
 
         #endregion
 
         #region Group Reports
 
-        public async Task<List<SelectListItem>> SelectedReportGroupId();
+        Task<List<SelectListItem>> SelectedReportGroupId();
 
         #endregion
 

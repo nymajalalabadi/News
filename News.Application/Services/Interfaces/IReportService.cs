@@ -18,6 +18,8 @@ namespace News.Application.Services.Interfaces
 
         Task<CreateReportResult> CreateReport(CreateReportViewModel report);
 
+        Task<DetailsReportViewModel> DetailsReport(long reportId);
+
         #endregion
 
         #region Reports Group

@@ -112,6 +112,25 @@ namespace News.Application.Services.Implementations
             return CreateReportResult.NoImage;
         }
 
+        public async Task<DetailsReportViewModel> DetailsReport(long reportId)
+        {
+            var report = await _reportReporistory.GetReportById(reportId);
+
+            return new DetailsReportViewModel()
+            {
+                Title = report!.Title,
+                Description = report.Description,
+                Author = report.Author,
+                FullText = report.FullText,
+                ImageTitle = report.ImageTitle,
+                Image = report.Image,
+                Tags = report.Tags,
+                ImageAlt = report.ImageAlt,
+                Source = report.Source,
+                GroupReport = report.ReportGroup.GroupName,
+            };
+        }
+
         #endregion
 
         #region Reports Group

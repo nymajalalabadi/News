@@ -72,6 +72,23 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Details
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsReport(long reportId)
+        {
+            var model = await _reportService.DetailsReport(reportId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
         #endregion
     }
 }

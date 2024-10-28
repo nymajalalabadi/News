@@ -1,15 +1,15 @@
-﻿using News.Domain.Entities.Common;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace News.Domain.Entities.Reports
+namespace News.Domain.ViewModels.Reports
 {
-    public class Report : BaseEntity
+    public class DetailsReportViewModel
     {
-        #region properties
-
-        public long ReportGroupId { get; set; }
-
         [Display(Name = "عنوان خبر")]
         [Required(ErrorMessage = "عنوان {0} را وارد کنید")]
         [MaxLength(100)]
@@ -23,8 +23,7 @@ namespace News.Domain.Entities.Reports
         [Display(Name = "متن کامل")]
         public string? FullText { get; set; } = default!;
 
-        [Display(Name = "تصویر خبر")]
-        [MaxLength(100)]
+        [Display(Name = "عکس")]
         public string Image { get; set; } = default!;
 
         [Display(Name = "توضیح تصویر")]
@@ -47,24 +46,6 @@ namespace News.Domain.Entities.Reports
         [MaxLength(100)]
         public string? Author { get; set; } = default!;
 
-        [Display(Name = "بازدید")]
-        public int? Visit { get; set; }
-
-        [Display(Name = "اخبار داغ")]
-        public bool IsHotNews { get; set; } = false;
-
-        [Display(Name = "وضعیت")]
-        public bool IsSuccess { get; set; } = false;
-
-        [Display(Name = "زمان درج اخبار داغ")]
-        public DateTime? HotNewsDate { get; set; } = default!;
-
-        #endregion
-
-        #region relations
-
-        public ReportGroup ReportGroup { get; set; }
-
-        #endregion
+        public string GroupReport { get; set; } = default!;
     }
 }
