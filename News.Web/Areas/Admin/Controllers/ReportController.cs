@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.IdentityModel.Logging;
 using News.Application.Services.Interfaces;
 using News.Domain.ViewModels.Reports;
@@ -37,7 +38,8 @@ namespace News.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateReport()
         {
-            ViewData["reportGroup"] = await _reportService.SelectedReportGroupId();
+            var groupReports = await _reportService.SelectedReportGroupId();
+            ViewData["reportGroup"] = new SelectList(groupReports, "Value", "Text");
 
             return View();
         }

@@ -20,6 +20,8 @@ namespace News.Domain.InterFaces
 
         Task AddReport(Report report);
 
+        void UpdateReport(Report report);
+
         #endregion
 
         #region Group Reports

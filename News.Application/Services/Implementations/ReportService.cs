@@ -112,9 +112,61 @@ namespace News.Application.Services.Implementations
             return CreateReportResult.NoImage;
         }
 
+        public async Task<EditReportViewModel> GetReportForEdit(long reportId)
+        {
+            var report = await _reportReporistory.GetReportById(reportId);
+
+            if (report == null)
+            {
+                return null;
+            }
+
+            return new EditReportViewModel()
+            {
+                ReportId = report.Id,
+                Title = report.Title,
+                Description = report.Description,
+                Tags = report.Tags,
+                FullText = report.FullText,
+                Author = report.Author,
+                Image = report.Image,
+                ImageAlt = report.ImageAlt,
+                ImageTitle = report.ImageTitle,
+                Source = report.Source,
+                groupId = report.ReportGroupId
+            };
+        }
+
+        public async Task<EditReportResult> EditReport(EditReportViewModel report)
+        {
+            var currentReport = await _reportReporistory.GetReportById(report.ReportId);
+
+            if (currentReport == null)
+            {
+                return EditReportResult.NoHasItem;
+            }
+
+            if (report.Title == null)
+            {
+                return EditReportResult.Error;
+            }
+
+            if (report.AvatarImage != null)
+            {
+                
+            }
+
+
+        }
+
         public async Task<DetailsReportViewModel> DetailsReport(long reportId)
         {
             var report = await _reportReporistory.GetReportById(reportId);
+
+            if (report == null)
+            {
+                return null;
+            }
 
             return new DetailsReportViewModel()
             {

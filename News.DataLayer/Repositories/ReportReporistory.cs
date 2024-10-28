@@ -45,6 +45,11 @@ namespace News.DataLayer.Repositories
             await _context.Reports.AddAsync(report);
         }
 
+        public void UpdateReport(Report report)
+        {
+            _context.Reports.Update(report);
+        }
+
         #endregion
 
         #region Group Reports
