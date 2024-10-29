@@ -74,6 +74,32 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Edit
+
+        [HttpGet]
+        public async Task<IActionResult> EditReport(long reportId)
+        {
+            var model = await _reportService.GetReportForEdit(reportId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            var groupReports = await _reportService.SelectedReportGroupId();
+            ViewData["reportGroup"] = new SelectList(groupReports, "Value", "Text", model.GroupId);
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditReport(EditReportViewModel edit)
+        {
+            return View();
+        }
+
+        #endregion
+
         #region Details
 
         [HttpGet]

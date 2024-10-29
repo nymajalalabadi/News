@@ -6,6 +6,7 @@ using News.DataLayer.Context;
 using News.Domain.Entities.Reports;
 using News.Domain.InterFaces;
 using News.Domain.ViewModels.Reports;
+using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +134,7 @@ namespace News.Application.Services.Implementations
                 ImageAlt = report.ImageAlt,
                 ImageTitle = report.ImageTitle,
                 Source = report.Source,
-                groupId = report.ReportGroupId
+                GroupId = report.ReportGroupId
             };
         }
 
@@ -153,10 +154,40 @@ namespace News.Application.Services.Implementations
 
             if (report.AvatarImage != null)
             {
-                
+                var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(report.AvatarImage.FileName);
+                report.AvatarImage.AddImageToServer(imageName, SiteTools.ReportImagesName, 100, 100, SiteTools.ReportImagesName, currentReport.Image);
+
+                currentReport.Title = report.Title;
+                currentReport.Description = report.Description;
+                currentReport.FullText = report.FullText;
+                currentReport.Source = report.Source;
+                currentReport.Author = report.Author;
+                currentReport.Tags = report.Tags;
+                currentReport.LastUpdateDate = DateTime.Now;
+                currentReport.ImageAlt = report.ImageAlt;
+                currentReport.ImageTitle= report.ImageTitle;
+                currentReport.Image = imageName;
+
+                _reportReporistory.UpdateReport(currentReport);
+                await _reportReporistory.SaveChanges();
+
+                return EditReportResult.Success;
             }
 
+            currentReport.Title = report.Title;
+            currentReport.Description = report.Description;
+            currentReport.FullText = report.FullText;
+            currentReport.Source = report.Source;
+            currentReport.Author = report.Author;
+            currentReport.Tags = report.Tags;
+            currentReport.LastUpdateDate = DateTime.Now;
+            currentReport.ImageAlt = report.ImageAlt;
+            currentReport.ImageTitle = report.ImageTitle;
 
+            _reportReporistory.UpdateReport(currentReport);
+            await _reportReporistory.SaveChanges();
+
+            return EditReportResult.Success;
         }
 
         public async Task<DetailsReportViewModel> DetailsReport(long reportId)

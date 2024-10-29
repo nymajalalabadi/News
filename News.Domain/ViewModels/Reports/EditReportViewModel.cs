@@ -50,7 +50,7 @@ namespace News.Domain.ViewModels.Reports
         [MaxLength(100)]
         public string? Author { get; set; } = default!;
 
-        public long groupId { get; set; }
+        public long GroupId { get; set; }
     }
 
     public enum EditReportResult
