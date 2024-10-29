@@ -95,7 +95,33 @@ namespace News.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> EditReport(EditReportViewModel edit)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                var groupReports = await _reportService.SelectedReportGroupId();
+                ViewData["reportGroup"] = new SelectList(groupReports, "Value", "Text", edit.GroupId);
+
+                return View(edit);
+            }
+
+            var result = await _reportService.EditReport(edit);
+
+            switch (result)
+            {
+                case EditReportResult.Success:
+                    TempData[SuccessMessage] = "گزارش جدید ساخته شد";
+                    return RedirectToAction("FilterReports");
+                case EditReportResult.Error:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+                case EditReportResult.NoHasItem:
+                    TempData[ErrorMessage] = "گزارش مورد نظر یافت نشد";
+                    break;
+            }
+
+            var groupReportss = await _reportService.SelectedReportGroupId();
+            ViewData["reportGroup"] = new SelectList(groupReportss, "Value", "Text", edit.GroupId);
+
+            return View(edit);
         }
 
         #endregion
