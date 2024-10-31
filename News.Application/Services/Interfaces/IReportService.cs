@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Domain.ViewModels.ReportGroups;
 using News.Domain.ViewModels.Reports;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,25 @@ namespace News.Application.Services.Interfaces
 
         Task<DetailsReportViewModel> DetailsReport(long reportId);
 
+        Task<bool> DeleteReport(long reportId);
 
         #endregion
 
         #region Reports Group
 
         Task<List<SelectListItem>> SelectedReportGroupId();
+
+        Task<FilterReportGroupsViewModel> GetFilterReportGroups(FilterReportGroupsViewModel filter);
+
+        Task<CreateReportGroupResult> CreateReportGroup(CreateReportGroupViewModel reportGroup);
+
+        Task<EditReportGroupViewModel> GetReportGroupForEdit(long reportGroupId);
+
+        Task<EditReportGroupResult> EditReportGroup(EditReportGroupViewModel reportGroup);
+
+        Task<DetailsReportGroupViewModel> DetailsReportGroup(long reportGroupId);
+
+        Task<bool> DeleteReportGroup(long reportGroupId);
 
         #endregion
 

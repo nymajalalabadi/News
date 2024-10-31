@@ -54,6 +54,27 @@ namespace News.DataLayer.Repositories
 
         #region Group Reports
 
+        public async Task<IQueryable<ReportGroup>> GetReportGroupsQuery()
+        {
+            return _context.ReportGroups.Where(u => !u.IsDelete).AsQueryable();
+        }
+
+        public async Task<ReportGroup?> GetReportGroupById(long id)
+        {
+            return await _context.ReportGroups
+                .FirstOrDefaultAsync(r => r.Id.Equals(id));
+        }
+
+        public async Task AddReportGroup(ReportGroup reportGroup)
+        {
+            await _context.ReportGroups.AddAsync(reportGroup);
+        }
+
+        public void UpdateReportGroup(ReportGroup reportGroup)
+        {
+            _context.ReportGroups.Update(reportGroup);
+        }
+
         public async Task<List<SelectListItem>> SelectedReportGroupId()
         {
             return await _context.ReportGroups

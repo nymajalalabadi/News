@@ -16,14 +16,22 @@
                 <li class="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="menu-icon ti-image"></i>
+                        <span> گروه خبری</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="ReportGroup" asp-action="FilterReportGroups">لیست اخبارات</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="menu-icon ti-image"></i>
                         <span> اخبار</span>
                     </a>
                     <ul class="ml-menu">
                         <li class="active">
-                            <a asp-area="Admin" asp-controller="report" asp-action="FilterReports">لیست اخبارات</a>
-                        </li>
-                        <li class="active">
-                            <a asp-area="Admin" asp-controller="User" asp-action="Create">افزودن کاربر</a>
+                            <a asp-area="Admin" asp-controller="Report" asp-action="FilterReports">لیست اخبارات</a>
                         </li>
                     </ul>
                 </li>

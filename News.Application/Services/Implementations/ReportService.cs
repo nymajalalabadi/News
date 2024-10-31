@@ -5,6 +5,7 @@ using News.Application.Statics;
 using News.DataLayer.Context;
 using News.Domain.Entities.Reports;
 using News.Domain.InterFaces;
+using News.Domain.ViewModels.ReportGroups;
 using News.Domain.ViewModels.Reports;
 using SixLabors.ImageSharp;
 using System;
@@ -214,6 +215,23 @@ namespace News.Application.Services.Implementations
             };
         }
 
+        public async Task<bool> DeleteReport(long reportId)
+        {
+            var report = await _reportReporistory.GetReportById(reportId);
+
+            if (report == null)
+            {
+                return false;
+            }
+
+            report.IsDelete = true;
+
+            _reportReporistory.UpdateReport(report);
+            await _reportReporistory.SaveChanges();
+
+            return true;
+        }
+
         #endregion
 
         #region Reports Group
@@ -221,6 +239,154 @@ namespace News.Application.Services.Implementations
         public async Task<List<SelectListItem>> SelectedReportGroupId()
         {
             return await _reportReporistory.SelectedReportGroupId();
+        }
+
+        public async Task<FilterReportGroupsViewModel> GetFilterReportGroups(FilterReportGroupsViewModel filter)
+        {
+            var query = await _reportReporistory.GetReportGroupsQuery();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.GroupName))
+            {
+                query = query.Where(r => r.GroupName.Contains(filter.GroupName));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(r => r.CreateDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
+        public async Task<CreateReportGroupResult> CreateReportGroup(CreateReportGroupViewModel reportGroup)
+        {
+            if (string.IsNullOrEmpty(reportGroup.GroupName)) 
+            {
+                return CreateReportGroupResult.Failure; 
+            }
+
+            if (reportGroup.AvatarImage != null)
+            {
+                var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(reportGroup.AvatarImage.FileName);
+                reportGroup.AvatarImage.AddImageToServer(imageName, SiteTools.ReportGroupImagesName, 100, 100, SiteTools.ReportGroupImagesName);
+
+                var group = new ReportGroup()
+                {
+                    GroupName = reportGroup.GroupName,
+                    GroupImage = imageName
+                };
+
+                await _reportReporistory.AddReportGroup(group);
+                await _reportReporistory.SaveChanges();
+
+                return CreateReportGroupResult.Success;
+            }
+
+            var groupWithOutImage = new ReportGroup()
+            {
+                GroupName = reportGroup.GroupName
+            };
+
+            await _reportReporistory.AddReportGroup(groupWithOutImage);
+            await _reportReporistory.SaveChanges();
+
+            return CreateReportGroupResult.Success;
+        }
+
+        public async Task<EditReportGroupViewModel> GetReportGroupForEdit(long reportGroupId)
+        {
+            var reportGroup = await _reportReporistory.GetReportGroupById(reportGroupId);
+
+            if (reportGroup == null)
+            {
+                return null;
+            }
+
+            return new EditReportGroupViewModel()
+            {
+                id = reportGroup.Id,
+                GroupName = reportGroup.GroupName,
+                GroupImage = reportGroup.GroupImage,
+            };
+        }
+
+        public async Task<EditReportGroupResult> EditReportGroup(EditReportGroupViewModel reportGroup)
+        {
+            var currentReportGroup = await _reportReporistory.GetReportGroupById(reportGroup.id);
+
+            if (currentReportGroup == null)
+            {
+                return EditReportGroupResult.HasNotItem;
+            }
+
+            if (currentReportGroup.GroupName == null)
+            {
+                return EditReportGroupResult.Failure;
+            }
+
+            if (reportGroup.AvatarImage != null)
+            {
+                var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(reportGroup.AvatarImage.FileName);
+                reportGroup.AvatarImage.AddImageToServer(imageName, SiteTools.ReportGroupImagesName, 100, 100, SiteTools.ReportGroupImagesName, currentReportGroup.GroupImage!);
+
+                currentReportGroup.GroupName = reportGroup.GroupName;
+                currentReportGroup.LastUpdateDate = DateTime.Now;
+                currentReportGroup.GroupImage = imageName;
+
+                _reportReporistory.UpdateReportGroup(currentReportGroup);
+                await _reportReporistory.SaveChanges();
+
+                return EditReportGroupResult.Success;
+            }
+
+            currentReportGroup.GroupName = reportGroup.GroupName;
+            currentReportGroup.LastUpdateDate = DateTime.Now;
+
+
+            _reportReporistory.UpdateReportGroup(currentReportGroup);
+            await _reportReporistory.SaveChanges();
+
+            return EditReportGroupResult.Success;
+        }
+
+        public async Task<DetailsReportGroupViewModel> DetailsReportGroup(long reportGroupId)
+        {
+            var reportGroup = await _reportReporistory.GetReportGroupById(reportGroupId);
+
+            if (reportGroup == null)
+            {
+                return null;
+            }
+
+            return new DetailsReportGroupViewModel()
+            {
+                GroupName = reportGroup.GroupName,
+                GroupImage = reportGroup.GroupImage
+            };
+        }
+
+        public async Task<bool> DeleteReportGroup(long reportGroupId)
+        {
+            var reportGroup = await _reportReporistory.GetReportGroupById(reportGroupId);
+
+            if (reportGroup == null)
+            {
+                return false;
+            }
+
+            reportGroup.IsDelete = true;
+
+            _reportReporistory.UpdateReportGroup(reportGroup);
+            await _reportReporistory.SaveChanges();
+
+            return true;
         }
 
         #endregion

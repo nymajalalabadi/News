@@ -19,5 +19,11 @@ namespace News.Application.Statics
         public static string ReportImagesName { get; set; } = "/Img/ReportImages/";
 
         #endregion
+
+        #region Image Report Group
+
+        public static string ReportGroupImagesName { get; set; } = "/Img/ReportGroupImages/";
+
+        #endregion
     }
 }

@@ -26,6 +26,14 @@ namespace News.Domain.InterFaces
 
         #region Group Reports
 
+        Task<IQueryable<ReportGroup>> GetReportGroupsQuery();
+
+        Task<ReportGroup?> GetReportGroupById(long id);
+
+        Task AddReportGroup(ReportGroup reportGroup);
+
+        void UpdateReportGroup(ReportGroup reportGroup);
+
         Task<List<SelectListItem>> SelectedReportGroupId();
 
         #endregion
