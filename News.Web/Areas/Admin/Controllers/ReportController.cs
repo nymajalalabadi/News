@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.IdentityModel.Logging;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.ReportGroups;
 using News.Domain.ViewModels.Reports;
+using System.Text.RegularExpressions;
 
 namespace News.Web.Areas.Admin.Controllers
 {
@@ -19,11 +21,122 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region report Group
+
+        #region Filter Report Group
+
+        [HttpGet]
+        public async Task<IActionResult> FilterReportGroups(FilterReportGroupsViewModel filter)
+        {
+            var model = await _reportService.GetFilterReportGroups(filter);
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Create Report Group
+
+        [HttpGet]
+        public async Task<IActionResult> CreateReportGroup()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReportGroup(CreateReportGroupViewModel reportGroup)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(reportGroup);
+            }
+
+            var result = await _reportService.CreateReportGroup(reportGroup);
+
+            switch (result)
+            {
+                case CreateReportGroupResult.Success:
+                    TempData[SuccessMessage] = "گروه خبری جدید ساخته شد";
+                    return RedirectToAction("FilterReportGroups");
+                case CreateReportGroupResult.Failure:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+            }
+
+            return View(reportGroup);
+        }
+
+
+
+        #endregion
+
+        #region Edit Report Group
+
+        [HttpGet]
+        public async Task<IActionResult> EditReportGroup(long groupId)
+        {
+            var model = await _reportService.GetReportGroupForEdit(groupId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditReportGroup(EditReportGroupViewModel edit)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(edit);
+            }
+
+            var result = await _reportService.EditReportGroup(edit);
+
+            switch (result)
+            {
+                case EditReportGroupResult.Success:
+                    TempData[SuccessMessage] = "گروه خبری جدید ویرایش شد";
+                    return RedirectToAction("FilterReports");
+                case EditReportGroupResult.Failure:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+                case EditReportGroupResult.HasNotItem:
+                    TempData[ErrorMessage] = "گروه خبری مورد نظر یافت نشد";
+                    break;
+            }
+
+            return View(edit);
+        }
+
+        #endregion
+
+        #region Details Report Group
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsReportGroup(long reportGroupId)
+        {
+            var model = await _reportService.DetailsReportGroup(reportGroupId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
+        #endregion
 
         #region report
 
         #region Filter Reports
 
+        [HttpGet]
         public async Task<IActionResult> FilterReports(FilterReportsViewModel filter)
         {
             var model = await _reportService.GetFilterReports(filter);
@@ -74,7 +187,7 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
-        #region Edit
+        #region Edit Report
 
         [HttpGet]
         public async Task<IActionResult> EditReport(long reportId)
@@ -89,7 +202,7 @@ namespace News.Web.Areas.Admin.Controllers
             var groupReports = await _reportService.SelectedReportGroupId();
             ViewData["reportGroup"] = new SelectList(groupReports, "Value", "Text", model.GroupId);
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -113,7 +226,7 @@ namespace News.Web.Areas.Admin.Controllers
                 case EditReportResult.Error:
                     TempData[ErrorMessage] = "خطای رخ داده است";
                     break;
-                case EditReportResult.NoHasItem:
+                case EditReportResult.HasNotItem:
                     TempData[ErrorMessage] = "گزارش مورد نظر یافت نشد";
                     break;
             }
@@ -126,7 +239,7 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
-        #region Details
+        #region Details Report
 
         [HttpGet]
         public async Task<IActionResult> DetailsReport(long reportId)

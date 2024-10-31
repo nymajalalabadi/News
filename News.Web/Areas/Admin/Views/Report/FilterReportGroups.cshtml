@@ -1,9 +1,9 @@
 ﻿@using News.Application.Statics
-@using News.Domain.ViewModels.Reports;
-@model FilterReportsViewModel
+@using News.Domain.ViewModels.ReportGroups;
+@model FilterReportGroupsViewModel
 
 @{
-    ViewData["Title"] = "لیست گزارشات";
+    ViewData["Title"] = "لیست گروه خبری";
 }
 
 <div class="row clearfix">
@@ -15,14 +15,14 @@
                 </h2>
             </div>
             <div class="body">
-                <form asp-area="Admin" asp-controller="Report" asp-action="FilterReports" method="get" id="filter-search">
+                <form asp-area="Admin" asp-controller="Report" asp-action="FilterReportGroups" method="get" id="filter-search">
                     <input type="hidden" asp-for="CurrentPage" />
                     <div class="row clearfix">
                         <div class="col-sm-12  col-md-4">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="text" asp-for="Title" class="form-control">
-                                    <label asp-for="Title" class="form-label"></label>
+                                    <input type="text" asp-for="GroupName" class="form-control">
+                                    <label asp-for="GroupName" class="form-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                             <button class="btn btn-success">جستجو</button>
                             @if (Context.Request.QueryString.HasValue)
                             {
-                                <a asp-area="Admin" asp-controller="Report" asp-action="FilterReports" class="btn btn-raised btn-primary btn-round waves-effect">حذف فیلتر</a>
+                                <a asp-area="Admin" asp-controller="Report" asp-action="FilterReportGroups" class="btn btn-raised btn-primary btn-round waves-effect">حذف فیلتر</a>
                             }
                         </div>
                     </div>
@@ -54,21 +54,19 @@
                             <tr>
                                 <th>آیدی</th>
                                 <th>سر تیتر</th>
-                                <th>توضیحات</th>
                                 <th> عکس</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var report in Model.Entities)
+                            @foreach (var reportGroup in Model.Entities)
                             {
                                 <tr>
-                                    <th scope="row">@report.Id</th>
-                                    <td>@report.Title</td>
-                                    <td>@report.Description</td>
-                                    <td><img src="@(string.IsNullOrEmpty(report.ImageTitle) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
+                                    <th scope="row">@reportGroup.Id</th>
+                                    <td>@reportGroup.GroupName</td>
+                                    <td><img src="@(string.IsNullOrEmpty(reportGroup.GroupImage) ? SiteTools.DefaultImageName : (SiteTools.ReportGroupImagesName + reportGroup.GroupImage))" alt="@reportGroup.GroupName" class="border" width="100px" height="100px"></td>
                                     <td>
-                                        <a asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="Update" asp-route-id="@report.Id" class="text-warning">
+                                        <a asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="Update" asp-route-id="@reportGroup.Id" class="text-warning">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     </td>
@@ -84,11 +82,12 @@
                 }
                 else
                 {
-                    <div>
-                        <h4>خالی می باشد</h4>
-                    </div>
+                <div>
+                    <h4>خالی می باشد</h4>
+                </div>
                 }
             </div>
         </div>
     </div>
 </div>
+

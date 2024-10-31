@@ -57,6 +57,6 @@ namespace News.Domain.ViewModels.Reports
     {
         Success,
         Error,
-        NoHasItem
+        HasNotItem
     }
 }

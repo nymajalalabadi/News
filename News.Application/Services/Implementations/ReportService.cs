@@ -145,7 +145,7 @@ namespace News.Application.Services.Implementations
 
             if (currentReport == null)
             {
-                return EditReportResult.NoHasItem;
+                return EditReportResult.HasNotItem;
             }
 
             if (report.Title == null)
