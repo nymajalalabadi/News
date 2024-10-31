@@ -1,4 +1,5 @@
-﻿@using News.Domain.ViewModels.Reports;
+﻿@using News.Application.Statics
+@using News.Domain.ViewModels.Reports;
 @using News.Domain.Entities.Reports;
 @model EditReportViewModel
 
@@ -53,7 +54,7 @@
                                     <span asp-validation-for="AvatarImage"></span>
                                 </div>
                             </div>
-                            <img src="" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
+                            <img src="@(SiteTools.ReportImagesName + Model.Image)" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
                             <div class="form-group">

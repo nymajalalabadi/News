@@ -10,7 +10,7 @@ namespace News.Domain.ViewModels.ReportGroups
 {
     public class EditReportGroupViewModel
     {
-        public long id { get; set; }
+        public long Id { get; set; }
 
         [Display(Name = "گروه خبری")]
         [Required(ErrorMessage = "نام {0} را وارد کنید")]

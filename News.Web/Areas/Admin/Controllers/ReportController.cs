@@ -66,8 +66,6 @@ namespace News.Web.Areas.Admin.Controllers
             return View(reportGroup);
         }
 
-
-
         #endregion
 
         #region Edit Report Group

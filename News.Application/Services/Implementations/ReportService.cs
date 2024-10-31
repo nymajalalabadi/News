@@ -311,7 +311,7 @@ namespace News.Application.Services.Implementations
 
             return new EditReportGroupViewModel()
             {
-                id = reportGroup.Id,
+                Id = reportGroup.Id,
                 GroupName = reportGroup.GroupName,
                 GroupImage = reportGroup.GroupImage,
             };
@@ -319,7 +319,7 @@ namespace News.Application.Services.Implementations
 
         public async Task<EditReportGroupResult> EditReportGroup(EditReportGroupViewModel reportGroup)
         {
-            var currentReportGroup = await _reportReporistory.GetReportGroupById(reportGroup.id);
+            var currentReportGroup = await _reportReporistory.GetReportGroupById(reportGroup.Id);
 
             if (currentReportGroup == null)
             {
