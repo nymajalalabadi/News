@@ -68,7 +68,13 @@
                                     <td>@report.Description</td>
                                     <td><img src="@(string.IsNullOrEmpty(report.ImageTitle) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
                                     <td>
-                                        <a asp-area="Admin" asp-controller="CustomerFeedBack" asp-action="Update" asp-route-id="@report.Id" class="text-warning">
+                                        <a asp-area="Admin" asp-controller="Report" asp-action="DetailsReport" asp-route-reportId="@report.Id" class="text-warning">
+                                            <i class="fa fa-Delete"></i>
+                                        </a>
+                                        <a asp-area="Admin" asp-controller="Report" asp-action="EditReport" asp-route-reportId="@report.Id" class="text-warning">
+                                            <i class="fa fa-pen"></i>
+                                        </a>
+                                        <a asp-area="Admin" asp-controller="Report" asp-action="DeleteReport" asp-route-reportId="@report.Id" class="text-warning">
                                             <i class="fa fa-pen"></i>
                                         </a>
                                     </td>

@@ -71,9 +71,9 @@ namespace News.Web.Areas.Admin.Controllers
         #region Edit Report Group
 
         [HttpGet]
-        public async Task<IActionResult> EditReportGroup(long groupId)
+        public async Task<IActionResult> EditReportGroup(long reportGroupId)
         {
-            var model = await _reportService.GetReportGroupForEdit(groupId);
+            var model = await _reportService.GetReportGroupForEdit(reportGroupId);
 
             if (model == null)
             {
@@ -124,6 +124,22 @@ namespace News.Web.Areas.Admin.Controllers
             }
 
             return View(model);
+        }
+
+        #endregion
+
+        #region Delete Report Group
+
+        public async Task<IActionResult> DeleteReportGroup(long reportGroupId)
+        {
+            var model = await _reportService.DeleteReportGroup(reportGroupId);
+
+            if (model == false)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("FilterReportGroups");
         }
 
         #endregion
@@ -253,6 +269,22 @@ namespace News.Web.Areas.Admin.Controllers
         }
 
         #endregion
+
+        #region Delete Report
+
+        public async Task<IActionResult> DeleteReport(long reportId)
+        {
+            var model = await _reportService.DeleteReport(reportId);
+
+            if (model == false)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("FilterReports");
+        }
+        #endregion
+
 
         #endregion
     }
