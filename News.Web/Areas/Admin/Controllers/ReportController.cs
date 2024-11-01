@@ -130,16 +130,17 @@ namespace News.Web.Areas.Admin.Controllers
 
         #region Delete Report Group
 
-        public async Task<IActionResult> DeleteReportGroup(long reportGroupId)
+        [HttpPost]
+        public async Task<IActionResult> DeleteReportGroup(long Id)
         {
-            var model = await _reportService.DeleteReportGroup(reportGroupId);
+            var result = await _reportService.DeleteReportGroup(Id);
 
-            if (model == false)
+            if (!result)
             {
-                return NotFound();
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد."});
             }
 
-            return RedirectToAction("FilterReportGroups");
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد."});
         }
 
         #endregion
@@ -272,17 +273,19 @@ namespace News.Web.Areas.Admin.Controllers
 
         #region Delete Report
 
-        public async Task<IActionResult> DeleteReport(long reportId)
+        [HttpPost]
+        public async Task<IActionResult> DeleteReport(long Id)
         {
-            var model = await _reportService.DeleteReport(reportId);
+            var result = await _reportService.DeleteReport(Id);
 
-            if (model == false)
+            if (!result)
             {
-                return NotFound();
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد." });
             }
 
-            return RedirectToAction("FilterReports");
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد." });
         }
+
         #endregion
 
 

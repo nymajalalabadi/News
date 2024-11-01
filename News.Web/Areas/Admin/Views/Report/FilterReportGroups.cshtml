@@ -61,19 +61,19 @@
                         <tbody>
                             @foreach (var reportGroup in Model.Entities)
                             {
-                                <tr>
+                                <tr id="reportGroup-row-@reportGroup.Id">
                                     <th scope="row">@reportGroup.Id</th>
                                     <td>@reportGroup.GroupName</td>
                                     <td><img src="@(string.IsNullOrEmpty(reportGroup.GroupImage) ? SiteTools.DefaultImageName : (SiteTools.ReportGroupImagesName + reportGroup.GroupImage))" alt="@reportGroup.GroupName" class="border" width="100px" height="100px"></td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="DetailsReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
-                                            <i class="fa fa-Delete"></i>
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="EditReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
                                             <i class="fa fa-pen"></i>
                                         </a>
-                                        <a asp-area="Admin" asp-controller="Report" asp-action="DeleteReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
-                                            <i class="fa fa-pen"></i>
+                                        <a onclick="deleteReportGroup('@reportGroup.Id')" class="text-warning">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

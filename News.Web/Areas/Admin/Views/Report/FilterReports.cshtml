@@ -62,20 +62,20 @@
                         <tbody>
                             @foreach (var report in Model.Entities)
                             {
-                                <tr>
+                                <tr id="report-row-@report.Id">
                                     <th scope="row">@report.Id</th>
                                     <td>@report.Title</td>
                                     <td>@report.Description</td>
                                     <td><img src="@(string.IsNullOrEmpty(report.ImageTitle) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="DetailsReport" asp-route-reportId="@report.Id" class="text-warning">
-                                            <i class="fa fa-Delete"></i>
+                                            <i class="fa fa-eye"></i>
                                         </a>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="EditReport" asp-route-reportId="@report.Id" class="text-warning">
                                             <i class="fa fa-pen"></i>
                                         </a>
-                                        <a asp-area="Admin" asp-controller="Report" asp-action="DeleteReport" asp-route-reportId="@report.Id" class="text-warning">
-                                            <i class="fa fa-pen"></i>
+                                        <a onclick="deleteReport('@report.Id')" class="text-warning">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
