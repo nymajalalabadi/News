@@ -96,7 +96,7 @@ function deleteReportGroup(id) {
                             });
                         }
                         else {
-                            $(`#report-row-${id}`).fadeOut(500);
+                            $(`#reportGroup-row-${id}`).fadeOut(500);
                             swal({
                                 title: "اعلان",
                                 text: response.message,

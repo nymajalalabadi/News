@@ -97,7 +97,7 @@ namespace News.Web.Areas.Admin.Controllers
             {
                 case EditReportGroupResult.Success:
                     TempData[SuccessMessage] = "گروه خبری جدید ویرایش شد";
-                    return RedirectToAction("FilterReports");
+                    return RedirectToAction("FilterReportGroups");
                 case EditReportGroupResult.Failure:
                     TempData[ErrorMessage] = "خطای رخ داده است";
                     break;

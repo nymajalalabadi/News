@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using News.DataLayer.Context;
 using News.LoC;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,13 @@ builder.Services.AddDbContext<NewsDbContext>(options =>
 #region LoC
 
 DependencyContainer.RejosterService(builder.Services);
+
+#endregion
+
+#region encode
+
+builder.Services.AddSingleton<HtmlEncoder>(
+    HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
 
 #endregion
 

@@ -67,13 +67,13 @@
                                     <td><img src="@(string.IsNullOrEmpty(reportGroup.GroupImage) ? SiteTools.DefaultImageName : (SiteTools.ReportGroupImagesName + reportGroup.GroupImage))" alt="@reportGroup.GroupName" class="border" width="100px" height="100px"></td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="DetailsReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
-                                            <i class="fa fa-eye"></i>
+                                            <i class="fa fa-eye small"></i>
                                         </a>
                                         <a asp-area="Admin" asp-controller="Report" asp-action="EditReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
-                                            <i class="fa fa-pen"></i>
+                                            <i class="fa fa-pen small"></i>
                                         </a>
                                         <a onclick="deleteReportGroup('@reportGroup.Id')" class="text-warning">
-                                            <i class="fa fa-trash"></i>
+                                            <i class="fa fa-trash small"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -84,13 +84,9 @@
                 }
                 else
                 {
-                    <partial name="_AdminNotFound" />
-                }
-                else
-                {
-                <div>
-                    <h4>خالی می باشد</h4>
-                </div>
+                    <div class="alert alert-info mb-0">
+                        آیتمی پیدا نشد.
+                    </div>
                 }
             </div>
         </div>

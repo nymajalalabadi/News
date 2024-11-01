@@ -17,7 +17,7 @@
             <div class="body">
                 <form asp-area="Admin" asp-controller="Report" asp-action="CreateReport" method="post" enctype="multipart/form-data">
                     <div class="row clearfix">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
                                     <label asp-for="Title" class="control-label"></label>
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
                                     <label asp-for="Description" class="control-label"></label>
@@ -35,39 +35,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
                                     <label asp-for="FullText" class="control-label"></label>
                                     <textarea asp-for="FullText" id="editor" class="form-control"></textarea>
                                     <span asp-validation-for="FullText" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="file" asp-for="AvatarImage" id="Avatar" class="form-control" placeholder="عکس اصلی">
-                                    <span asp-validation-for="AvatarImage"></span>
-                                </div>
-                            </div>
-                            <img src="" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label asp-for="ImageAlt" class="control-label"></label>
-                                    <input asp-for="ImageAlt" class="form-control" />
-                                    <span asp-validation-for="ImageAlt" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <label asp-for="ImageTitle" class="control-label"></label>
-                                    <input asp-for="ImageTitle" class="form-control" />
-                                    <span asp-validation-for="ImageTitle" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +79,33 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="ImageAlt" class="control-label"></label>
+                                    <input asp-for="ImageAlt" class="form-control" />
+                                    <span asp-validation-for="ImageAlt" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <label asp-for="ImageTitle" class="control-label"></label>
+                                    <input asp-for="ImageTitle" class="form-control" />
+                                    <span asp-validation-for="ImageTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="file" asp-for="AvatarImage" id="Avatar" class="form-control" placeholder="عکس اصلی">
+                                    <span asp-validation-for="AvatarImage"></span>
+                                </div>
+                            </div>
+                            <img src="" id="imgPreview" class="border my-1 mx-auto d-block" width="120px" height="120px">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button type="submit" class="btn btn-success btn-lg m-l-15 waves-effect">ثبت</button>

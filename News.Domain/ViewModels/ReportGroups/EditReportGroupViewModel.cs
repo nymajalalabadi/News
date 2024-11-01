@@ -22,7 +22,6 @@ namespace News.Domain.ViewModels.ReportGroups
         public string? GroupImage { get; set; } = default!;
 
         [Display(Name = "عکس اصلی")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public IFormFile? AvatarImage { get; set; }
     }
 

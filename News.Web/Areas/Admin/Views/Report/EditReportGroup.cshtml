@@ -16,11 +16,11 @@
                 </h2>
             </div>
             <div class="body">
-                <form asp-area="Admin" asp-controller="Report" asp-action="EditReport" method="post" enctype="multipart/form-data">
+                <form asp-area="Admin" asp-controller="Report" asp-action="EditReportGroup" method="post" enctype="multipart/form-data">
                     <input type="hidden" asp-for="Id" />
                     <input type="hidden" asp-for="GroupImage" />
                     <div class="row clearfix">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
                                     <label asp-for="GroupName" class="control-label"></label>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-6">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="form-group">
                                 <div class="form-line">
                                     <input type="file" asp-for="AvatarImage" id="Avatar" class="form-control" placeholder="عکس اصلی">
