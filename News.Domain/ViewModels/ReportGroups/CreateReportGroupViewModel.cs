@@ -18,6 +18,11 @@ namespace News.Domain.ViewModels.ReportGroups
         [Display(Name = "عکس اصلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public IFormFile? AvatarImage { get; set; }
+
+        [Display(Name = "عنوان url")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
+        public string UrlName { get; set; } = default!;
     }
 
     public enum CreateReportGroupResult

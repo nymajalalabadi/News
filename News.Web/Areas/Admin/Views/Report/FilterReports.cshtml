@@ -66,7 +66,7 @@
                             @foreach (var report in Model.Entities)
                             {
                                 <tr id="report-row-@report.Id">
-                                    <td><img src="@(string.IsNullOrEmpty(report.ImageTitle) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
+                                    <td><img src="@(string.IsNullOrEmpty(report.Image) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
                                     <td>@report.Title</td>
                                     <td>@report.CreateDate.ToShamsiDate()</td>
                                     <td>@report.Description</td>

@@ -18,5 +18,10 @@ namespace News.Domain.ViewModels.ReportGroups
         [Display(Name = "تصویر گروه")]
         [MaxLength(100)]
         public string? GroupImage { get; set; } = default!;
+
+        [Display(Name = "عنوان url")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MaxLength(200, ErrorMessage = "{0} نمی تواند بیشتر از {1} کاراکتر باشد")]
+        public string UrlName { get; set; } = default!;
     }
 }

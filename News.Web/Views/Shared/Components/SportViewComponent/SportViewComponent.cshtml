@@ -1,0 +1,55 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+<!-- Start Sport -->
+<ul class="d-none d-sm-flex row mb-3 list-unstyled">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var report in Model)
+        {
+            <li class="scale col-lg-3 col-sm-6 my-sm-2">
+                <div class="position-relative card shadow">
+                    <a>
+                        <img src="@(SiteTools.ReportImagesName + report.Image)" class="card-img-top img-sportANDeconomiccomponent" alt="@report.ImageAlt">
+                    </a>
+                    <div class="card-body p-2 mb-4 body-sportcomponent">
+                        <a class="text-decoration-none"><p class="card-text"> @report.Title </p></a>
+                        <div class="position-absolute date-sportANDeconomiccomponent">
+                            <p class="d-inline-block px-1 m-0"> <i class="fa fa-clock"></i> @report.CreateDate.ToStringShamsiDate() </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        }
+    }
+</ul>
+<!-- End Sport -->
+<!-- Start Sport Hidden -->
+<ul class=" mb-3 d-sm-none list-unstyled">
+    <!-- Card 1 -->
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var report in Model)
+        {
+            <li>
+                <div class="my-2">
+                    <div class="col-12 shadow d-inline-flex">
+                        <div class="col-4">
+                            <a>
+                                <img src="@(SiteTools.ReportImagesName + report.Image)" class="card-img h-100" alt="@report.ImageAlt">
+                            </a>
+                        </div>
+                        <div class="col-8 bg-body-secondary p-2 body-small-sportcomponent">
+                            <a class="text-decoration-none"><p> @report.Title </p></a>
+                            <p class="d-inline-block px-1 m-0 date-small-sportANDeconomiccomponent"> <i class="fas fa-clock"></i> @report.CreateDate.ToStringShamsiDate() </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    }
+</ul>
+<!-- End Sport Hidden -->

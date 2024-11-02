@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Domain.Entities.Reports;
 using News.Domain.ViewModels.ReportGroups;
 using News.Domain.ViewModels.Reports;
 using System;
@@ -16,6 +17,8 @@ namespace News.Application.Services.Interfaces
         #region Reports
 
         Task<FilterReportsViewModel> GetFilterReports(FilterReportsViewModel filter);
+
+        Task<List<Report>> GetReportsForVrazesh(string groupName);
 
         Task<CreateReportResult> CreateReport(CreateReportViewModel report);
 

@@ -79,6 +79,11 @@ namespace News.Application.Services.Implementations
             return filter;  
         }
 
+        public async Task<List<Report>> GetReportsForVrazesh(string groupUrl)
+        {
+            return await _reportReporistory.GetReportsForVrazesh(groupUrl);
+        }
+
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)
         {
             if (report.Title == null)
@@ -300,7 +305,8 @@ namespace News.Application.Services.Implementations
                 var group = new ReportGroup()
                 {
                     GroupName = reportGroup.GroupName,
-                    GroupImage = imageName
+                    GroupImage = imageName,
+                    UrlName = reportGroup.UrlName
                 };
 
                 await _reportReporistory.AddReportGroup(group);
@@ -334,6 +340,7 @@ namespace News.Application.Services.Implementations
                 Id = reportGroup.Id,
                 GroupName = reportGroup.GroupName,
                 GroupImage = reportGroup.GroupImage,
+                UrlName= reportGroup.UrlName
             };
         }
 
@@ -359,6 +366,7 @@ namespace News.Application.Services.Implementations
                 currentReportGroup.GroupName = reportGroup.GroupName;
                 currentReportGroup.LastUpdateDate = DateTime.Now;
                 currentReportGroup.GroupImage = imageName;
+                currentReportGroup.UrlName = reportGroup.UrlName;
 
                 _reportReporistory.UpdateReportGroup(currentReportGroup);
                 await _reportReporistory.SaveChanges();
@@ -368,7 +376,7 @@ namespace News.Application.Services.Implementations
 
             currentReportGroup.GroupName = reportGroup.GroupName;
             currentReportGroup.LastUpdateDate = DateTime.Now;
-
+            currentReportGroup.UrlName = reportGroup.UrlName;
 
             _reportReporistory.UpdateReportGroup(currentReportGroup);
             await _reportReporistory.SaveChanges();
@@ -388,7 +396,8 @@ namespace News.Application.Services.Implementations
             return new DetailsReportGroupViewModel()
             {
                 GroupName = reportGroup.GroupName,
-                GroupImage = reportGroup.GroupImage
+                GroupImage = reportGroup.GroupImage,
+                UrlName = reportGroup.UrlName,
             };
         }
 
