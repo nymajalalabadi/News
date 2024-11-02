@@ -27,6 +27,8 @@ namespace News.Application.Services.Interfaces
 
         Task<bool> DeleteReport(long reportId);
 
+        Task<bool> HotReport(long reportId);
+
         #endregion
 
         #region Reports Group

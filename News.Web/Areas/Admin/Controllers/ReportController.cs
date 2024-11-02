@@ -288,6 +288,23 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Hot Report
+
+        [HttpPost]
+        public async Task<IActionResult> HotReport(long Id)
+        {
+            var result = await _reportService.HotReport(Id);
+
+            if (!result)
+            {
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد." });
+            }
+
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد." });
+        }
+
+        #endregion
+
 
         #endregion
     }

@@ -225,6 +225,26 @@ namespace News.Application.Services.Implementations
             }
 
             report.IsDelete = true;
+            report.LastUpdateDate = DateTime.Now;
+
+            _reportReporistory.UpdateReport(report);
+            await _reportReporistory.SaveChanges();
+
+            return true;
+        }
+
+        public async Task<bool> HotReport(long reportId)
+        {
+            var report = await _reportReporistory.GetReportById(reportId);
+
+            if (report == null)
+            {
+                return false;
+            }
+
+            report.IsHotNews = true;
+            report.HotNewsDate = DateTime.Now;
+            report.LastUpdateDate = DateTime.Now;
 
             _reportReporistory.UpdateReport(report);
             await _reportReporistory.SaveChanges();
