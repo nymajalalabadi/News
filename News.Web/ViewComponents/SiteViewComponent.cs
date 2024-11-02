@@ -22,7 +22,7 @@ namespace News.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetReportsForVrazesh("sport");
+            var data = await _reportService.GetReportsForIndex("sport");
 
             return View("SportViewComponent", data);
         }
@@ -30,5 +30,33 @@ namespace News.Web.ViewComponents
         #endregion
     }
 
+    #endregion
+
+    #region Economic
+
+    public class EconomicViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public EconomicViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetReportsForIndex("Economic");
+
+            return View("EconomicViewComponent", data);
+        }
+
+        #endregion
+    }
     #endregion
 }

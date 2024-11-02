@@ -16,7 +16,7 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<Report>> GetReportsQuery();
 
-        Task<List<Report>> GetReportsForVrazesh(string groupUrl);
+        Task<List<Report>> GetReportsForIndex(string groupUrl);
 
         Task<Report?> GetReportById(long id);
 

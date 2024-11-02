@@ -18,7 +18,7 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterReportsViewModel> GetFilterReports(FilterReportsViewModel filter);
 
-        Task<List<Report>> GetReportsForVrazesh(string groupName);
+        Task<List<Report>> GetReportsForIndex(string groupName);
 
         Task<CreateReportResult> CreateReport(CreateReportViewModel report);
 

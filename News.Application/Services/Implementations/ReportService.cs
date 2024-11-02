@@ -79,9 +79,9 @@ namespace News.Application.Services.Implementations
             return filter;  
         }
 
-        public async Task<List<Report>> GetReportsForVrazesh(string groupUrl)
+        public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
-            return await _reportReporistory.GetReportsForVrazesh(groupUrl);
+            return await _reportReporistory.GetReportsForIndex(groupUrl);
         }
 
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)

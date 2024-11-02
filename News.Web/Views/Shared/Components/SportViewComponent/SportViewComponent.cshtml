@@ -4,9 +4,9 @@
 @model List<Report>
 
 <!-- Start Sport -->
-<ul class="d-none d-sm-flex row mb-3 list-unstyled">
-    @if (Model != null && Model.Any())
-    {
+@if (Model != null && Model.Any())
+{
+    <ul class="d-none d-sm-flex row mb-3 list-unstyled">
         @foreach (var report in Model)
         {
             <li class="scale col-lg-3 col-sm-6 my-sm-2">
@@ -24,14 +24,14 @@
             </li>
 
         }
-    }
-</ul>
+    </ul>
+}
 <!-- End Sport -->
 <!-- Start Sport Hidden -->
-<ul class=" mb-3 d-sm-none list-unstyled">
-    <!-- Card 1 -->
-    @if (Model != null && Model.Any())
-    {
+@if (Model != null && Model.Any())
+{
+    <ul class=" mb-3 d-sm-none list-unstyled">
+
         @foreach (var report in Model)
         {
             <li>
@@ -50,6 +50,6 @@
                 </div>
             </li>
         }
-    }
-</ul>
+    </ul>
+}
 <!-- End Sport Hidden -->

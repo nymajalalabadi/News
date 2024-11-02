@@ -33,11 +33,14 @@ namespace News.DataLayer.Repositories
             return _context.Reports.Where(u => !u.IsDelete).AsQueryable();
         }
 
-        public async Task<List<Report>> GetReportsForVrazesh(string groupUrl)
+        public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
             return await _context.Reports
                 .Include(r => r.ReportGroup)
-                .Where(r => r.IsSuccess && r.ReportGroup.UrlName == groupUrl).ToListAsync();
+                .OrderByDescending(r => r.CreateDate)
+                .Where(r => r.IsSuccess && r.ReportGroup.UrlName == groupUrl)
+                .Take(4)
+                .ToListAsync();
         }
 
         public async Task<Report?> GetReportById(long id)
