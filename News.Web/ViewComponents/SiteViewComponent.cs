@@ -59,4 +59,32 @@ namespace News.Web.ViewComponents
         #endregion
     }
     #endregion
+
+    #region Health
+
+    public class HealthViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public HealthViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetReportsForIndex("Health");
+
+            return View("HealthViewComponent", data);
+        }
+
+        #endregion
+    }
+    #endregion
 }
