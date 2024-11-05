@@ -92,6 +92,14 @@
             <!-- End Health Line -->
             @await Component.InvokeAsync("HealthViewComponent")
             <!-- End Health -->
+            <!-- Start Multi Media Line -->
+            <div class="box">
+                <h6 class="position-relative ">
+                    <span class="MultiMedia-Line-Color position-relative bg-body"> چند رسانه ای </span>
+                    <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+                </h6>
+            </div>
+            <!-- End Multi Media Line -->
             <!-- Start Multi Media -->
             @await Component.InvokeAsync("MultiMediaSliderComponent")
             <!-- End Multi Media -->
@@ -675,14 +683,13 @@
 
 @section Scripts 
 {
-<script type="text/javascript">
+<script>
     $(document).ready(function (e) {
         $('.flexslider').flexslider({
 
             animation: "slide",
             fadeFirstSlide: true,
             pauseOnHover: true
-
         });
     });
 </script>
