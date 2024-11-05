@@ -89,4 +89,33 @@ namespace News.Web.ViewComponents
     }
 
     #endregion
+
+    #region Artistic
+
+    public class ArtisticViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public ArtisticViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetReportsForIndex("Artistic");
+
+            return View("ArtisticViewComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
 }
