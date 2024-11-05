@@ -87,4 +87,33 @@ namespace News.Web.ViewComponents
         #endregion
     }
     #endregion
+
+    #region Multi Media
+
+    public class MultiMediaSliderComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public MultiMediaSliderComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetReportsForIndex("MultiMedia");
+
+            return View("MultiMediaSliderComponent", data);
+        }
+
+        #endregion
+    }
+    #endregion
+
 }

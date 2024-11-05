@@ -1,0 +1,60 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+
+<!-- Start Multi Media Line -->
+<div class="box">
+    <h6 class="position-relative ">
+        <span class="MultiMedia-Line-Color position-relative bg-body"> چند رسانه ای </span>
+        <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+    </h6>
+</div>
+<!-- End Multi Media Line -->
+<!-- Start Multi Media -->
+<div class="container shadow bg-body-tertiary rounded mb-4 flexslider">
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
+            <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+                @foreach (var report in Model)
+                {
+                    <ul class="slides">
+                        <li style="position:relative; height:250px;">
+                            <video title="@report.ImageTitle" controls allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" style="width:50%; height:100%;"></video>
+                            <a class="flex-caption" style="position:absolute; text-decoration:none;">
+                                <b style="color: black; font-size: .8rem; ">@report.Title</b>
+                                <br>
+                                <p style="color:darkblue; margin: 10px 10px; height: 80%; overflow:hidden;">@report.Description</p>
+                                <p style="color:darkblue; margin: 10px 10px; font-size: 0.6rem; position:absolute; color:#b9b9bb; top:84%; left: 10%;"> <i class="fa fa-clock"></i>  @report.CreateDate.ToStringShamsiDate()  </p>
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        }
+    </div>
+</div> 
+<!-- End Multi Media -->
+
+
+@section Scripts
+{
+    <link href="~/assets/flexslider/flexslider.css" rel="stylesheet" />
+    <script src="~/assets/flexslider/jquery.min.js"></script>
+    <script src="~/assets/flexslider/jquery.flexslider.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('.flexslider').flexslider({
+
+                animation: "slide",
+                fadeFirstSlide: true,
+                pauseOnHover: true,
+                isFirefox: true,
+                rtl: true
+            });
+        });
+    </script>
+}
