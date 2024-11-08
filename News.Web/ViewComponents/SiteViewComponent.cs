@@ -90,13 +90,13 @@ namespace News.Web.ViewComponents
 
     #region Multi Media
 
-    public class MultiMediaSliderComponent : ViewComponent
+    public class MultiMediaSliderViewComponent : ViewComponent
     {
         #region consractor
 
         private readonly IReportService _reportService;
 
-        public MultiMediaSliderComponent(IReportService reportService)
+        public MultiMediaSliderViewComponent(IReportService reportService)
         {
             _reportService = reportService;
         }
@@ -109,11 +109,38 @@ namespace News.Web.ViewComponents
         {
             var data = await _reportService.GetReportsForIndex("MultiMedia");
 
-            return View("MultiMediaSliderComponent", data);
+            return View("MultiMediaSliderViewComponent", data);
         }
 
         #endregion
     }
     #endregion
 
+    #region Top Reports
+
+    public class TopReportsViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public TopReportsViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetTopReportsForIndex("MultiMedia");
+
+            return View("TopReportsViewComponent", data);
+        }
+
+        #endregion
+    }
+    #endregion
 }

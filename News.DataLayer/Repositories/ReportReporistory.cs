@@ -43,6 +43,16 @@ namespace News.DataLayer.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Report>> GetTopReportsForIndex(string groupUrl)
+        {
+            return await _context.Reports
+                .Include(r => r.ReportGroup)
+                .OrderByDescending(r => r.Visit)
+                .Where(r => r.IsSuccess && r.ReportGroup.UrlName != groupUrl)
+                .Take(4)
+                .ToListAsync();
+        }
+
         public async Task<Report?> GetReportById(long id)
         {
             return await _context.Reports

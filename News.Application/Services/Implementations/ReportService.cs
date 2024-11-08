@@ -84,6 +84,11 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetReportsForIndex(groupUrl);
         }
 
+        public async Task<List<Report>> GetTopReportsForIndex(string groupUrl)
+        {
+            return await _reportReporistory.GetTopReportsForIndex(groupUrl);
+        }
+
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)
         {
             if (report.Title == null)

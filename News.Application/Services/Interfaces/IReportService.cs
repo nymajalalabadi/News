@@ -18,7 +18,9 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterReportsViewModel> GetFilterReports(FilterReportsViewModel filter);
 
-        Task<List<Report>> GetReportsForIndex(string groupName);
+        Task<List<Report>> GetReportsForIndex(string groupUrl);
+
+        Task<List<Report>> GetTopReportsForIndex(string groupUrl);
 
         Task<CreateReportResult> CreateReport(CreateReportViewModel report);
 

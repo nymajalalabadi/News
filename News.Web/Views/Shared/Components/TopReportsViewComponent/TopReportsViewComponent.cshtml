@@ -1,0 +1,29 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+@if (Model != null && Model.Any())
+{
+    <div class="TopReports-row">
+        <!-- card 1 -->
+        @foreach (var report in Model)
+        {
+            <div class="TopReports-col-1-of-3">
+                <div class="TopReports-card">
+                    <div class="TopReports-card__side TopReports-card__side--front-1">
+                        <img src="@(SiteTools.ReportImagesName + report.Image)" title="@report.ImageTitle" class="w-100 h-100" alt="@report.ImageAlt" />
+                    </div>
+                    <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
+                        <div class="TopReports-card__side__back-1__body">
+                            <p class="TopReports-card__price-only">
+                                @report.Title
+                            </p>
+                            <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

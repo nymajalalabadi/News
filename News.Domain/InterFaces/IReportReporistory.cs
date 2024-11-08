@@ -18,6 +18,8 @@ namespace News.Domain.InterFaces
 
         Task<List<Report>> GetReportsForIndex(string groupUrl);
 
+        Task<List<Report>> GetTopReportsForIndex(string groupUrl);
+
         Task<Report?> GetReportById(long id);
 
         Task AddReport(Report report);
