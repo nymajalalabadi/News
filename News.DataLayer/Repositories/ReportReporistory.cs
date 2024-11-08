@@ -33,6 +33,15 @@ namespace News.DataLayer.Repositories
             return _context.Reports.Where(u => !u.IsDelete).AsQueryable();
         }
 
+        public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
+        {
+            return await _context.Reports
+                .Include(r => r.ReportGroup)
+                .OrderByDescending(r => r.CreateDate)
+                .Where(r => r.IsSuccess && r.ReportGroup.UrlName == groupUrl)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
             return await _context.Reports
@@ -49,6 +58,17 @@ namespace News.DataLayer.Repositories
                 .Include(r => r.ReportGroup)
                 .OrderByDescending(r => r.Visit)
                 .Where(r => r.IsSuccess && r.ReportGroup.UrlName != groupUrl)
+                .Take(4)
+                .ToListAsync();
+        }
+
+        public async Task<List<Report>> GetSpecialReportsForIndex(string groupUrl)
+        {
+            return await _context.Reports
+                .Include(r => r.ReportGroup)
+                .OrderByDescending(r => r.CreateDate)
+                .Where(r => r.IsSuccess && r.ReportGroup.UrlName != groupUrl)
+                .Skip(1)
                 .Take(4)
                 .ToListAsync();
         }

@@ -143,4 +143,60 @@ namespace News.Web.ViewComponents
         #endregion
     }
     #endregion
+
+    #region Special Report
+
+    public class SpecialReportViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public SpecialReportViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetSpecialReportForIndex("Special");
+
+            return View("SpecialReportViewComponent", data);
+        }
+
+        #endregion
+    }
+    #endregion
+
+    #region Special Reports
+
+    public class SpecialReportsViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public SpecialReportsViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetSpecialReportForIndex("Special");
+
+            return View("SpecialReportsViewComponent", data);
+        }
+
+        #endregion
+    }
+    #endregion
 }

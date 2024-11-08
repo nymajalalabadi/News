@@ -1,0 +1,33 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+@if (Model != null && Model.Any())
+{
+    <ul class="list-unstyled">
+        <!-- Card 1 -->
+        @foreach (var report in Model)
+        {
+            <li class="col-12 col-md-4 d-inline-flex ps-md-3 mb-2 body-plus">
+                <div class="card shadow w-100">
+                    <div class="row g-0 ">
+                        <div class="col-12 col-md-4">
+                            <a>
+                                <img src="@(SiteTools.ReportImagesName + report.Image)" title="@report.ImageTitle" class="img-fluid rounded-start w-100" style="height: 112px;" alt="@report.ImageAlt">
+                            </a>
+                        </div>
+                        <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
+                            <p>
+                                <a class="body-text-plus">
+                                    @report.Title
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+        <!-- Card 2 -->
+    </ul>
+}

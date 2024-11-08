@@ -16,9 +16,13 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<Report>> GetReportsQuery();
 
+        Task<Report?> GetSpecialReportForIndex(string groupUrl);
+
         Task<List<Report>> GetReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetTopReportsForIndex(string groupUrl);
+
+        Task<List<Report>> GetSpecialReportsForIndex(string groupUrl);
 
         Task<Report?> GetReportById(long id);
 

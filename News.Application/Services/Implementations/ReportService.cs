@@ -79,6 +79,11 @@ namespace News.Application.Services.Implementations
             return filter;  
         }
 
+        public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
+        {
+            return await _reportReporistory.GetSpecialReportForIndex(groupUrl);
+        }
+
         public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
             return await _reportReporistory.GetReportsForIndex(groupUrl);
@@ -87,6 +92,11 @@ namespace News.Application.Services.Implementations
         public async Task<List<Report>> GetTopReportsForIndex(string groupUrl)
         {
             return await _reportReporistory.GetTopReportsForIndex(groupUrl);
+        }
+
+        public async Task<List<Report>> GetSpecialReportsForIndex(string groupUrl)
+        {
+            return await _reportReporistory.GetSpecialReportsForIndex(groupUrl);
         }
 
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)

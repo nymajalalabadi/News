@@ -1,0 +1,24 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model Report
+
+@if(Model != null)
+{
+    <div class="shadow rounded">
+        <div class="card overflow-hidden">
+            <div class="">
+                <a>
+                    <img src="@(SiteTools.ReportImagesName + Model.Image)" class="card-img-top w-100 card-img-plusfirst" title="@Model.Title" alt="@Model.ImageAlt">
+                </a>
+            </div>
+            <div class="card-body bg-body-secondary overflow-hidden p-2 w-100 card-body-plusfirst">
+                <a class="card-text-plusfirst">
+                    <p class="card-text">
+                        @Model.Title
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+}
