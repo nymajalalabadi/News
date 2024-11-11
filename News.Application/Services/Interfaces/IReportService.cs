@@ -38,6 +38,8 @@ namespace News.Application.Services.Interfaces
 
         Task<bool> HotReport(long reportId);
 
+        Task<GetReportForShow> GetReportForShowById(long reportId);
+
         #endregion
 
         #region Reports Group

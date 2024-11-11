@@ -272,6 +272,32 @@ namespace News.Application.Services.Implementations
             return true;
         }
 
+        public async Task<GetReportForShow> GetReportForShowById(long reportId)
+        {
+            var report = await _reportReporistory.GetReportById(reportId);
+
+            if (report == null)
+            {
+                return null;
+            }
+
+            return new GetReportForShow()
+            {
+                ReportId = report.Id,
+                Title = report.Title,
+                Description = report.Description,
+                Author = report.Author,
+                FullText = report.FullText,
+                ImageTitle = report.ImageTitle,
+                Image = report.Image,
+                Tags = report.Tags,
+                ImageAlt = report.ImageAlt,
+                Source = report.Source,
+                CreateDate = report.CreateDate,
+                ReportGroup = report.ReportGroup
+            };
+        }
+
         #endregion
 
         #region Reports Group
