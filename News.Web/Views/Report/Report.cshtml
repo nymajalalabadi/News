@@ -1,10 +1,13 @@
-﻿@using News.Domain.ViewModels.Reports
+﻿@using News.Domain.Entities.Reports
+@using News.Domain.ViewModels.Reports
 @using News.Application.Extensions
 @using News.Application.Statics
 @model GetReportForShow
 
 @{
     ViewData["Title"] = "گزارش";
+
+    var relatedReports = ViewData["RelatedReports"] as List<Report>;
 }
 
 <div class="container">
@@ -47,7 +50,7 @@
 
                 <section id="print_this">
                     <div>
-                        @if (Model.ReportGroup.UrlName == "MultiMedia")
+                    @if (Model.ReportGroup.UrlName == "MultiMedia")
                     {
                             <video src="@(SiteTools.ReportImagesName + Model.Image)" preload="metadata" controls class="rounded img-main-report" title="@Model.ImageTitle" alt="@Model.ImageAlt"></video>
                     }
@@ -110,41 +113,40 @@
                 <li class="list-unstyled"> </li>
             </ul>
         </div>
-
-
-
             <!-- Start RelatedReports Line -->
-            <div class="box">
-                <h6 class="position-relative ">
-                    <span class="Seda-Line-Color position-relative bg-body"> اخبار مرتبط </span>
-                </h6>
-            </div>
+        <div class="box">
+            <h6 class="position-relative ">
+                  <span class="Seda-Line-Color position-relative bg-body"> اخبار مرتبط </span>
+            </h6>
+        </div>
             <!-- End RelatedReports Line -->
             <!-- Start RelatedReports -->
             <!-- FlexSlider -->
-            
-
-            <div class="flexslider carousel">
+        <div class="flexslider carousel">
+            @if(relatedReports != null)
+            {
                 <ul class="slides">
-                    <li style="padding: 5px;">
-                        <div style="background: #ccc; height: 330px; overflow: hidden">
-                            <a class="" style="text-decoration:none;">
-                                <img src="~/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" style=" height:240px;">
-                                <p style="color: dimgray; padding: 10px; font-weight:bold; text-align: justify-all; border-top: 3px solid darkorange;"> واکنش جالب ویسی به بازگشت به فولاد/ می‌خواهیم مردم خوزستان را خوشحال کنیم </p>
-                            </a>
-                        </div>
-                    </li>
-                    <li style="padding: 5px;">
-                        <div style="background: #ccc; height: 330px; overflow: hidden">
-                            <a class="" style="text-decoration:none;">
-                                <img src="~/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" style=" height:240px;">
-                                <p style="color: dimgray; padding: 10px; font-weight:bold; text-align: justify-all; border-top: 3px solid darkorange;"> واکنش جالب ویسی به بازگشت به فولاد/ می‌خواهیم مردم خوزستان را خوشحال کنیم </p>
-                            </a>
-                        </div>
-                    </li>
-                    <!-- items mirrored twice, total of 12 -->
+                    @foreach (var item in relatedReports)
+                    {
+                        <li style="padding: 5px;">
+                            <div style="background: #ccc; height: 330px; overflow: hidden">
+                                <a class="" style="text-decoration:none;">
+                                    @if (item.ReportGroup.UrlName == "MultiMedia")
+                                    {
+                                        <video src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" alt="@Model.ImageAlt" preload="metadata" controls style=" height:240px;"></video>
+                                    }
+                                    else
+                                    {
+                                        <img src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" alt="@Model.ImageAlt" style=" height:240px;" />
+                                    }
+                                    <p style="color: dimgray; padding: 10px; font-weight:bold; text-align: justify-all; border-top: 3px solid darkorange;"> @item.Title </p>
+                                </a>
+                            </div>
+                        </li>
+                    }
                 </ul>
-            </div>
+            }
+        </div>
             <!-- End RelatedReports -->
             <!-- Start Comment-Form -->
             <div class="bg-body-tertiary p-3 rounded border-style">

@@ -191,7 +191,7 @@ namespace News.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetSpecialReportForIndex("Special");
+            var data = await _reportService.GetSpecialReportsForIndex("Special");
 
             return View("SpecialReportsViewComponent", data);
         }

@@ -25,6 +25,8 @@ namespace News.Web.Controllers
                 return NotFound();
             }
 
+            ViewData["RelatedReports"] = await _reportService.GetRelatedReportsForIndex(model.ReportGroup.UrlName, model.ReportId);
+
             return View(model);
         }
     }

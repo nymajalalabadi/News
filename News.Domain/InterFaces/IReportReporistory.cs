@@ -24,6 +24,8 @@ namespace News.Domain.InterFaces
 
         Task<List<Report>> GetSpecialReportsForIndex(string groupUrl);
 
+        Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId);
+
         Task<Report?> GetReportById(long id);
 
         Task AddReport(Report report);

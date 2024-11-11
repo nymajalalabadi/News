@@ -99,6 +99,11 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetSpecialReportsForIndex(groupUrl);
         }
 
+        public async Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId)
+        {
+            return await _reportReporistory.GetRelatedReportsForIndex(groupUrl, reportId);
+        }
+
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)
         {
             if (report.Title == null)
