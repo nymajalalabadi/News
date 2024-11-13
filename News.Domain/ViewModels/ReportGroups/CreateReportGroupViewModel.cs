@@ -28,6 +28,7 @@ namespace News.Domain.ViewModels.ReportGroups
     public enum CreateReportGroupResult
     {
         Success,
-        Failure
+        Failure,
+        IsExistUrlName
     }
 }

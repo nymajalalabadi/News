@@ -38,6 +38,8 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<ReportGroup>> GetReportGroupsQuery();
 
+        Task<bool> IsExistReportGroupByUrlName(string urlName);
+
         Task<ReportGroup?> GetReportGroupById(long id);
 
         Task<ReportGroup?> GetReportGroupByUrlName(string urlName);

@@ -372,6 +372,16 @@ namespace News.Application.Services.Implementations
                 return CreateReportGroupResult.Failure; 
             }
 
+            if (string.IsNullOrEmpty(reportGroup.UrlName))
+            {
+                return CreateReportGroupResult.Failure;
+            }
+
+            if (await _reportReporistory.IsExistReportGroupByUrlName(reportGroup.UrlName))
+            {
+                return CreateReportGroupResult.IsExistUrlName;
+            }
+
             if (reportGroup.AvatarImage != null)
             {
                 var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(reportGroup.AvatarImage.FileName);

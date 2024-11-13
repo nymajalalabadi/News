@@ -61,6 +61,9 @@ namespace News.Web.Areas.Admin.Controllers
                 case CreateReportGroupResult.Failure:
                     TempData[ErrorMessage] = "خطای رخ داده است";
                     break;
+                case CreateReportGroupResult.IsExistUrlName:
+                    TempData[ErrorMessage] = "urlName قبلا انتخاب شده است ";
+                    break;
             }
 
             return View(reportGroup);

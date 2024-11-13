@@ -3,7 +3,18 @@
 @using News.Domain.Entities.Reports
 @model List<Report>
 
+@{
+    var reportGroup = ViewData["ReportGroups"] as ReportGroup;
+}
 
+<!-- Start Multi Media Line -->
+<div class="box">
+    <h6 class="position-relative ">
+        <span class="MultiMedia-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@reportGroup.UrlName">@reportGroup!.GroupName </a> </span>
+        <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+    </h6>
+</div>
+<!-- End Multi Media Line -->
 <!-- Start Multi Media -->
 <div class="container shadow bg-body-tertiary rounded mb-4 flexslider">
     <div class="row">

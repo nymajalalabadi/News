@@ -61,45 +61,14 @@
             </div>
             <!-- End Hot News -->
             <!-- Start Sport -->
-            <!-- Start Sport Line -->
-            <div class="box">
-                <h6 class="position-relative ">
-                    <span class="Sport-Line-Color position-relative bg-body"> ورزشی </span>
-                    <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
-                </h6>
-            </div>
-            <!-- End Sport Line -->
             @await Component.InvokeAsync("SportViewComponent")
             <!-- End Sport -->
-            <!-- Start Economic Line -->
-            <div class="box">
-                <h6 class="position-relative ">
-                    <span class="Economic-Line-Color position-relative bg-body"> اقتصادی </span>
-                    <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
-                </h6>
-            </div>
-            <!-- End Economic Line -->
+            
             @await Component.InvokeAsync("EconomicViewComponent")
             <!-- End Economic -->
             <!-- Start Health -->
-            <!-- Start Health Line -->
-            <div class="box">
-                <h6 class="position-relative ">
-                    <span class="health-Line-Color position-relative bg-body"> سلامت </span>
-                    <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
-                </h6>
-            </div>
-            <!-- End Health Line -->
             @await Component.InvokeAsync("HealthViewComponent")
             <!-- End Health -->
-            <!-- Start Multi Media Line -->
-            <div class="box">
-                <h6 class="position-relative ">
-                    <span class="MultiMedia-Line-Color position-relative bg-body"> چند رسانه ای </span>
-                    <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
-                </h6>
-            </div>
-            <!-- End Multi Media Line -->
             <!-- Start Multi Media -->
             @await Component.InvokeAsync("MultiMediaSliderViewComponent")
             <!-- End Multi Media -->
@@ -148,7 +117,7 @@
                 <!-- Start SpecialReports Line -->
                 <div class="box">
                     <h6 class="position-relative ">
-                        <span class="Special-Line-Color position-relative bg-body"> ویژه خبری </span>
+                        <span class="Special-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="report" asp-action="ReportGroup" asp-route-urlName="Special"></a> ویژه خبری </span>
                         <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
                     </h6>
                 </div>

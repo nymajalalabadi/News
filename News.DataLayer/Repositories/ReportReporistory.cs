@@ -110,6 +110,11 @@ namespace News.DataLayer.Repositories
             return _context.ReportGroups.Where(u => !u.IsDelete).AsQueryable();
         }
 
+        public async Task<bool> IsExistReportGroupByUrlName(string urlName)
+        {
+            return await _context.ReportGroups.AnyAsync(g => g.UrlName.Equals(urlName));
+        }
+
         public async Task<ReportGroup?> GetReportGroupById(long id)
         {
             return await _context.ReportGroups
