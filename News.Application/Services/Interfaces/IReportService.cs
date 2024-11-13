@@ -18,6 +18,8 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterReportsViewModel> GetFilterReports(FilterReportsViewModel filter);
 
+        Task<FilterReportForShowViewModel> GetFilterReportForIndex(FilterReportForShowViewModel filter);
+
         Task<Report?> GetSpecialReportForIndex(string groupUrl);
 
         Task<List<Report>> GetReportsForIndex(string groupUrl);
@@ -47,6 +49,8 @@ namespace News.Application.Services.Interfaces
         #region Reports Group
 
         Task<List<SelectListItem>> SelectedReportGroupId();
+
+        Task<ReportGroup?> GetReportGroupByUrlName(string urlName);
 
         Task<FilterReportGroupsViewModel> GetFilterReportGroups(FilterReportGroupsViewModel filter);
 

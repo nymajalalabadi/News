@@ -30,7 +30,9 @@ namespace News.DataLayer.Repositories
 
         public async Task<IQueryable<Report>> GetReportsQuery()
         {
-            return _context.Reports.Where(u => !u.IsDelete).AsQueryable();
+            return _context.Reports
+                .Include(r => r.ReportGroup)
+                .Where(u => !u.IsDelete).AsQueryable();
         }
 
         public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
@@ -112,6 +114,12 @@ namespace News.DataLayer.Repositories
         {
             return await _context.ReportGroups
                 .FirstOrDefaultAsync(r => r.Id.Equals(id));
+        }
+
+        public async Task<ReportGroup?> GetReportGroupByUrlName(string urlName)
+        {
+            return await _context.ReportGroups
+                .FirstOrDefaultAsync(r => r.UrlName.Equals(urlName));
         }
 
         public async Task AddReportGroup(ReportGroup reportGroup)

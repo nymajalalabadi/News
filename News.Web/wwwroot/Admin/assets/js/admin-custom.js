@@ -1,5 +1,5 @@
 ﻿function fillPageId(page) {
-    $("#Page").val(page);
+    $("#CurrentPage").val(page);
     $("#filter-search").submit();
 }
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.ReportGroups;
+using News.Domain.ViewModels.Reports;
 
 namespace News.Web.Controllers
 {
@@ -16,6 +18,8 @@ namespace News.Web.Controllers
 
         #endregion
 
+        #region report
+
         public async Task<IActionResult> Report(long reportId)
         {
             var model = await _reportService.GetReportForShowById(reportId);
@@ -29,5 +33,26 @@ namespace News.Web.Controllers
 
             return View(model);
         }
+
+        #endregion
+
+        #region report group
+
+        public async Task<IActionResult> ReportGroup(FilterReportForShowViewModel filter, string urlName)
+        {
+            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName(urlName);
+
+            filter.UrlName = urlName;
+            var model = await _reportService.GetFilterReportForIndex(filter);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
     }
 }

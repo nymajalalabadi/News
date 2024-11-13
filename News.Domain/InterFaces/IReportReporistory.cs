@@ -40,6 +40,8 @@ namespace News.Domain.InterFaces
 
         Task<ReportGroup?> GetReportGroupById(long id);
 
+        Task<ReportGroup?> GetReportGroupByUrlName(string urlName);
+
         Task AddReportGroup(ReportGroup reportGroup);
 
         void UpdateReportGroup(ReportGroup reportGroup);

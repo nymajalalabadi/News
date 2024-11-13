@@ -79,6 +79,30 @@ namespace News.Application.Services.Implementations
             return filter;  
         }
 
+        public async Task<FilterReportForShowViewModel> GetFilterReportForIndex(FilterReportForShowViewModel filter)
+        {
+            var query = await _reportReporistory.GetReportsQuery();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.UrlName))
+            {
+                query = query.Where(r => r.ReportGroup.UrlName.Contains(filter.UrlName));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(r => r.CreateDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
         public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
         {
             return await _reportReporistory.GetSpecialReportForIndex(groupUrl);
@@ -310,6 +334,11 @@ namespace News.Application.Services.Implementations
         public async Task<List<SelectListItem>> SelectedReportGroupId()
         {
             return await _reportReporistory.SelectedReportGroupId();
+        }
+
+        public async Task<ReportGroup?> GetReportGroupByUrlName(string urlName)
+        {
+            return await _reportReporistory.GetReportGroupByUrlName(urlName);
         }
 
         public async Task<FilterReportGroupsViewModel> GetFilterReportGroups(FilterReportGroupsViewModel filter)
