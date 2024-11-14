@@ -6,15 +6,15 @@
         <ul class="pagination justify-content-center">
             @if (Model.CurrentPage > 1)
             {
-                <li class="page-item" style="padding: 20px 0;"><a onclick="fillPageId('@(Model.CurrentPage - 1)')" class="page-link" style="font-size: .7rem;">قبلی</a></li>
+                <li class="page-item" style="padding: 20px 0;"><a onclick="filterPageId('@(Model.CurrentPage - 1)')" class="page-link" style="font-size: .7rem;">قبلی</a></li>
             }
             @for (int i = Model.StartPage; i <= Model.EndPage; i++)
             {
-                <li class="@((Model.CurrentPage == i)? "active" : "")" style="padding: 20px 0;"><a onclick="fillPageId('@i')" class="page-link" style="font-size: .7rem;">@i</a></li>
+                <li class="@((Model.CurrentPage == i)? "active" : "")" style="padding: 20px 0;"><a onclick="filterPageId('@i')" class="page-link" style="font-size: .7rem;">@i</a></li>
             }
             @if (Model.CurrentPage < Model.EndPage)
             {
-                <li class="page-item" style="padding: 20px 0;"><a onclick="fillPageId('@(Model.CurrentPage + 1)')" class="page-link" style="font-size: .7rem;">بعدی</a></li>
+                <li class="page-item" style="padding: 20px 0;"><a onclick="filterPageId('@(Model.CurrentPage + 1)')" class="page-link" style="font-size: .7rem;">بعدی</a></li>
             }
         </ul>
     </nav>

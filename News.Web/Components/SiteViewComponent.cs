@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
 
-namespace News.Web.ViewComponents
+namespace News.Web.Components
 {
     #region Sport ViewComponent
 
+    [ViewComponent(Name = "SportViewComponent")]
     public class SportViewComponent : ViewComponent
     {
         #region consractor
@@ -36,6 +37,7 @@ namespace News.Web.ViewComponents
 
     #region Economic
 
+    [ViewComponent(Name = "EconomicViewComponent")]
     public class EconomicViewComponent : ViewComponent
     {
         #region consractor
@@ -62,10 +64,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Health
 
+    [ViewComponent(Name = "HealthViewComponent")]
     public class HealthViewComponent : ViewComponent
     {
         #region consractor
@@ -92,10 +96,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Multi Media
 
+    [ViewComponent(Name = "MultiMediaSliderViewComponent")]
     public class MultiMediaSliderViewComponent : ViewComponent
     {
         #region consractor
@@ -123,10 +129,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Top Reports
 
+    [ViewComponent(Name = "TopReportsViewComponent")]
     public class TopReportsViewComponent : ViewComponent
     {
         #region consractor
@@ -151,10 +159,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Special Report
 
+    [ViewComponent(Name = "SpecialReportViewComponent")]
     public class SpecialReportViewComponent : ViewComponent
     {
         #region consractor
@@ -179,10 +189,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Special Reports
 
+    [ViewComponent(Name = "SpecialReportsViewComponent")]
     public class SpecialReportsViewComponent : ViewComponent
     {
         #region consractor
@@ -207,5 +219,6 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 }

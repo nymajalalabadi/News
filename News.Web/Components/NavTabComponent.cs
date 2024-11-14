@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
 
-namespace News.Web.ViewComponents
+namespace News.Web.Components
 {
     #region Social
 
+    [ViewComponent(Name = "SocialViewComponent")]
     public class SocialViewComponent : ViewComponent
     {
         #region consractor
@@ -29,10 +30,12 @@ namespace News.Web.ViewComponents
 
         #endregion
     }
+
     #endregion
 
     #region Cultural
 
+    [ViewComponent(Name = "CulturalViewComponent")]
     public class CulturalViewComponent : ViewComponent
     {
         #region consractor
@@ -63,6 +66,7 @@ namespace News.Web.ViewComponents
 
     #region Political
 
+    [ViewComponent(Name = "PoliticalViewComponent")]
     public class PoliticalViewComponent : ViewComponent
     {
         #region consractor
@@ -92,6 +96,7 @@ namespace News.Web.ViewComponents
 
     #region Artistic
 
+    [ViewComponent(Name = "ArtisticViewComponent")]
     public class ArtisticViewComponent : ViewComponent
     {
         #region consractor

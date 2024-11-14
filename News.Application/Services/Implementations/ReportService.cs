@@ -150,6 +150,7 @@ namespace News.Application.Services.Implementations
                     ImageTitle = report.ImageTitle,
                     Source = report.Source,
                     Tags = report.Tags,
+                    IsSuccess = true,
                     ReportGroupId = report.groupId,
                     Image = imageName
                 };
@@ -402,7 +403,8 @@ namespace News.Application.Services.Implementations
 
             var groupWithOutImage = new ReportGroup()
             {
-                GroupName = reportGroup.GroupName
+                GroupName = reportGroup.GroupName,
+                UrlName = reportGroup.UrlName
             };
 
             await _reportReporistory.AddReportGroup(groupWithOutImage);

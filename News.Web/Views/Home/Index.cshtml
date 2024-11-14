@@ -61,16 +61,23 @@
             </div>
             <!-- End Hot News -->
             <!-- Start Sport -->
+
             @await Component.InvokeAsync("SportViewComponent")
+
             <!-- End Sport -->
             
             @await Component.InvokeAsync("EconomicViewComponent")
+
             <!-- End Economic -->
             <!-- Start Health -->
+
             @await Component.InvokeAsync("HealthViewComponent")
+
             <!-- End Health -->
             <!-- Start Multi Media -->
+
             @await Component.InvokeAsync("MultiMediaSliderViewComponent")
+
             <!-- End Multi Media -->
             <!-- Start NavTabs -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -89,16 +96,24 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <!-- Start اجتماعی -->
-                @await Component.InvokeAsync("SocialViewComponent")
+
+                @* @await Component.InvokeAsync("SocialViewComponent") *@
+
                 <!-- End اجتماعی -->
                 <!-- Start فرهنگی -->
-                @await Component.InvokeAsync("CulturalViewComponent")
+
+                @* @await Component.InvokeAsync("CulturalViewComponent") *@
+
                 <!-- End فرهنگی -->
                 <!-- Start سیاسی -->
-                @await Component.InvokeAsync("PoliticalViewComponent")
+
+                @* @await Component.InvokeAsync("PoliticalViewComponent") *@
+
                 <!-- End سیاسی -->
                 <!-- start هنری -->
-                @await Component.InvokeAsync("ArtisticViewComponent")
+
+                @* @await Component.InvokeAsync("ArtisticViewComponent") *@
+
                 <!-- End هنری -->
             </div>
             <!-- End NavTabs -->
@@ -110,23 +125,29 @@
             </div>
             <!-- End TopReports Line -->
             <!-- Start TopReports -->
+
             @await Component.InvokeAsync("TopReportsViewComponent")
+
             <!-- End TopReports -->
             <!-- Start SpecialReports -->
             <div class="mb-5">
                 <!-- Start SpecialReports Line -->
                 <div class="box">
                     <h6 class="position-relative ">
-                        <span class="Special-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="report" asp-action="ReportGroup" asp-route-urlName="Special"></a> ویژه خبری </span>
+                        <span class="Special-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="report" asp-action="ReportGroup" asp-route-urlName="Special">ویژه خبری</a> </span>
                         <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
                     </h6>
                 </div>
                 <!-- End SpecialReports Line -->
                 <!-- Card First -->
                 <div class="col-12 col-md-4 mb-4 mt-2 body-plusfirst">
-                    @await Component.InvokeAsync("SpecialReportViewComponent");
+
+                    @await Component.InvokeAsync("SpecialReportViewComponent")
+
                 </div>
-                @await Component.InvokeAsync("SpecialReportsViewComponent");
+
+                @await Component.InvokeAsync("SpecialReportsViewComponent")
+
             </div>
             <!-- End SpecialReports -->
             <!--Start LastNews Hide -->

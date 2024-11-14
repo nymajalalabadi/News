@@ -20,6 +20,7 @@ namespace News.Web.Controllers
 
         #region report
 
+        [HttpGet]
         public async Task<IActionResult> Report(long reportId)
         {
             var model = await _reportService.GetReportForShowById(reportId);
@@ -38,11 +39,14 @@ namespace News.Web.Controllers
 
         #region report group
 
-        public async Task<IActionResult> ReportGroup(FilterReportForShowViewModel filter, string urlName)
+        [HttpGet]
+        public async Task<IActionResult> ReportGroup(string urlName, FilterReportForShowViewModel filter)
         {
-            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName(urlName);
+            var group = await _reportService.GetReportGroupByUrlName(urlName);
 
-            filter.UrlName = urlName;
+            filter.UrlName = group!.UrlName;
+            filter.GroupName = group.GroupName;
+            filter.TakeEntity = 1;
             var model = await _reportService.GetFilterReportForIndex(filter);
 
             if (model == null)
