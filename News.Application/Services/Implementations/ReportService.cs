@@ -103,6 +103,22 @@ namespace News.Application.Services.Implementations
             return filter;
         }
 
+        public async Task<FilterHotNewsReportForShowViewModel> GetFilterHotNewsReportForIndex(FilterHotNewsReportForShowViewModel filter)
+        {
+            var query = await _reportReporistory.GetHotNewsReportsQuery();
+
+
+            query = query.OrderByDescending(r => r.HotNewsDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
         public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
         {
             return await _reportReporistory.GetSpecialReportForIndex(groupUrl);
@@ -130,7 +146,7 @@ namespace News.Application.Services.Implementations
 
         public async Task<List<Report>> GetHotNewsReportsForIndex()
         {
-
+            return await _reportReporistory.GetHotNewsReportsForIndex();
         }
 
         public async Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId)

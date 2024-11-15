@@ -9,7 +9,15 @@
 
         <div class="row HotNewsFirst">
             <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id">
-                <img src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" class="my-2 hotnews-img-index" alt="@Model.ImageAlt">
+                @if (Model.ReportGroup.GroupName == "MultiMedia")
+                {
+                    <video src="@(SiteTools.ReportImagesName + Model.Image)" preload="metadata" controls class="my-2 hotnews-img-index" title="@Model.ImageTitle" alt="@Model.ImageAlt"></video>
+                }
+                else
+                {
+                    <img src="@(SiteTools.ReportImagesName + Model.Image)" class="my-2 hotnews-img-index" title="@Model.ImageTitle" alt="@Model.ImageAlt">
+                }
+
             </a>
             <span class="pb-3 mx-2"><a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id"> @Model.Title </a></span>
         </div>

@@ -58,5 +58,23 @@ namespace News.Web.Controllers
         }
 
         #endregion
+
+        #region Hot News report group
+
+        [HttpGet]
+        public async Task<IActionResult> HotNewsReportGroup(FilterHotNewsReportForShowViewModel filter)
+        {
+            filter.TakeEntity = 1;
+            var model = await _reportService.GetFilterHotNewsReportForIndex(filter);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
     }
 }

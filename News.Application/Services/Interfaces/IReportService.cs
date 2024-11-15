@@ -20,6 +20,8 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterReportForShowViewModel> GetFilterReportForIndex(FilterReportForShowViewModel filter);
 
+        Task<FilterHotNewsReportForShowViewModel> GetFilterHotNewsReportForIndex(FilterHotNewsReportForShowViewModel filter);
+
         Task<Report?> GetSpecialReportForIndex(string groupUrl);
 
         Task<Report?> GetHotNewsReportForIndex();

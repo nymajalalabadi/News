@@ -35,6 +35,13 @@ namespace News.DataLayer.Repositories
                 .Where(u => !u.IsDelete && u.IsSuccess).AsQueryable();
         }
 
+        public async Task<IQueryable<Report>> GetHotNewsReportsQuery()
+        {
+            return _context.Reports
+                .Include(r => r.ReportGroup)
+                .Where(u => !u.IsDelete && u.IsSuccess && u.IsHotNews).AsQueryable();
+        }
+
         public async Task<Report?> GetSpecialReportForIndex(string groupUrl)
         {
             return await _context.Reports

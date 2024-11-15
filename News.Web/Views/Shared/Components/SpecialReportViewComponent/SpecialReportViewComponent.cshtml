@@ -8,12 +8,12 @@
     <div class="shadow rounded">
         <div class="card overflow-hidden">
             <div class="">
-                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id">
+                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id">
                     <img src="@(SiteTools.ReportImagesName + Model.Image)" class="card-img-top w-100 card-img-plusfirst" title="@Model.Title" alt="@Model.ImageAlt">
                 </a>
             </div>
             <div class="card-body bg-body-secondary overflow-hidden p-2 w-100 card-body-plusfirst">
-                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id" class="card-text-plusfirst">
+                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id" class="card-text-plusfirst">
                     <p class="card-text">
                         @Model.Title
                     </p>
