@@ -18,6 +18,8 @@ namespace News.Domain.InterFaces
 
         Task<Report?> GetSpecialReportForIndex(string groupUrl);
 
+        Task<Report?> GetHotNewsReportForIndex();
+
         Task<List<Report>> GetReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetTopReportsForIndex(string groupUrl);
@@ -25,6 +27,8 @@ namespace News.Domain.InterFaces
         Task<List<Report>> GetSpecialReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId);
+
+        Task<List<Report>> GetHotNewsReportsForIndex();
 
         Task<Report?> GetReportById(long id);
 

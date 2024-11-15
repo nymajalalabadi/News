@@ -1,0 +1,19 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model Report
+
+@if(Model != null)
+{
+    <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+
+        <div class="row HotNewsFirst">
+            <a>
+                <img src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" class="my-2 hotnews-img-index" alt="@Model.ImageAlt">
+            </a>
+
+            <span class="pb-3 mx-2"><a> @Model.Title </a></span>
+        </div>
+
+    </div>
+}

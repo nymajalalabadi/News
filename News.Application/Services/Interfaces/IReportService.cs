@@ -22,11 +22,15 @@ namespace News.Application.Services.Interfaces
 
         Task<Report?> GetSpecialReportForIndex(string groupUrl);
 
+        Task<Report?> GetHotNewsReportForIndex();
+
         Task<List<Report>> GetReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetTopReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetSpecialReportsForIndex(string groupUrl);
+
+        Task<List<Report>> GetHotNewsReportsForIndex();
 
         Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId);
 

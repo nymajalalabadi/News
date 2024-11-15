@@ -44,6 +44,15 @@ namespace News.DataLayer.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<Report?> GetHotNewsReportForIndex()
+        {
+            return await _context.Reports
+                .Include(r => r.ReportGroup)
+                .OrderByDescending(r => r.HotNewsDate)
+                .Where(r => r.IsSuccess && r.IsHotNews == true)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
             return await _context.Reports
@@ -58,7 +67,7 @@ namespace News.DataLayer.Repositories
         {
             return await _context.Reports
                 .Include(r => r.ReportGroup)
-                .OrderByDescending(r => r.Visit)
+                .OrderByDescending(r => r.CreateDate)
                 .Where(r => r.IsSuccess && r.ReportGroup.UrlName != groupUrl)
                 .Take(4)
                 .ToListAsync();
@@ -81,6 +90,17 @@ namespace News.DataLayer.Repositories
                 .Include(r => r.ReportGroup)
                 .OrderByDescending(r => r.Visit)
                 .Where(r => r.IsSuccess && r.ReportGroup.UrlName == groupUrl && r.Id != reportId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Report>> GetHotNewsReportsForIndex()
+        {
+            return await _context.Reports
+                .Include(r => r.ReportGroup)
+                .OrderByDescending(r => r.HotNewsDate)
+                .Where(r => r.IsSuccess && r.IsHotNews == true)
+                .Skip(1)
+                .Take(4)
                 .ToListAsync();
         }
 

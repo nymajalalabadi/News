@@ -108,6 +108,11 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetSpecialReportForIndex(groupUrl);
         }
 
+        public async Task<Report?> GetHotNewsReportForIndex()
+        {
+            return await _reportReporistory.GetHotNewsReportForIndex();
+        }
+
         public async Task<List<Report>> GetReportsForIndex(string groupUrl)
         {
             return await _reportReporistory.GetReportsForIndex(groupUrl);
@@ -121,6 +126,11 @@ namespace News.Application.Services.Implementations
         public async Task<List<Report>> GetSpecialReportsForIndex(string groupUrl)
         {
             return await _reportReporistory.GetSpecialReportsForIndex(groupUrl);
+        }
+
+        public async Task<List<Report>> GetHotNewsReportsForIndex()
+        {
+
         }
 
         public async Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId)

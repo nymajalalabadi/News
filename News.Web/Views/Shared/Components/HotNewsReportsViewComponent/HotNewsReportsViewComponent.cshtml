@@ -1,0 +1,20 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+<div class="col-lg-6 col-sm-12">
+    @if(Model != null && Model.Any())
+    {
+        <ul class="HotNews ps-0">
+            @foreach (var item in Model)
+            {
+                <li class="border-bottom py-2">
+                    <a class="list-unstyled text-decoration-none"> @item.Title
+                        <i class="@((item.ReportGroup.GroupName == "MultiMedia")? "fa fa-film" : "")"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+</div>

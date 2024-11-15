@@ -221,4 +221,64 @@ namespace News.Web.Components
     }
 
     #endregion
+
+    #region Hot News Report
+
+    [ViewComponent(Name = "HotNewsReportViewComponent")]
+    public class HotNewsReportViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public HotNewsReportViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetHotNewsReportForIndex();
+
+            return View("HotNewsReportViewComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region Hot News reports
+
+    [ViewComponent(Name = "HotNewsReportsViewComponent")]
+    public class HotNewsReportsViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public HotNewsReportsViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetHotNewsReportsForIndex();
+
+            return View("HotNewsReportsViewComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
 }

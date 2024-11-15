@@ -30,32 +30,10 @@
                     </div>
                     <!-- End Hot News Line -->
                     <!-- Strat Hot News First -->
-                    <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
-
-                        <div class="row HotNewsFirst">
-                            <a>
-                                <img src="~/assets/Img/ReportImages/ee5abd41-8ea7-4559-88f0-2ef16a141b2f.jpg" class="my-2 hotnews-img-index" alt="...">
-                            </a>
-
-                            <span class="pb-3 mx-2"><a> ماجرای قهر و آشتی‌ها در صداو سیما/ زندگی شیرین می‌شود؟ </a></span>
-                        </div>
-
-                    </div>
+                    @await Component.InvokeAsync("HotNewsReportViewComponent")
                     <!-- End Hot News First -->
                     <!-- Strat Hot News -->
-                    <div class="col-lg-6 col-sm-12">
-                        <ul class="HotNews ps-0">
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> سکوهای ورزشگاه آزادی آذرماه آماده می‌شود  <i class="fa fa-film"></i> </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  تصاویری از بازیگوشی خانواده جدید پلنگ ایرانی در پارک ملی تندوره  <i class="fa fa-film"></i> </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  ضایعات غذا در کشور بیش از ۲.۵ برابر اتحادیه اروپا/ "نان، برنج و میوه" بیشترین دور... </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  توصیه‌های طب سنتی برای کاهش "استرس و اضطراب" + اینفوگرافیک </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  اجرای فاز آزمایشی سامانه هشدار سریع زلزله در تهران/ کدام دستگاه‌ها باید به سام... </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> خواص باورنکردنی «دانه چیا» را بشناسید </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  حذف بند بیمه خدمات سلامت روان از برنامه هفتم توسعه </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> دستاورد‌های موسسه رازی در نشست تولیدکنندگان واکسن </a></li>
-                            <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> چرا خوردن صبحانه برای دانش‌آموزان بسیار مهم است؟ </a></li>
-                        </ul>
-                    </div>
+                    @await Component.InvokeAsync("HotNewsReportsViewComponent")
                     <!-- End Hot News -->
                 </div>
             </div>
