@@ -130,7 +130,7 @@
                     {
                         <li style="padding: 5px;">
                             <div style="background: #ccc; height: 330px; overflow: hidden">
-                                <a class="" style="text-decoration:none;">
+                                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id" class="" style="text-decoration:none;">
                                     @if (item.ReportGroup.UrlName == "MultiMedia")
                                     {
                                         <video src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" alt="@Model.ImageAlt" preload="metadata" controls style=" height:240px;"></video>

@@ -16,10 +16,12 @@
                     </div>
                     <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
                         <div class="TopReports-card__side__back-1__body">
-                            <p class="TopReports-card__price-only">
-                                @report.Title
-                            </p>
-                            <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id">
+                                <p class="TopReports-card__price-only">
+                                    @report.Title
+                                </p>
+                            </a>
+                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id" class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
                         </div>
                     </div>
                 </div>

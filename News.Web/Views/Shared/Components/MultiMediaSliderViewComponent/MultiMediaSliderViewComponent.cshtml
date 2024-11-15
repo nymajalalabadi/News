@@ -26,7 +26,7 @@
                     <ul class="slides">
                         <li style="position:relative; height:250px;">
                             <video src="@(SiteTools.ReportImagesName + report.Image)" title="@report.ImageTitle" controls allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" style="width:50%; height:100%;"></video>
-                            <a class="flex-caption" style="position:absolute; text-decoration:none;">
+                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id" class="flex-caption" style="position:absolute; text-decoration:none;">
                                 <b style="color: black; font-size: .8rem; ">@report.Title</b>
                                 <br>
                                 <p style="color:darkblue; margin: 10px 10px; height: 80%; overflow:hidden;">@report.Description</p>

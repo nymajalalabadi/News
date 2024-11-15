@@ -13,9 +13,9 @@
             @foreach (var report in Model)
             {
                 <div class="card p-2  border-secondary">
-                    <a><img src="@(SiteTools.ReportImagesName + report.Image)" title="@report.ImageTitle" class="card-img-top body-img-NavTab" alt="@report.ImageAlt"></a>
+                    <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id"><img asp-area="" as-controller="" asp-action="" src="@(SiteTools.ReportImagesName + report.Image)" title="@report.ImageTitle" class="card-img-top body-img-NavTab" alt="@report.ImageAlt"></a>
                     <div class="card-body">
-                        <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> @report.Title </p></a>
+                        <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id" class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> @report.Title </p></a>
                         <p class="card-text" style="margin-bottom: 2rem;">
                             @report.Description
                         </p>

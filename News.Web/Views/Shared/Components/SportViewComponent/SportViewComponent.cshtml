@@ -21,11 +21,11 @@
         {
             <li class="scale col-lg-3 col-sm-6 my-sm-2">
                 <div class="position-relative card shadow">
-                    <a>
+                    <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id">
                         <img src="@(SiteTools.ReportImagesName + report.Image)" class="card-img-top img-sportANDeconomiccomponent" alt="@report.ImageAlt">
                     </a>
                     <div class="card-body p-2 mb-4 body-sportcomponent">
-                        <a class="text-decoration-none"><p class="card-text"> @report.Title </p></a>
+                        <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id" class="text-decoration-none"><p class="card-text"> @report.Title </p></a>
                         <div class="position-absolute date-sportANDeconomiccomponent">
                             <p class="d-inline-block px-1 m-0"> <i class="fa fa-clock"></i> @report.CreateDate.ToStringShamsiDate() </p>
                         </div>

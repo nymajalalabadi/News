@@ -10,7 +10,8 @@
             @foreach (var item in Model)
             {
                 <li class="border-bottom py-2">
-                    <a class="list-unstyled text-decoration-none"> @item.Title
+                    <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id" class="list-unstyled text-decoration-none">
+                        @item.Title
                         <i class="@((item.ReportGroup.GroupName == "MultiMedia")? "fa fa-film" : "")"></i>
                     </a>
                 </li>

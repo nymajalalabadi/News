@@ -8,11 +8,10 @@
     <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
 
         <div class="row HotNewsFirst">
-            <a>
+            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id">
                 <img src="@(SiteTools.ReportImagesName + Model.Image)" title="@Model.ImageTitle" class="my-2 hotnews-img-index" alt="@Model.ImageAlt">
             </a>
-
-            <span class="pb-3 mx-2"><a> @Model.Title </a></span>
+            <span class="pb-3 mx-2"><a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@Model.Id"> @Model.Title </a></span>
         </div>
 
     </div>
