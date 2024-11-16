@@ -107,7 +107,6 @@ namespace News.Application.Services.Implementations
         {
             var query = await _reportReporistory.GetHotNewsReportsQuery();
 
-
             query = query.OrderByDescending(r => r.HotNewsDate);
 
             #region paging

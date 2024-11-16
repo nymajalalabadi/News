@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using News.Domain.Entities.Hashtags;
 using News.Domain.Entities.Reports;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace News.DataLayer.Context
         public DbSet<Report> Reports { get; set; }
 
         public DbSet<ReportGroup> ReportGroups { get; set; }
+
+        public DbSet<Hashtag> Hashtags { get; set; }
 
         #endregion
     }
