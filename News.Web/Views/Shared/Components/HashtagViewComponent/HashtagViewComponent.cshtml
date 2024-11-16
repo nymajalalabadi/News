@@ -1,0 +1,16 @@
+﻿@using News.Domain.Entities.Hashtags
+@model List<Hashtag>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row m-0 my-4 Hashtag">
+        <ul class="bg-body-tertiary shadow py-3 ">
+            <li class="btn btn-info btn-sm mb-1 px-1 py-0"> <i class="fa fa-hashtag"> # </i></li>
+            @foreach (var item in Model)
+            {
+                <li class="btn btn-info btn-sm mb-1 px-1 py-0"> <span> # </span> <a class="text-decoration-none"> @item.HashtagName </a> </li>
+
+            }
+        </ul>
+    </div>
+}

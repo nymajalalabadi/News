@@ -14,6 +14,8 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<Hashtag>> GetHashtagsQuery();
 
+        Task<List<Hashtag>> GetHashtagsForIndex();
+
         Task<Hashtag?> GetHashtagById(long id);
 
         Task<bool> IsExistHashtagName(string hashtagName);

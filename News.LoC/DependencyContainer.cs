@@ -19,11 +19,15 @@ namespace News.LoC
 
             services.AddScoped<IReportReporistory, ReportReporistory>();
 
+            services.AddScoped<IHashtagReporistory, HashtagReporistory>();
+
             #endregion
 
             #region Service
 
             services.AddScoped<IReportService, ReportService>();
+
+            services.AddScoped<IHashtagService, HashtagService>();
 
             #endregion
         }

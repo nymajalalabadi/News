@@ -1,4 +1,5 @@
-﻿using News.Domain.ViewModels.Hashtags;
+﻿using News.Domain.Entities.Hashtags;
+using News.Domain.ViewModels.Hashtags;
 using News.Domain.ViewModels.ReportGroups;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace News.Application.Services.Interfaces
         #region Methods
 
         Task<FilterHashtagsViewModel> GetFilterHashtagsGroups(FilterHashtagsViewModel filter);
+
+        Task<List<Hashtag>> GetHashtagsForIndex();
 
         Task<CreateHashtagResult> CreateHashtagGroup(CreateHashtagViewModel createHashtag);
 

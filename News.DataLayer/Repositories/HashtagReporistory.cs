@@ -32,6 +32,13 @@ namespace News.DataLayer.Repositories
                 .AsQueryable();
         }
 
+        public async Task<List<Hashtag>> GetHashtagsForIndex()
+        {
+            return await _context.Hashtags
+                .Where(h => !h.IsDelete)
+                .ToListAsync();
+        }
+
         public async Task<Hashtag?> GetHashtagById(long id)
         {
             return await _context.Hashtags.FirstOrDefaultAsync(h => h.Id.Equals(id));

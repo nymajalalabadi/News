@@ -7,16 +7,7 @@
         <!-- Start Col-9 -->
         <div class=" col-12 col-lg-9">
             <!-- Start Hashtag -->
-            <div class="row m-0 my-4 Hashtag">
-                <ul class="bg-body-tertiary shadow py-3 ">
-                    <li class="btn btn-info btn-sm mb-1"> <i class="fa fa-hashtag"> <a># </a></i></li>
-                    <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a asp-area="admin" asp-controller="home" asp-action="index" class="text-decoration-none"> طوفان الاقصی </a> </li>
-                    <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> انتخابات مجلس شورای اسلامی </a> </li>
-                    <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> فوتبال </a> </li>
-                    <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> ریاست جمهوری </a> </li>
-                    <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> سلامت روان </a> </li>
-                </ul>
-            </div>
+            @await Component.InvokeAsync("HashtagViewComponent")
             <!-- End Hashtag -->
             <!-- Strat Hot News -->
             <div class="container shadow bg-body-tertiary rounded mb-4">

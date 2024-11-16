@@ -1,4 +1,5 @@
-﻿using News.Application.Services.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using News.Application.Services.Interfaces;
 using News.Domain.Entities.Hashtags;
 using News.Domain.InterFaces;
 using News.Domain.ViewModels.Hashtags;
@@ -47,6 +48,11 @@ namespace News.Application.Services.Implementations
             #endregion
 
             return filter;
+        }
+
+        public async Task<List<Hashtag>> GetHashtagsForIndex()
+        {
+            return await _hashtagReporistory.GetHashtagsForIndex();
         }
 
         public async Task<CreateHashtagResult> CreateHashtagGroup(CreateHashtagViewModel createHashtag)
