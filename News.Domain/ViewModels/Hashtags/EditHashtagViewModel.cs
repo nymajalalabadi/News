@@ -19,7 +19,6 @@ namespace News.Domain.ViewModels.Hashtags
     public enum EditHashtagResult
     {
         success,
-        NotFound,
-        error
+        NotFound
     }
 }

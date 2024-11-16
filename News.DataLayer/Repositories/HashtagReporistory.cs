@@ -37,6 +37,11 @@ namespace News.DataLayer.Repositories
             return await _context.Hashtags.FirstOrDefaultAsync(h => h.Id.Equals(id));
         }
 
+        public async Task<bool> IsExistHashtagName(string hashtagName)
+        {
+            return await _context.Hashtags.AnyAsync(h => h.HashtagName.Equals(hashtagName));
+        }
+
         public async Task AddHashtag(Hashtag hashtag)
         {
             await _context.Hashtags.AddAsync(hashtag);
