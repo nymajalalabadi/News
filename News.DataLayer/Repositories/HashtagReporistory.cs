@@ -1,4 +1,6 @@
-﻿using News.DataLayer.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using News.DataLayer.Context;
+using News.Domain.Entities.Hashtags;
 using News.Domain.InterFaces;
 using System;
 using System.Collections.Generic;
@@ -23,7 +25,33 @@ namespace News.DataLayer.Repositories
 
         #region Methods
 
+        public async Task<IQueryable<Hashtag>> GetHashtagsQuery()
+        {
+            return _context.Hashtags
+                .Where(h => !h.IsDelete)
+                .AsQueryable();
+        }
 
+        public async Task<Hashtag?> GetHashtagById(long id)
+        {
+            return await _context.Hashtags.FirstOrDefaultAsync(h => h.Id.Equals(id));
+        }
+
+        public async Task AddHashtag(Hashtag hashtag)
+        {
+            await _context.Hashtags.AddAsync(hashtag);
+        }
+
+        public void UpdateHashtag(Hashtag hashtag)
+        {
+            hashtag.LastUpdateDate = DateTime.Now;
+            _context.Hashtags.Update(hashtag);
+        }
+
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
+        }
 
         #endregion
     }
