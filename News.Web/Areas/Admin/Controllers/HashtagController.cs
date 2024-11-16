@@ -114,7 +114,7 @@ namespace News.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> DetailsHashtag(long hashtagId)
         {
-            var model = await _hashtagService.DeleteHashtag(hashtagId);
+            var model = await _hashtagService.DetailsHashtag(hashtagId);
 
             if (model == null)
             {
