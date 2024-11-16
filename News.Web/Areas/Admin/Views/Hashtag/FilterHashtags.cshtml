@@ -57,19 +57,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var reportGroup in Model.Entities)
+                            @foreach (var hashtag in Model.Entities)
                             {
-                                <tr id="reportGroup-row-@reportGroup.Id">
-                                    <th scope="row">@reportGroup.Id</th>
-                                    <td>@reportGroup.HashtagName</td>
+                                <tr id="hashtag-row-@hashtag.Id">
+                                    <th scope="row">@hashtag.Id</th>
+                                    <td>@hashtag.HashtagName</td>
                                     <td>
-                                        <a asp-area="Admin" asp-controller="Report" asp-action="DetailsReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
+                                        <a asp-area="Admin" asp-controller="Hashtag" asp-action="DetailsHashtag" asp-route-hashtagId="@hashtag.Id" class="text-warning">
                                             <i class="fa fa-eye small"></i>
                                         </a>
-                                        <a asp-area="Admin" asp-controller="Report" asp-action="EditReportGroup" asp-route-reportGroupId="@reportGroup.Id" class="text-warning">
+                                        <a asp-area="Admin" asp-controller="Hashtag" asp-action="EditHashtag" asp-route-hashtagId="@hashtag.Id" class="text-warning">
                                             <i class="fa fa-pen small"></i>
                                         </a>
-                                        <a onclick="deleteReportGroup('@reportGroup.Id')" class="text-warning">
+                                        <a onclick="DeleteHashtag('@hashtag.Id')" class="text-warning">
                                             <i class="fa fa-trash small"></i>
                                         </a>
                                     </td>
