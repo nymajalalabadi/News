@@ -21,6 +21,8 @@ namespace News.LoC
 
             services.AddScoped<IHashtagReporistory, HashtagReporistory>();
 
+            services.AddScoped<IGalleryReporitory, GalleryReporitory>();
+
             #endregion
 
             #region Service
@@ -28,6 +30,8 @@ namespace News.LoC
             services.AddScoped<IReportService, ReportService>();
 
             services.AddScoped<IHashtagService, HashtagService>();
+
+            services.AddScoped<IGalleryService, GalleryService>();
 
             #endregion
         }
