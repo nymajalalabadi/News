@@ -10,8 +10,12 @@ namespace News.Domain.Entities.Hashtags
 {
     public class Hashtag : BaseEntity
     {
+        #region properties
+
         [MaxLength(50)]
         [Display(Name = "هشتگ")]
         public string HashtagName { get; set; } = default!;
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using News.Domain.Entities.Galleries;
 using News.Domain.Entities.Hashtags;
 using News.Domain.Entities.Reports;
 using System;
@@ -13,7 +14,6 @@ namespace News.DataLayer.Context
     {
         public NewsDbContext(DbContextOptions<NewsDbContext> options) : base(options) { }
 
-
         #region DB Set
 
         public DbSet<Report> Reports { get; set; }
@@ -21,6 +21,8 @@ namespace News.DataLayer.Context
         public DbSet<ReportGroup> ReportGroups { get; set; }
 
         public DbSet<Hashtag> Hashtags { get; set; }
+
+        public DbSet<Gallery> Galleries { get; set; }
 
         #endregion
     }
