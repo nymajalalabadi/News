@@ -34,7 +34,7 @@ namespace News.DataLayer.Repositories
 
         public async Task<List<Gallery>> GetGalleriesForIndex()
         {
-            return await _context.Galleries.Where(g => !g.IsDelete).ToListAsync();
+            return await _context.Galleries.Where(g => !g.IsDelete && g.IsSuccess).ToListAsync();
         }
 
         public async Task<Gallery?> GetGalleriesById(long id)
