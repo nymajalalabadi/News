@@ -27,5 +27,11 @@ namespace News.Domain.Entities.Galleries
         public bool IsSuccess { get; set; } = false;
 
         #endregion
+
+        #region relations
+
+        public ICollection<Image> Images { get; set; } = default!;
+
+        #endregion
     }
 }

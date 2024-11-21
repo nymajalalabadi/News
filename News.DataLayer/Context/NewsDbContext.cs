@@ -24,6 +24,8 @@ namespace News.DataLayer.Context
 
         public DbSet<Gallery> Galleries { get; set; }
 
+        public DbSet<Image> Images { get; set; }
+
         #endregion
     }
 }
