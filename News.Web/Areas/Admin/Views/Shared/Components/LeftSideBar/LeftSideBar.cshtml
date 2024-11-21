@@ -32,6 +32,22 @@
                 <li class="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="menu-icon ti-image"></i>
+                        <span> اخبار</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Report" asp-action="FilterReports">لیست اخبارات</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Report" asp-action="CreateReport">افزودن اخبار</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="menu-icon ti-image"></i>
                         <span> هشتگ</span>
                     </a>
                     <ul>
@@ -45,20 +61,19 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="menu-icon ti-image"></i>
-                        <span> اخبار</span>
+                        <span> گالری</span>
                     </a>
                     <ul>
                         <li>
-                            <a asp-area="Admin" asp-controller="Report" asp-action="FilterReports">لیست اخبارات</a>
+                            <a asp-area="Admin" asp-controller="gallery" asp-action="Filtergalleries">لیست گالری</a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a asp-area="Admin" asp-controller="Report" asp-action="CreateReport">افزودن اخبار</a>
+                            <a asp-area="Admin" asp-controller="gallery" asp-action="CreateGallery">افزودن گالری</a>
                         </li>
                     </ul>
                 </li>
