@@ -23,6 +23,8 @@ namespace News.DataLayer.Repositories
 
         #endregion
 
+        #region gallery
+
         #region Methods
 
         public async Task<IQueryable<Gallery>> GetGalleriesQuery()
@@ -37,7 +39,7 @@ namespace News.DataLayer.Repositories
             return await _context.Galleries.Where(g => !g.IsDelete && g.IsSuccess).ToListAsync();
         }
 
-        public async Task<Gallery?> GetGalleriesById(long id)
+        public async Task<Gallery?> GetGalleryById(long id)
         {
             return await _context.Galleries.FirstOrDefaultAsync(g => g.Id.Equals(id));
         }
@@ -61,6 +63,8 @@ namespace News.DataLayer.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+        #endregion
 
         #endregion
     }

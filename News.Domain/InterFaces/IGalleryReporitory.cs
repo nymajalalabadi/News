@@ -10,13 +10,15 @@ namespace News.Domain.InterFaces
 {
     public interface IGalleryReporitory
     {
+        #region Gallery
+
         #region Methods
 
         Task<IQueryable<Gallery>> GetGalleriesQuery();
 
         Task<List<Gallery>> GetGalleriesForIndex();
 
-        Task<Gallery?> GetGalleriesById(long id);
+        Task<Gallery?> GetGalleryById(long id);
 
         Task<bool> IsExistGallryName(string gallryName);
 
@@ -25,6 +27,8 @@ namespace News.Domain.InterFaces
         void UpdateGallery(Gallery gallery);
 
         Task SaveChanges();
+
+        #endregion
 
         #endregion
     }
