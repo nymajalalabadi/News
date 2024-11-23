@@ -16,5 +16,7 @@ namespace News.Domain.ViewModels.Images
 
         [Display(Name = "وضعیت")]
         public bool IsSuccess { get; set; } = false;
+
+        public string Gallery { get; set; } = default!;
     }
 }

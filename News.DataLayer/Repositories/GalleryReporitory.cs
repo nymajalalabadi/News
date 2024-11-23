@@ -88,7 +88,7 @@ namespace News.DataLayer.Repositories
 
         public async Task<Image?> GetImageyById(long id)
         {
-            return await _context.Images.FirstOrDefaultAsync(i => i.Id.Equals(id));
+            return await _context.Images.Include(i => i.Gallery).FirstOrDefaultAsync(i => i.Id.Equals(id));
         }
 
         public async Task AddImage(Image image)

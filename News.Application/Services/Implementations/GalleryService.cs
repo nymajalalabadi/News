@@ -1,7 +1,11 @@
-﻿using News.Application.Services.Interfaces;
+﻿using News.Application.Generators;
+using News.Application.Services.Interfaces;
+using News.Application.Statics;
 using News.Domain.Entities.Galleries;
+using News.Domain.Entities.Reports;
 using News.Domain.InterFaces;
 using News.Domain.ViewModels.Galleries;
+using News.Domain.ViewModels.Images;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,6 +152,142 @@ namespace News.Application.Services.Implementations
             gallery.IsDelete = true;
 
             _galleryReporitory.UpdateGallery(gallery);
+            await _galleryReporitory.SaveChanges();
+
+            return true;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region image
+
+        #region Methods
+
+        public async Task<FilterImagesViewModel> GetFilterImages(FilterImagesViewModel filter)
+        {
+            var query = await _galleryReporitory.GetImagesQuery();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.ImageName))
+            {
+                query = query.Where(r => r.ImageName.Contains(filter.ImageName));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(r => r.CreateDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
+        public async Task<List<Image>> GetImagesForIndex()
+        {
+            return await _galleryReporitory.GetImagesForIndex();
+        }
+
+        public async Task<CreateImageResult> CreateImage(CreateImageViewModel create)
+        {
+            if (create.AvatarImage == null)
+            {
+                return CreateImageResult.Failure;
+            }
+
+            var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(create.AvatarImage.FileName);
+            create.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesName, 100, 100, SiteTools.GalleryImagesName);
+
+            var image = new Image()
+            {
+                ImageName = imageName,
+                Galleryid = create.Galleryid,
+                IsSuccess = true,
+            };
+
+            await _galleryReporitory.AddImage(image);
+            await _galleryReporitory.SaveChanges();
+
+            return CreateImageResult.Success;   
+        }
+
+        public async Task<EditImageViewModel> GetImageForEdit(long imageId)
+        {
+            var image = await _galleryReporitory.GetImageyById(imageId);
+
+            if (image == null)
+            {
+                return null;
+            }
+
+            return new EditImageViewModel()
+            {
+                ImageId = image.Id,
+                ImageName = image.ImageName,
+                Galleryid = image.Galleryid,
+            };
+        }
+
+        public async Task<EditImageResult> EditImage(EditImageViewModel edit)
+        {
+            var image = await _galleryReporitory.GetImageyById(edit.ImageId);
+
+            if (image == null)
+            {
+                return EditImageResult.HasNotItem;
+            }
+
+            if (edit.AvatarImage != null)
+            {
+                var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(edit.AvatarImage.FileName);
+                edit.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesName, 100, 100, SiteTools.GalleryImagesName, image.ImageName);
+
+                image.ImageName = imageName;
+
+                _galleryReporitory.UpdateImage(image);
+                await _galleryReporitory.SaveChanges();
+
+                return EditImageResult.Success;
+            }
+
+            return EditImageResult.Success;
+        }
+
+        public async Task<DetailsImageViewModel> DetailsImage(long imageId)
+        {
+            var image = await _galleryReporitory.GetImageyById(imageId);
+
+            if (image == null)
+            {
+                return null;
+            }
+
+            return new DetailsImageViewModel()
+            {
+                ImageName = image.ImageName,
+                IsSuccess = image.IsSuccess,
+                Gallery = image.Gallery.GallryName
+            };
+        }
+
+        public async Task<bool> DeleteImage(long imageId)
+        {
+            var image = await _galleryReporitory.GetImageyById(imageId);
+
+            if (image == null)
+            {
+                return false;
+            }
+
+            image.IsDelete = true;
+
+            _galleryReporitory.UpdateImage(image);
             await _galleryReporitory.SaveChanges();
 
             return true;
