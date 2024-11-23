@@ -66,6 +66,43 @@ namespace News.DataLayer.Repositories
 
         #endregion
 
+
+        #endregion
+
+        #region Image
+
+        #region Methods
+
+        public async Task<IQueryable<Image>> GetImagesQuery()
+        {
+            return _context.Images
+                .Include(i => i.Gallery)
+                .Where(i => !i.IsDelete)
+                .AsQueryable();
+        }
+
+        public async Task<List<Image>> GetImagesForIndex()
+        {
+            return  await _context.Images.Where(i => !i.IsDelete && i.IsSuccess).ToListAsync(); 
+        }
+
+        public async Task<Image?> GetImageyById(long id)
+        {
+            return await _context.Images.FirstOrDefaultAsync(i => i.Id.Equals(id));
+        }
+
+        public async Task AddImage(Image image)
+        {
+            await _context.Images.AddAsync(image);
+        }
+
+        public void UpdateImage(Image image)
+        {
+            _context.Images.Update(image);
+        }
+
+        #endregion
+
         #endregion
     }
 }

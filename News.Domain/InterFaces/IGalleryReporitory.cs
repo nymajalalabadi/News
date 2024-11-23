@@ -31,5 +31,23 @@ namespace News.Domain.InterFaces
         #endregion
 
         #endregion
+
+        #region Image
+
+        #region Methods
+
+        Task<IQueryable<Image>> GetImagesQuery();
+
+        Task<List<Image>> GetImagesForIndex();
+
+        Task<Image?> GetImageyById(long id);
+
+        Task AddImage(Image image);
+
+        void UpdateImage(Image image);
+
+        #endregion
+
+        #endregion
     }
 }
