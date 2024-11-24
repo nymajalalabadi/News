@@ -26,7 +26,6 @@ namespace News.Domain.ViewModels.Images
     public enum EditImageResult
     {
         Success,
-        Failure,
         HasNotItem
     }
 }

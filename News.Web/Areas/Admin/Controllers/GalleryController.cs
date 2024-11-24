@@ -3,6 +3,7 @@ using News.Application.Services.Implementations;
 using News.Application.Services.Interfaces;
 using News.Domain.ViewModels.Galleries;
 using News.Domain.ViewModels.Hashtags;
+using News.Domain.ViewModels.Images;
 
 namespace News.Web.Areas.Admin.Controllers
 {
@@ -132,6 +133,129 @@ namespace News.Web.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteGallery(long Id)
         {
             var result = await _galleryService.DeleteGallery(Id);
+
+            if (!result)
+            {
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد." });
+            }
+
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد." });
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Image
+
+        #region Filter Image
+
+        [HttpGet]
+        public async Task<IActionResult> FilterImages(FilterImagesViewModel filter)
+        {
+            var model = await _galleryService.GetFilterImages(filter);
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Create Image
+
+        [HttpGet]
+        public async Task<IActionResult> CreateImage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateImage(CreateImageViewModel create)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(create);
+            }
+
+            var result = await _galleryService.CreateImage(create);
+
+            switch (result)
+            {
+                case CreateImageResult.Success:
+                    TempData[SuccessMessage] = " گالری جدید ساخته شد";
+                    return RedirectToAction("FilterImages");
+                case CreateImageResult.Failure:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+            }
+
+            return View(create);
+        }
+
+        #endregion
+
+        #region Edit Image
+
+        [HttpGet]
+        public async Task<IActionResult> EditImage(long imageId)
+        {
+            var model = await _galleryService.GetImageForEdit(imageId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditImage(EditImageViewModel edit)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(edit);
+            }
+
+            var result = await _galleryService.EditImage(edit);
+
+            switch (result)
+            {
+                case EditImageResult.Success:
+                    TempData[SuccessMessage] = " گالری جدید ویرایش شد";
+                    return RedirectToAction("FilterImages");
+                case EditImageResult.HasNotItem:
+                    TempData[ErrorMessage] = "گالری مورد نظر یافت نشد";
+                    break;
+            }
+
+            return View(edit);
+        }
+
+        #endregion
+
+        #region Details Image
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsImage(long imageId)
+        {
+            var model = await _galleryService.DetailsImage(imageId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Delete Image
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteImage(long Id)
+        {
+            var result = await _galleryService.DeleteImage(Id);
 
             if (!result)
             {
