@@ -283,7 +283,7 @@ namespace News.Application.Services.Implementations
             {
                 ImageName = image.ImageName,
                 IsSuccess = image.IsSuccess,
-                Gallery = image.Gallery.GallryName
+                GalleryName = image.Gallery.GallryName
             };
         }
 

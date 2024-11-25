@@ -1,0 +1,48 @@
+﻿@using News.Application.Statics
+@using News.Domain.ViewModels.Images
+@model DetailsImageViewModel
+@{
+    ViewData["Title"] = "جزیات عکس";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+                <div class="block-header">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <ul class="breadcrumb breadcrumb-style ">
+                                <li class="bcrumb-1">
+                                    <a href="/">خانه</a>
+                                </li>
+                                <li class="bcrumb-3">
+                                    @ViewData["Title"]
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <div class="product-store">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="product-gallery">
+                                    <div class="product-gallery-featured">
+                                        <img src="@(SiteTools.ReportImagesName + Model.ImageName)" alt="@Model.ImageName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <div class="product-payment-details">
+                                    <h2 class="product-price display-4">@Model.GalleryName</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
