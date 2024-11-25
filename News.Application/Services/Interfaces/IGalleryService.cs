@@ -1,4 +1,5 @@
-﻿using News.Domain.Entities.Galleries;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Domain.Entities.Galleries;
 using News.Domain.Entities.Hashtags;
 using News.Domain.ViewModels.Galleries;
 using News.Domain.ViewModels.Hashtags;
@@ -20,6 +21,8 @@ namespace News.Application.Services.Interfaces
         Task<FilterGalleryViewModel> GetFilterGalleries(FilterGalleryViewModel filter);
 
         Task<List<Gallery>> GetGalleriesForIndex();
+
+        Task<List<SelectListItem>> SelectedGalleryId();
 
         Task<CreateGalleryResult> CreateGallery(CreateGalleryViewModel create);
 

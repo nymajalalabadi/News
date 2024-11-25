@@ -1,4 +1,5 @@
-﻿using News.Domain.Entities.Galleries;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Domain.Entities.Galleries;
 using News.Domain.Entities.Hashtags;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace News.Domain.InterFaces
         Task<IQueryable<Gallery>> GetGalleriesQuery();
 
         Task<List<Gallery>> GetGalleriesForIndex();
+
+        Task<List<SelectListItem>> SelectedGalleryId();
 
         Task<Gallery?> GetGalleryById(long id);
 

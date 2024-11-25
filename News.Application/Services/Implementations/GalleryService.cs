@@ -1,4 +1,5 @@
-﻿using News.Application.Generators;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using News.Application.Generators;
 using News.Application.Services.Interfaces;
 using News.Application.Statics;
 using News.Domain.Entities.Galleries;
@@ -58,6 +59,11 @@ namespace News.Application.Services.Implementations
         public async Task<List<Gallery>> GetGalleriesForIndex()
         {
             return await _galleryReporitory.GetGalleriesForIndex();
+        }
+
+        public async Task<List<SelectListItem>> SelectedGalleryId()
+        {
+            return await _galleryReporitory.SelectedGalleryId();    
         }
 
         public async Task<CreateGalleryResult> CreateGallery(CreateGalleryViewModel create)
@@ -207,7 +213,7 @@ namespace News.Application.Services.Implementations
             var image = new Image()
             {
                 ImageName = imageName,
-                Galleryid = create.Galleryid,
+                Galleryid = create.GalleryId,
                 IsSuccess = true,
             };
 

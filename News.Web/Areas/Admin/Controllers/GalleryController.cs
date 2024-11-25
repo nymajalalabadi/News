@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using News.Application.Services.Implementations;
 using News.Application.Services.Interfaces;
 using News.Domain.ViewModels.Galleries;
@@ -165,6 +166,9 @@ namespace News.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateImage()
         {
+            var galleries = await _galleryService.SelectedGalleryId();
+            ViewData["gallery"] = new SelectList(galleries, "Value", "Text");
+
             return View();
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using News.DataLayer.Context;
 using News.Domain.Entities.Galleries;
 using News.Domain.InterFaces;
@@ -37,6 +38,18 @@ namespace News.DataLayer.Repositories
         public async Task<List<Gallery>> GetGalleriesForIndex()
         {
             return await _context.Galleries.Where(g => !g.IsDelete && g.IsSuccess).ToListAsync();
+        }
+
+        public async Task<List<SelectListItem>> SelectedGalleryId()
+        {
+            return await _context.Galleries
+                .Where(p => !p.IsDelete && p.IsSuccess)
+                .Select(p => new SelectListItem()
+                {
+                    Text = p.GallryName,
+                    Value = p.Id.ToString()
+                })
+                .ToListAsync();
         }
 
         public async Task<Gallery?> GetGalleryById(long id)

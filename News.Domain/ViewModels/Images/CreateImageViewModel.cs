@@ -10,7 +10,7 @@ namespace News.Domain.ViewModels.Images
 {
     public class CreateImageViewModel
     {
-        public long Galleryid { get; set; }
+        public long GalleryId { get; set; }
 
         [Display(Name = "عکس اصلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
