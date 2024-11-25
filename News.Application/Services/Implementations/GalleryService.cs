@@ -236,7 +236,7 @@ namespace News.Application.Services.Implementations
             {
                 ImageId = image.Id,
                 ImageName = image.ImageName,
-                Galleryid = image.Galleryid,
+                GalleryId = image.Galleryid,
             };
         }
 
@@ -261,6 +261,11 @@ namespace News.Application.Services.Implementations
 
                 return EditImageResult.Success;
             }
+
+            image.Galleryid = edit.GalleryId;
+
+            _galleryReporitory.UpdateImage(image);
+            await _galleryReporitory.SaveChanges();
 
             return EditImageResult.Success;
         }

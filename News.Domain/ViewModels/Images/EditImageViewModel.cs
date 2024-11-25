@@ -12,7 +12,7 @@ namespace News.Domain.ViewModels.Images
     {
         public long ImageId { get; set; }
 
-        public long Galleryid { get; set; }
+        public long GalleryId { get; set; }
 
         [Display(Name = "نام تصویر")]
         [MaxLength(50)]

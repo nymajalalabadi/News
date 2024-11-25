@@ -177,6 +177,9 @@ namespace News.Web.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var galleries = await _galleryService.SelectedGalleryId();
+                ViewData["gallery"] = new SelectList(galleries, "Value", "Text");
+
                 return View(create);
             }
 
@@ -191,6 +194,9 @@ namespace News.Web.Areas.Admin.Controllers
                     TempData[ErrorMessage] = "خطای رخ داده است";
                     break;
             }
+
+            var galleriess = await _galleryService.SelectedGalleryId();
+            ViewData["gallery"] = new SelectList(galleriess, "Value", "Text");
 
             return View(create);
         }
@@ -208,6 +214,9 @@ namespace News.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
+            var galleries = await _galleryService.SelectedGalleryId();
+            ViewData["gallery"] = new SelectList(galleries, "Value", "Text", model.GalleryId);
 
             return View(model);
         }
