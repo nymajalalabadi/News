@@ -222,6 +222,57 @@ function DeleteGallery(id) {
         });
 }
 
+function DeleteImage(id) {
+    swal({
+        title: "آیا مطمئن هستی ؟",
+        text: "در صورت انجام این عملیات قادر به بازگردانی آن نمی باشید.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "/admin/gallery/DeleteImage",
+                    type: "post",
+                    data: {
+                        id: id
+                    },
+                    beforeSend: function () {
+
+                    },
+                    success: function (response) {
+                        if (response.status === "error") {
+                            swal({
+                                title: "خطا",
+                                text: response.message,
+                                icon: "error",
+                                button: "باشه"
+                            });
+                        }
+                        else {
+                            $(`#image-row-${id}`).fadeOut(500);
+                            swal({
+                                title: "اعلان",
+                                text: response.message,
+                                icon: "success",
+                                button: "باشه"
+                            });
+                        }
+                    },
+                    error: function () {
+                        swal({
+                            title: "خطا",
+                            text: "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .",
+                            icon: "error",
+                            button: "باشه"
+                        });
+                    }
+                });
+            }
+        });
+}
+
 /////ckeditor
 
 $(document).ready(function () {
