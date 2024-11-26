@@ -1,4 +1,5 @@
-﻿@using News.Domain.ViewModels.Galleries
+﻿@using News.Application.Statics
+@using News.Domain.ViewModels.Galleries
 @model FilterGalleryViewModel
 
 @{
@@ -54,6 +55,7 @@
                                 <th>آیدی</th>
                                 <th> نام گالری</th>
                                 <th>توضیح مختصر</th>
+                                <th>عکس</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
@@ -64,6 +66,15 @@
                                     <th scope="row">@gallery.Id</th>
                                     <td>@gallery.GallryName</td>
                                     <td>@gallery.Description</td>
+                                    <td>
+                                        @if (gallery.Images!.Any() && gallery.Images != null)
+                                        {
+                                            @foreach (var image in gallery.Images)
+                                            {
+                                                <img src="@(SiteTools.GalleryImagesMethod(gallery.GallryName) + image.ImageName)" class="border" width="100px" height="100px" />
+                                            }
+                                        }
+                                    </td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Gallery" asp-action="DetailsGallery" asp-route-galleryId="@gallery.Id" class="text-warning">
                                             <i class="fa fa-eye small"></i>

@@ -14,5 +14,7 @@ namespace News.Domain.ViewModels.Galleries
 
         [Display(Name = "توضیح مختصر")]
         public string? Description { get; set; }
+
+        public List<string> ImageNames { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace News.DataLayer.Repositories
         public async Task<IQueryable<Gallery>> GetGalleriesQuery()
         {
             return _context.Galleries
+                .Include(g => g.Images)
                 .Where(g => !g.IsDelete)
                 .AsQueryable();
         }
@@ -54,7 +55,7 @@ namespace News.DataLayer.Repositories
 
         public async Task<Gallery?> GetGalleryById(long id)
         {
-            return await _context.Galleries.FirstOrDefaultAsync(g => g.Id.Equals(id));
+            return await _context.Galleries.Include(g => g.Images).FirstOrDefaultAsync(g => g.Id.Equals(id));
         }
 
         public async Task<bool> IsExistGallryName(string gallryName)

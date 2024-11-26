@@ -66,7 +66,7 @@
                                 <tr id="image-row-@image.Id">
                                     <th scope="row">@image.Id</th>
                                     <td>
-                                        <img src="@(SiteTools.GalleryImagesMethod(image.Gallery.GallryName) + image.ImageName)" />
+                                        <img src="@(SiteTools.GalleryImagesMethod(image.Gallery.GallryName) + image.ImageName)" alt="@image.ImageName" class="border" width="100px" height="100px" />
                                     </td>
                                     <td>@image.CreateDate.ToShamsiDate()</td>
                                     <td>@image.Gallery.GallryName</td>

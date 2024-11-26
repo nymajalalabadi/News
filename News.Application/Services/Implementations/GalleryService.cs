@@ -144,6 +144,7 @@ namespace News.Application.Services.Implementations
             {
                 GallryName = gallery.GallryName,
                 Description = gallery.Description,
+                ImageNames = gallery.Images.Select(r => r.ImageName).ToList(),
             };
         }
 
