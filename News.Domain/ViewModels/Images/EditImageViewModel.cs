@@ -14,9 +14,10 @@ namespace News.Domain.ViewModels.Images
 
         public long GalleryId { get; set; }
 
+        public string GalleryName { get; set; } = default!;
+
         [Display(Name = "نام تصویر")]
         [MaxLength(50)]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string ImageName { get; set; } = default!;
 
         [Display(Name = "عکس اصلی")]

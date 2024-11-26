@@ -82,6 +82,7 @@ namespace News.Application.Services.Implementations
             {
                 GallryName = create.GallryName,
                 Description = create.Description,
+                IsSuccess = true
             };  
 
             await _galleryReporitory.AddGallery(gallery);
@@ -207,8 +208,15 @@ namespace News.Application.Services.Implementations
                 return CreateImageResult.Failure;
             }
 
+            var gallery = await _galleryReporitory.GetGalleryById(create.GalleryId);
+
+            if (gallery == null)
+            {
+                return CreateImageResult.Failure;
+            }
+
             var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(create.AvatarImage.FileName);
-            create.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesName, 100, 100, SiteTools.GalleryImagesName);
+            create.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(gallery.GallryName), 100, 100, SiteTools.GalleryImagesMethod(gallery.GallryName));
 
             var image = new Image()
             {
@@ -237,6 +245,7 @@ namespace News.Application.Services.Implementations
                 ImageId = image.Id,
                 ImageName = image.ImageName,
                 GalleryId = image.Galleryid,
+                GalleryName = image.Gallery.GallryName
             };
         }
 
@@ -252,7 +261,7 @@ namespace News.Application.Services.Implementations
             if (edit.AvatarImage != null)
             {
                 var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(edit.AvatarImage.FileName);
-                edit.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesName, 100, 100, SiteTools.GalleryImagesName, image.ImageName);
+                edit.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(edit.GalleryName), 100, 100, SiteTools.GalleryImagesMethod(edit.GalleryName), image.ImageName);
 
                 image.ImageName = imageName;
 
@@ -262,7 +271,7 @@ namespace News.Application.Services.Implementations
                 return EditImageResult.Success;
             }
 
-            image.Galleryid = edit.GalleryId;
+            image!.Galleryid = edit.GalleryId;
 
             _galleryReporitory.UpdateImage(image);
             await _galleryReporitory.SaveChanges();

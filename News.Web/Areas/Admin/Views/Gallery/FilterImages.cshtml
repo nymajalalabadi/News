@@ -1,4 +1,6 @@
-﻿@using News.Domain.ViewModels.Images
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.ViewModels.Images
 @model FilterImagesViewModel
 
 @{
@@ -53,6 +55,7 @@
                             <tr>
                                 <th>آیدی</th>
                                 <th> نام عکس</th>
+                                <th>تاریخ ساخت</th>
                                 <th>نام گالری</th>
                                 <th>عملیات</th>
                             </tr>
@@ -62,7 +65,10 @@
                             {
                                 <tr id="image-row-@image.Id">
                                     <th scope="row">@image.Id</th>
-                                    <td>@image.ImageName</td>
+                                    <td>
+                                        <img src="@(SiteTools.GalleryImagesMethod(image.Gallery.GallryName) + image.ImageName)" />
+                                    </td>
+                                    <td>@image.CreateDate.ToShamsiDate()</td>
                                     <td>@image.Gallery.GallryName</td>
                                     <td>
                                         <a asp-area="Admin" asp-controller="Gallery" asp-action="DetailsImage" asp-route-imageId="@image.Id" class="text-warning">

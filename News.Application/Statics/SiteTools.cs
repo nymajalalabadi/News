@@ -28,7 +28,10 @@ namespace News.Application.Statics
 
         #region Gallery Images Name
 
-        public static string GalleryImagesName { get; set; } = "/Img/GalleryImages/";
+        public static string GalleryImagesMethod(string imageName)
+        {
+            return $"/Img/GalleryImages/{imageName}/";
+        }
 
         #endregion
     }
