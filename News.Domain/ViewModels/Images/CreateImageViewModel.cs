@@ -14,7 +14,7 @@ namespace News.Domain.ViewModels.Images
 
         [Display(Name = "عکس اصلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public IFormFile AvatarImage { get; set; }
+        public List<IFormFile> AvatarImage { get; set; }
     }
     public enum CreateImageResult
     {

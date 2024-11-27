@@ -204,11 +204,6 @@ namespace News.Application.Services.Implementations
 
         public async Task<CreateImageResult> CreateImage(CreateImageViewModel create)
         {
-            if (create.AvatarImage == null)
-            {
-                return CreateImageResult.Failure;
-            }
-
             var gallery = await _galleryReporitory.GetGalleryById(create.GalleryId);
 
             if (gallery == null)
@@ -216,20 +211,29 @@ namespace News.Application.Services.Implementations
                 return CreateImageResult.Failure;
             }
 
-            var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(create.AvatarImage.FileName);
-            create.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(gallery.GallryName), 100, 100, SiteTools.GalleryImagesMethod(gallery.GallryName));
-
-            var image = new Image()
+            if(create.AvatarImage != null && create.AvatarImage.Any())
             {
-                ImageName = imageName,
-                Galleryid = create.GalleryId,
-                IsSuccess = true,
-            };
+                foreach (var img in create.AvatarImage)
+                {
+                    var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(img.FileName);
+                    img.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(gallery.GallryName), 100, 100, SiteTools.GalleryImagesMethod(gallery.GallryName));
 
-            await _galleryReporitory.AddImage(image);
-            await _galleryReporitory.SaveChanges();
+                    var image = new Image()
+                    {
+                        ImageName = imageName,
+                        Galleryid = create.GalleryId,
+                        IsSuccess = true,
+                    };
 
-            return CreateImageResult.Success;   
+                    await _galleryReporitory.AddImage(image);
+                }
+
+                await _galleryReporitory.SaveChanges();
+
+                return CreateImageResult.Success;
+            }
+
+            return CreateImageResult.Failure;
         }
 
         public async Task<EditImageViewModel> GetImageForEdit(long imageId)
