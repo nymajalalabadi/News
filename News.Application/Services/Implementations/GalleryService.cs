@@ -3,15 +3,9 @@ using News.Application.Generators;
 using News.Application.Services.Interfaces;
 using News.Application.Statics;
 using News.Domain.Entities.Galleries;
-using News.Domain.Entities.Reports;
 using News.Domain.InterFaces;
 using News.Domain.ViewModels.Galleries;
 using News.Domain.ViewModels.Images;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace News.Application.Services.Implementations
 {
