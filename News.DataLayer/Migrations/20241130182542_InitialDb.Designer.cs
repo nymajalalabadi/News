@@ -12,8 +12,8 @@ using News.DataLayer.Context;
 namespace News.DataLayer.Migrations
 {
     [DbContext(typeof(NewsDbContext))]
-    [Migration("20241121025338_AddImageTbl")]
-    partial class AddImageTbl
+    [Migration("20241130182542_InitialDb")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,6 +74,7 @@ namespace News.DataLayer.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("ImageName")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
