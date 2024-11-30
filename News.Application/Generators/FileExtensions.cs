@@ -75,7 +75,7 @@ namespace News.Application.Generators
             if (!Directory.Exists(finalPath)) image.CopyTo(stream);
         }
 
-        public static void DeleteImage(this string imageName, string originalPath, string? thumbPath)
+        public static void RemoveImage(this string imageName, string originalPath, string? thumbPath)
         {
             if ((string.IsNullOrEmpty(imageName)) || imageName == SiteTools.DefaultImageName) return;
             originalPath = Directory.GetCurrentDirectory() + "/wwwroot" + originalPath;
@@ -89,7 +89,7 @@ namespace News.Application.Generators
                 File.Delete(thumbPath + imageName);
         }
 
-        public static void DeleteImage(this string imageName, string originalPath)
+        public static void RemoveImage(this string imageName, string originalPath)
         {
             if ((string.IsNullOrEmpty(imageName)) || imageName == SiteTools.DefaultImageName) return;
             originalPath = Directory.GetCurrentDirectory() + "/wwwroot" + originalPath;

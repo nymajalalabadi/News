@@ -210,12 +210,12 @@ namespace News.Application.Services.Implementations
                 foreach (var img in create.AvatarImage)
                 {
                     var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(img.FileName);
-                    img.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(gallery.GallryName), 100, 100, SiteTools.GalleryImagesMethod(gallery.GallryName));
+                    img.AddImageToServerWithOutThumb(imageName, SiteTools.GalleryImagesMethod(gallery.GallryName), 100, 100);
 
                     var image = new Image()
                     {
                         ImageName = imageName,
-                        Galleryid = create.GalleryId,
+                        GalleryId = create.GalleryId,
                         IsSuccess = true,
                     };
 
@@ -243,7 +243,7 @@ namespace News.Application.Services.Implementations
             {
                 ImageId = image.Id,
                 ImageName = image.ImageName,
-                GalleryId = image.Galleryid,
+                GalleryId = image.GalleryId,
                 GalleryName = image.Gallery.GallryName
             };
         }
@@ -252,6 +252,8 @@ namespace News.Application.Services.Implementations
         {
             var image = await _galleryReporitory.GetImageyById(edit.ImageId);
 
+            var newGalleryName = await _galleryReporitory.GetGalleryById(edit.GalleryId);
+
             if (image == null)
             {
                 return EditImageResult.HasNotItem;
@@ -259,8 +261,10 @@ namespace News.Application.Services.Implementations
 
             if (edit.AvatarImage != null)
             {
+                image.ImageName.RemoveImage(SiteTools.GalleryImagesMethod(edit.GalleryName));
+
                 var imageName = Guid.NewGuid().ToString("N") + Path.GetExtension(edit.AvatarImage.FileName);
-                edit.AvatarImage.AddImageToServer(imageName, SiteTools.GalleryImagesMethod(edit.GalleryName), 100, 100, SiteTools.GalleryImagesMethod(edit.GalleryName), image.ImageName);
+                edit.AvatarImage.AddImageToServerWithOutThumb(imageName, SiteTools.GalleryImagesMethod(edit.GalleryName), 100, 100);
 
                 image.ImageName = imageName;
 
@@ -270,7 +274,29 @@ namespace News.Application.Services.Implementations
                 return EditImageResult.Success;
             }
 
-            image!.Galleryid = edit.GalleryId;
+            if (newGalleryName!.GallryName != edit.GalleryName)
+            {
+                string LastSaveDir = "wwwroot/Img/GalleryImages/" + edit.GalleryName;
+                string LastSavePath = Path.Combine(Directory.GetCurrentDirectory(), LastSaveDir, image.ImageName);
+
+                string newSaveDir = "wwwroot/Img/GalleryImages/" + newGalleryName;
+                if (!Directory.Exists(newSaveDir))
+                {
+                    Directory.CreateDirectory(newSaveDir);
+                }
+
+                string newSavePath = Path.Combine(Directory.GetCurrentDirectory(), newSaveDir, image.ImageName);
+                File.Move(LastSavePath, newSavePath, true);
+
+                image!.GalleryId = edit.GalleryId;
+
+                _galleryReporitory.UpdateImage(image);
+                await _galleryReporitory.SaveChanges();
+
+                return EditImageResult.Success;
+            }
+
+            image!.GalleryId = edit.GalleryId;
 
             _galleryReporitory.UpdateImage(image);
             await _galleryReporitory.SaveChanges();
