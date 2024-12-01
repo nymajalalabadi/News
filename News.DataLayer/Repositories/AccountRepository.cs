@@ -1,4 +1,6 @@
-﻿using News.DataLayer.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using News.DataLayer.Context;
+using News.Domain.Entities.Account;
 using News.Domain.InterFaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,41 @@ namespace News.DataLayer.Repositories
 
         #region Comment
 
+        public async Task<IQueryable<Comment>> GetCommentsQuery()
+        {
+            return  _context.Comments
+                .Include(c => c.Report)
+                .Where(c => !c.IsDelete).AsQueryable();
+        }
+
+        public async Task<List<Comment>> GetCommentsForIndex()
+        {
+            return await _context.Comments
+                .Include(c => c.Report)
+                .Where(c => !c.IsDelete).ToListAsync();
+        }
+
+        public async Task<Comment?> GetCommentById(long id)
+        {
+            return await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task AddComment(Comment comment)
+        {
+            await _context.Comments.AddAsync(comment);
+        }
+
+        public void UpdateComment(Comment comment)
+        {
+            _context.Comments.Update(comment);
+        }
+
         #endregion
+
+        public async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync(); 
+        }
 
         #endregion
     }

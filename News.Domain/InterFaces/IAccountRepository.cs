@@ -1,4 +1,6 @@
-﻿using System;
+﻿using News.Domain.Entities.Account;
+using News.Domain.Entities.Hashtags;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,19 @@ namespace News.Domain.InterFaces
 
         #region Comment
 
+        Task<IQueryable<Comment>> GetCommentsQuery();
+
+        Task<List<Comment>> GetCommentsForIndex();
+
+        Task<Comment?> GetCommentById(long id);
+
+        Task AddComment(Comment comment);
+
+        void UpdateComment(Comment comment);
+
         #endregion
+
+        Task SaveChanges();
 
         #endregion
     }
