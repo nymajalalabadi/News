@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using News.Domain.Entities.Account;
 using News.Domain.Entities.Galleries;
 using News.Domain.Entities.Hashtags;
 using News.Domain.Entities.Reports;
@@ -25,6 +26,8 @@ namespace News.DataLayer.Context
         public DbSet<Gallery> Galleries { get; set; }
 
         public DbSet<Image> Images { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
 
         #endregion
     }
