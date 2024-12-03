@@ -179,23 +179,7 @@
                 <div class="section_tittle text-center my-5">
                     <h5>نظر کاربران</h5>
                 </div>
-                <div class="row m-4">
-                    <div class="comment-box my-3 p-3 rounded bg-white">
-                        <div class="comment-title d-sm-flex align-items-center py-3">
-                            <small class="comment-title-name"> محمدحسین </small>
-                            <small class="ms-5"> ارسال شده در </small>
-                            <small class="mx-3">|</small>
-                            <small> دوشنبه ۱۶ مرداد ۱۴۰۲ </small>
-                        </div>
-                        <div class="comment-text float-start px-2 align-items-center">
-                            <p> به امید پیروزی تیم ملی فوتبال ایران </p>
-
-                        </div>
-                        <div class="float-end align-items-center">
-                            <img src="Assets/Img/Icons/CommaForComment.svg" class="comment-comma-img">
-                        </div>
-                    </div>
-                </div>
+                 @await Component.InvokeAsync("ReportCommentsComponent", new { reportId = Model.ReportId })
             </div>
             <!-- End Comments -->
         </div>
@@ -404,6 +388,7 @@
 </div>
 
 @section Scripts{
+    <partial name="_ValidationScripts" />
     <script>
         $(window).load(function () {
             $('.flexslider').flexslider({

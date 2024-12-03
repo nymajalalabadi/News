@@ -54,6 +54,12 @@ namespace News.Application.Services.Implementations
             return filter;
         }
 
+        public async Task<List<Comment>> AllReportCommentByreportId(long reportId)
+        {
+            return await _accountRepository.AllReportCommentByreportId(reportId);
+        }
+
+
         public async Task<CreateCommentResult> CreateComment(CreateCommentViewModel create)
         {
             if (create.Email == null || create.Name == null)

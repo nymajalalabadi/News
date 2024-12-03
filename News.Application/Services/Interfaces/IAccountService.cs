@@ -1,4 +1,5 @@
-﻿using News.Domain.ViewModels.Account;
+﻿using News.Domain.Entities.Account;
+using News.Domain.ViewModels.Account;
 using News.Domain.ViewModels.ReportGroups;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace News.Application.Services.Interfaces
         #region Comment
 
         Task<FilterCommentViewModel> GetFilterComments(FilterCommentViewModel filter);
+
+        Task<List<Comment>> AllReportCommentByreportId(long reportId);
 
         Task<CreateCommentResult> CreateComment(CreateCommentViewModel create);
 

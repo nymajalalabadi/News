@@ -16,6 +16,8 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<Comment>> GetCommentsQuery();
 
+        Task<List<Comment>> AllReportCommentByreportId(long reportId);
+
         Task<List<Comment>> GetCommentsForIndex();
 
         Task<Comment?> GetCommentById(long id);

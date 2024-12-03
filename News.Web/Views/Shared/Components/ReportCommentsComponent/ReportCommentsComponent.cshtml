@@ -1,0 +1,26 @@
+﻿@using News.Application.Extensions
+@using News.Domain.Entities.Account
+@model List<Comment>
+
+<div class="row m-4">
+    @if (Model.Any() && Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <div class="comment-box my-3 p-3 rounded bg-white">
+                <div class="comment-title d-sm-flex align-items-center py-3">
+                    <small class="comment-title-name"> @item.Name </small>
+                    <small class="ms-5"> ارسال شده در </small>
+                    <small class="mx-3">|</small>
+                    <small> @item.CreateDate.ToShamsiDateTime() </small>
+                </div>
+                <div class="comment-text float-start px-2 align-items-center">
+                    <p> @Html.Raw(item.CommentText) </p>
+                </div>
+                <div class="float-end align-items-center">
+                    <img src="Assets/Img/Icons/CommaForComment.svg" class="comment-comma-img" />
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -34,6 +34,13 @@ namespace News.DataLayer.Repositories
                 .Where(c => !c.IsDelete).AsQueryable();
         }
 
+        public async Task<List<Comment>> AllReportCommentByreportId(long reportId)
+        {
+            return await _context.Comments
+                .Include(c => c.Report)
+                .Where(c => !c.IsDelete && c.IsSuccess && c.ReportId == reportId).ToListAsync();
+        }
+
         public async Task<List<Comment>> GetCommentsForIndex()
         {
             return await _context.Comments
