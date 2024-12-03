@@ -1,4 +1,5 @@
-﻿using News.Domain.Entities.Common;
+﻿using News.Domain.Entities.Account;
+using News.Domain.Entities.Common;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -64,6 +65,8 @@ namespace News.Domain.Entities.Reports
         #region relations
 
         public ReportGroup ReportGroup { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
 
         #endregion
     }
