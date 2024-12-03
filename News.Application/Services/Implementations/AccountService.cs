@@ -16,9 +16,12 @@ namespace News.Application.Services.Implementations
 
         private readonly IAccountRepository _accountRepository;
 
-        public AccountService(IAccountRepository accountRepository)
+        private readonly IReportReporistory _reportReporistory;
+
+        public AccountService(IAccountRepository accountRepository, IReportReporistory reportReporistory)
         {
             _accountRepository = accountRepository;
+            _reportReporistory = reportReporistory;
         }
 
         #endregion
@@ -58,8 +61,16 @@ namespace News.Application.Services.Implementations
                 return CreateCommentResult.Error;
             }
 
+            var report = await _reportReporistory.GetReportById(create.ReportId);
+
+            if (report == null)
+            {
+                return CreateCommentResult.CheckReport;
+            }
+
             var newComment = new Comment()
             {
+                ReportId = report.Id,
                 Email = create.Email,
                 Name = create.Name,
                 CommentText = create.CommentText,

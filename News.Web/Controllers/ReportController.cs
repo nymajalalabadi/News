@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using News.Application.Extensions;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.Account;
 using News.Domain.ViewModels.ReportGroups;
 using News.Domain.ViewModels.Reports;
 
 namespace News.Web.Controllers
 {
-    public class ReportController : Controller
+    public class ReportController : SiteBaseController
     {
         #region Consractor
 
         private readonly IReportService _reportService;
 
-        public ReportController(IReportService reportService)
+        private readonly IAccountService _accountService;
+
+        public ReportController(IReportService reportService, IAccountService accountService)
         {
             _reportService = reportService;
+            _accountService = accountService;
         }
 
         #endregion
 
         #region report
+
+        #region Details Report
 
         [HttpGet]
         public async Task<IActionResult> Report(long reportId)
@@ -34,6 +41,40 @@ namespace News.Web.Controllers
 
             return View(model);
         }
+
+        #endregion
+
+        #region Create Comment
+
+        [HttpPost]
+        public async Task<IActionResult> CreateReportComment(CreateCommentViewModel comment)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _accountService.CreateComment(comment);
+
+                switch (result)
+                {
+                    case CreateCommentResult.CheckReport:
+                        TempData[ErrorMessage] = "محصولی یافت نشد";
+                        break;
+
+                    case CreateCommentResult.Error:
+                        TempData[ErrorMessage] = "ایمیل و اسم خود را وارد کنید";
+                        break;
+
+                    case CreateCommentResult.Success:
+                        TempData[SuccessMessage] = "نظر شما با موفقیت ثبت شد";
+
+                        return RedirectToAction("Report", new { productId = comment.ReportId });
+                }
+            }
+
+            TempData[ErrorMessage] = "لطفا نظر خود را وارد نمایید";
+            return RedirectToAction("Report", new { reportId = comment.ReportId });
+        }
+
+        #endregion
 
         #endregion
 

@@ -31,6 +31,7 @@ namespace News.Domain.ViewModels.Account
     public enum CreateCommentResult
     {
         Success,
-        Error
+        Error,
+        CheckReport
     }
 }

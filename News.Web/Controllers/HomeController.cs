@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace News.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : SiteBaseController
     {
         public HomeController()
         {
