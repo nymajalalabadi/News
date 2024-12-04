@@ -35,6 +35,23 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Delete Comment
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteComment(long Id)
+        {
+            var result = await _accountService.DeleteComment(Id);
+
+            if (!result)
+            {
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد." });
+            }
+
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد." });
+        }
+
+        #endregion
+
 
         #region IsSuccess Comment
 
