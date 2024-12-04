@@ -65,7 +65,7 @@ namespace News.DataLayer.Repositories
             return await _context.Reports
                 .Include(r => r.ReportGroup)
                 .OrderByDescending(r => r.CreateDate)
-                .Where(r => r.IsSuccess && r.ReportGroup.UrlName == groupUrl && !r.IsDelete)
+                .Where(r => r.IsSuccess && !r.IsDelete && r.ReportGroup.UrlName == groupUrl)
                 .Take(4)
                 .ToListAsync();
         }

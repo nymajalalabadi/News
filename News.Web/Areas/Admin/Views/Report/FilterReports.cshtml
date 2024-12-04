@@ -69,7 +69,7 @@
                                     <td><img src="@(string.IsNullOrEmpty(report.Image) ? SiteTools.DefaultImageName : (SiteTools.ReportImagesName + report.Image))" alt="@report.ImageAlt" class="border" width="100px" height="100px"></td>
                                     <td>@report.Title</td>
                                     <td>@report.CreateDate.ToShamsiDate()</td>
-                                    <td>@report.Description</td>
+                                    <td>@Html.Raw(report.Description)</td>
                                     @if (report.IsHotNews == false)
                                     {
                                         <td>

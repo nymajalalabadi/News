@@ -66,7 +66,7 @@ namespace News.Web.Controllers
                     case CreateCommentResult.Success:
                         TempData[SuccessMessage] = "نظر شما با موفقیت ثبت شد";
 
-                        return RedirectToAction("Report", new { productId = comment.ReportId });
+                        return RedirectToAction("Report", new { ReportId = comment.ReportId });
                 }
             }
 

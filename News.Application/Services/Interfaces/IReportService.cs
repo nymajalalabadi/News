@@ -36,6 +36,8 @@ namespace News.Application.Services.Interfaces
 
         Task<List<Report>> GetRelatedReportsForIndex(string groupUrl, long reportId);
 
+        Task<ReportsListForShowIndex> GetReportsListForShowIndex(string groupUrlName);
+
         Task<CreateReportResult> CreateReport(CreateReportViewModel report);
 
         Task<EditReportViewModel> GetReportForEdit(long reportId);

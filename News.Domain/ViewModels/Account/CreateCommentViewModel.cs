@@ -9,7 +9,6 @@ namespace News.Domain.ViewModels.Account
 {
     public class CreateCommentViewModel
     {
-        [Display(Name = "صفحه خبر")]
         public long ReportId { get; set; }
 
         [Display(Name = "نام")]

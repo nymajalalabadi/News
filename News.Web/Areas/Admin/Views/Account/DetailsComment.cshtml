@@ -34,7 +34,7 @@
                                     <h2 class="product-price display-4">@Model.Email</h2>
                                     <h2 class="product-price display-4">@Model.Name</h2>
                                     <h2 class="product-price display-4">@Model.CreateDate</h2>
-                                    <h2 class="product-price display-4">@Model.CommentText</h2>
+                                    <h2 class="product-price display-4">@Html.Raw(Model.CommentText)</h2>
                                     <h2 class="product-price display-4">@Model.TitleReport</h2>
                                     <h2 class="product-price display-4">@Model.IsSuccess</h2>
                                 </div>

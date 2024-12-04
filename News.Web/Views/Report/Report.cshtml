@@ -159,7 +159,7 @@
                 <form asp-area="" asp-controller="Report" asp-action="CreateReportComment" method="post" class="position-relative">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <p style="font-size: .8rem;">دیدگاه خود را بنویسید</p>
-                        <input hidden="hidden" value="@Model.ReportId" name="ProductId" />
+                    <input hidden="hidden" value="@Model.ReportId" name="ReportId" />
                         <div class="form-group">
                         <input name="Name" placeholder="نام شما" class="form-control">
                         </div>
@@ -388,7 +388,7 @@
 </div>
 
 @section Scripts{
-    <partial name="_ValidationScripts" />
+    <partial name="_ValidationScriptsPartial" />
     <script>
         $(window).load(function () {
             $('.flexslider').flexslider({

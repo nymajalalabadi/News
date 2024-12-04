@@ -23,9 +23,7 @@ namespace News.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetReportsForIndex("sport");
-
-            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName("sport");
+            var data = await _reportService.GetReportsListForShowIndex("sport");
 
             return View("SportViewComponent", data);
         }
@@ -55,9 +53,7 @@ namespace News.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetReportsForIndex("Economic");
-
-            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName("Economic");
+            var data = await _reportService.GetReportsListForShowIndex("Economic");
 
             return View("EconomicViewComponent", data);
         }
@@ -87,9 +83,7 @@ namespace News.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetReportsForIndex("Health");
-
-            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName("Health");
+            var data = await _reportService.GetReportsListForShowIndex("Health");
 
             return View("HealthViewComponent", data);
         }
@@ -119,10 +113,7 @@ namespace News.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var data = await _reportService.GetReportsForIndex("MultiMedia");
-
-            ViewData["ReportGroups"] = await _reportService.GetReportGroupByUrlName("MultiMedia");
-
+            var data = await _reportService.GetReportsListForShowIndex("MultiMedia");
 
             return View("MultiMediaSliderViewComponent", data);
         }

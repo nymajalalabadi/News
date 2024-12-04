@@ -1,16 +1,13 @@
 ﻿@using News.Application.Extensions
 @using News.Application.Statics
-@using News.Domain.Entities.Reports
-@model List<Report>
+@using News.Domain.ViewModels.Reports
+@model ReportsListForShowIndex
 
-@{
-    var reportGroup = ViewData["ReportGroups"] as ReportGroup;
-}
 
 <!-- Start Multi Media Line -->
 <div class="box">
     <h6 class="position-relative ">
-        <span class="MultiMedia-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@reportGroup.UrlName">@reportGroup!.GroupName </a> </span>
+        <span class="Economic-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@Model.ReportGroup.UrlName">@Model.ReportGroup!.GroupName </a> </span>
         <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
     </h6>
 </div>
@@ -18,10 +15,10 @@
 <!-- Start Multi Media -->
 <div class="container shadow bg-body-tertiary rounded mb-4 flexslider">
     <div class="row">
-        @if (Model != null && Model.Any())
+        @if (Model.Reports != null && Model.Reports.Any())
         {
             <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
-                @foreach (var report in Model)
+                @foreach (var report in Model.Reports)
                 {
                     <ul class="slides">
                         <li style="position:relative; height:250px;">
@@ -35,6 +32,22 @@
                         </li>
                     </ul>
                 }
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+                    <ul class="slides">
+                        <li style="position:relative; height:250px;">
+                        <img src="@SiteTools.DefaultImageName" title="" controls allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" style="width:50%; height:100%;"></img>
+                            <a class="flex-caption" style="position:absolute; text-decoration:none;">
+                                <b style="color: black; font-size: .8rem; ">خالی</b>
+                                <br>
+                            <p style="color:darkblue; margin: 10px 10px; height: 80%; overflow:hidden;">خالی</p>
+                            <p style="color:darkblue; margin: 10px 10px; font-size: 0.6rem; position:absolute; color:#b9b9bb; top:84%; left: 10%;"> <i class="fa fa-clock"></i>  خالی  </p>
+                            </a>
+                        </li>
+                    </ul>
             </div>
         }
     </div>

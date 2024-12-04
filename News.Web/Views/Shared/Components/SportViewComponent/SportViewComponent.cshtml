@@ -1,23 +1,20 @@
 ﻿@using News.Application.Extensions
 @using News.Application.Statics
-@using News.Domain.Entities.Reports
-@model List<Report>
+@using News.Domain.ViewModels.Reports
+@model ReportsListForShowIndex
 
-@{
-    var reportGroup = ViewData["ReportGroups"] as ReportGroup;
-}
 
 <div class="box">
     <h6 class="position-relative ">
-        <span class="Sport-Line-Color position-relative bg-body"><a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@reportGroup.UrlName" >@reportGroup!.GroupName </a> </span>
+        <span class="Economic-Line-Color position-relative bg-body"> <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@Model.ReportGroup.UrlName">@Model.ReportGroup!.GroupName </a> </span>
         <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
     </h6>
 </div>
 <!-- Start Sport -->
-@if (Model != null && Model.Any())
+@if (Model.Reports != null && Model.Reports.Any())
 {
     <ul class="d-none d-sm-flex row mb-3 list-unstyled">
-        @foreach (var report in Model)
+        @foreach (var report in Model.Reports)
         {
             <li class="scale col-lg-3 col-sm-6 my-sm-2">
                 <div class="position-relative card shadow">
@@ -32,17 +29,38 @@
                     </div>
                 </div>
             </li>
-
         }
+    </ul>
+}
+else
+{
+    <ul class="d-none d-sm-flex row mb-3 list-unstyled">
+        <li class="scale col-lg-3 col-sm-6 my-sm-2">
+            <div>
+                <div class="card shadow">
+                    <a>
+                        خالی
+                    </a>
+                    <div class="card-body p-2 mb-4 body-economiccomponent">
+                        <a>
+                            خالی
+                        </a>
+                        <div class="position-absolute date-sportANDeconomiccomponent">
+                            <p class="d-inline-block px-1"> <i class="fas fa-clock"></i> خالی</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
 }
 <!-- End Sport -->
 <!-- Start Sport Hidden -->
-@if (Model != null && Model.Any())
+@if (Model.Reports != null && Model.Reports.Any())
 {
     <ul class=" mb-3 d-sm-none list-unstyled">
 
-        @foreach (var report in Model)
+        @foreach (var report in Model.Reports)
         {
             <li>
                 <div class="my-2">
@@ -60,6 +78,27 @@
                 </div>
             </li>
         }
+    </ul>
+}
+else
+{
+    <ul class=" mb-3 d-sm-none list-unstyled">
+        <li>
+            <div class="my-2">
+                <div class="col-12 shadow d-inline-flex">
+                    <div class="col-4">
+                        <a>خالی</a>
+                    </div>
+                    <div class="col-8 bg-body-secondary p-2 body-small-economiccomponent">
+                        <a class="text-decoration-none">
+                            <p> خالی </p>
+                        </a>
+                        <p class="d-inline-block px-1 m-0 date-small-sportANDeconomiccomponent"> <i class="fas fa-clock"></i> خالی </p>
+                    </div>
+                </div>
+            </div>
+        </li>
+
     </ul>
 }
 <!-- End Sport Hidden -->

@@ -153,6 +153,24 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetRelatedReportsForIndex(groupUrl, reportId);
         }
 
+        public async Task<ReportsListForShowIndex> GetReportsListForShowIndex(string groupUrlName)
+        {
+            var group = await _reportReporistory.GetReportGroupByUrlName(groupUrlName);
+
+            var reports = await _reportReporistory.GetReportsForIndex(groupUrlName);    
+
+            if (group == null || reports == null)
+            {
+                return null;
+            }
+
+            return new ReportsListForShowIndex()
+            {
+                ReportGroup = group,
+                Reports = reports
+            };
+        }
+
         public async Task<CreateReportResult> CreateReport(CreateReportViewModel report)
         {
             if (report.Title == null)
