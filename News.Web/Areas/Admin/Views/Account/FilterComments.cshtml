@@ -1,0 +1,166 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.ViewModels.Account
+@model FilterCommentViewModel
+
+@{
+    ViewData["Title"] = "لیست نظرات";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    فیلتر ها
+                </h2>
+            </div>
+            <div class="body">
+                <form asp-area="Admin" asp-controller="Account" asp-action="FilterComments" method="get" id="filter-search">
+                    <input type="hidden" asp-for="CurrentPage" />
+                    <div class="row clearfix">
+                        <div class="col-sm-12  col-md-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" asp-for="Email" class="form-control">
+                                    <label asp-for="Email" class="form-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn btn-success">جستجو</button>
+                            @if (Context.Request.QueryString.HasValue)
+                            {
+                                <a asp-area="Admin" asp-controller="Account" asp-action="FilterComments" class="btn btn-raised btn-primary btn-round waves-effect">حذف فیلتر</a>
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>@ViewData["Title"]</strong>
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                @if (Model.Entities != null && Model.Entities.Any())
+                {
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th> ایمیل</th>
+                                <th>نام</th>
+                                <th> تاریخ نظر</th>
+                                <th>توضیحات</th>
+                                <th>عنوان خبر</th>
+                                <th>نمایش نظر</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var comment in Model.Entities)
+                            {
+                                <tr id="comment-row-@comment.Id">
+                                    <td><p>@comment.Email</p></td>
+                                    <td>@comment.Name</td>
+                                    <td>@comment.CreateDate.ToShamsiDate()</td>
+                                    <td>@comment.CommentText</td>
+                                    <td>@comment.Report.Title</td>
+                                    @if (comment.IsSuccess == false)
+                                    {
+                                        <td>
+                                            <a onclick="IsSuccessComment('@comment.Id')" class="text-warning">
+                                                <i class="fa fa-check small" style="color:darkgray"></i>
+                                            </a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <i class="fa fa-check small" style="color:lawngreen"></i>
+                                        </td>
+                                    }
+                                    <td>
+                                        <a asp-area="Admin" asp-controller="Account" asp-action="DetailsComment" asp-route-commentId="@comment.Id" class="text-warning">
+                                            <i class="fa fa-eye small"></i>
+                                        </a>
+                                        <a onclick="deleteComment('@comment.Id')" class="text-warning">
+                                            <i class="fa fa-trash small"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <partial name="_AdminPagination" model="@Model.GetPaging()" />
+                }
+                else
+                {
+                    <div class="alert alert-info mb-0">
+                        آیتمی پیدا نشد.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function IsSuccessComment(id) {
+            swal({
+                title: "آیا مطمئن هستی ؟",
+                text: "در صورت انجام این عملیات قادر به بازگردانی آن نمی باشید.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: "/admin/Account/IsSuccessComment",
+                            type: "post",
+                            data: {
+                                id: id
+                            },
+                            beforeSend: function () {
+
+                            },
+                            success: function (response) {
+                                if (response.status === "error") {
+                                    swal({
+                                        title: "خطا",
+                                        text: response.message,
+                                        icon: "error",
+                                        button: "باشه"
+                                    });
+                                }
+                                else {
+                                    swal({
+                                        title: "اعلان",
+                                        text: response.message,
+                                        icon: "success",
+                                        button: "باشه"
+                                    });
+                                }
+                            },
+                            error: function () {
+                                swal({
+                                    title: "خطا",
+                                    text: "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .",
+                                    icon: "error",
+                                    button: "باشه"
+                                });
+                            }
+                        });
+                    }
+                });
+        }
+    </script>
+}

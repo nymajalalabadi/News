@@ -23,6 +23,10 @@ namespace News.Application.Services.Interfaces
 
         Task<DetailsCommentViewModel> DetailsComment(long commentId);
 
+        Task<bool> DeleteComment(long commentId);
+
+        Task<bool> IsSuccessComment(long commentId);
+
         #endregion
 
         #endregion

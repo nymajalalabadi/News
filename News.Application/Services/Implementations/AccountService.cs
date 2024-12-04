@@ -107,6 +107,40 @@ namespace News.Application.Services.Implementations
             };
         }
 
+        public async Task<bool> DeleteComment(long commentId)
+        {
+            var comment = await _accountRepository.GetCommentById(commentId);
+
+            if (comment == null)
+            {
+                return false;
+            }
+
+            comment.IsDelete = true;
+
+            _accountRepository.UpdateComment(comment);
+            await _accountRepository.SaveChanges();
+
+            return true;
+        }
+
+        public async Task<bool> IsSuccessComment(long commentId)
+        {
+            var comment = await _accountRepository.GetCommentById(commentId);
+
+            if (comment == null)
+            {
+                return false;
+            }
+
+            comment.IsSuccess = true;
+
+            _accountRepository.UpdateComment(comment);
+            await _accountRepository.SaveChanges();
+
+            return true;
+        }
+
         #endregion
 
         #endregion
