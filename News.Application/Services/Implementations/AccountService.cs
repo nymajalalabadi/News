@@ -104,6 +104,8 @@ namespace News.Application.Services.Implementations
                 Name = comment.Name,
                 CommentText = comment.CommentText,
                 CreateDate = comment.CreateDate.ToShortDateString(),
+                IsSuccess = comment.IsSuccess,
+                TitleReport = comment.Report.Title
             };
         }
 

@@ -52,6 +52,22 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Details Comment
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsComment(long commentId)
+        {
+            var model = await _accountService.DetailsComment(commentId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
 
         #region IsSuccess Comment
 

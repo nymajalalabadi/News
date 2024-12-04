@@ -29,7 +29,7 @@ namespace News.Domain.ViewModels.Account
         [Display(Name = "نمایش نظر")]
         public bool IsSuccess { get; set; }
 
-        public string CreateDate { get; set; }
+        public string CreateDate { get; set; } = default!;
 
         [Display(Name = "عنوان خبر")]
         public string TitleReport { get; set; } = default!;

@@ -50,7 +50,7 @@ namespace News.DataLayer.Repositories
 
         public async Task<Comment?> GetCommentById(long id)
         {
-            return await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.Comments.Include(c => c.Report).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task AddComment(Comment comment)
