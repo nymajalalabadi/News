@@ -14,7 +14,9 @@ namespace News.Domain.InterFaces
 
         #region Comment
 
-        Task<IQueryable<Comment>> GetCommentsQuery();
+        Task<IQueryable<Comment>> GetCommentsIsSuccesQuery();
+
+        Task<IQueryable<Comment>> GetCommentsNotSuccesQuery();
 
         Task<List<Comment>> AllReportCommentByreportId(long reportId);
 

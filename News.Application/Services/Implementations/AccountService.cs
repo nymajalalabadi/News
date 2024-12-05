@@ -30,9 +30,33 @@ namespace News.Application.Services.Implementations
 
         #region Comment
 
-        public async Task<FilterCommentViewModel> GetFilterComments(FilterCommentViewModel filter)
+        public async Task<FilterCommentViewModel> GetFilterCommentNotSuucess(FilterCommentViewModel filter)
         {
-            var query = await _accountRepository.GetCommentsQuery();
+            var query = await _accountRepository.GetCommentsNotSuccesQuery();
+
+            #region Filter
+
+            if (!string.IsNullOrWhiteSpace(filter.Email))
+            {
+                query = query.Where(p => p.Email.Contains(filter.Email));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(p => p.CreateDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
+        public async Task<FilterCommentViewModel> GetFilterCommentIsSuucess(FilterCommentViewModel filter)
+        {
+            var query = await _accountRepository.GetCommentsIsSuccesQuery();
 
             #region Filter
 
@@ -58,7 +82,6 @@ namespace News.Application.Services.Implementations
         {
             return await _accountRepository.AllReportCommentByreportId(reportId);
         }
-
 
         public async Task<CreateCommentResult> CreateComment(CreateCommentViewModel create)
         {

@@ -15,7 +15,9 @@ namespace News.Application.Services.Interfaces
 
         #region Comment
 
-        Task<FilterCommentViewModel> GetFilterComments(FilterCommentViewModel filter);
+        Task<FilterCommentViewModel> GetFilterCommentNotSuucess(FilterCommentViewModel filter);
+
+        Task<FilterCommentViewModel> GetFilterCommentIsSuucess(FilterCommentViewModel filter);
 
         Task<List<Comment>> AllReportCommentByreportId(long reportId);
 

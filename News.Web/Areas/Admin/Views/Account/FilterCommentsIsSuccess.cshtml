@@ -69,12 +69,12 @@
                                     <td><p>@comment.Email</p></td>
                                     <td>@comment.Name</td>
                                     <td>@comment.CreateDate.ToShamsiDate()</td>
-                                    <td>@comment.CommentText</td>
+                                    <td>@Html.Raw(comment.CommentText)</td>
                                     <td>@comment.Report.Title</td>
                                     @if (comment.IsSuccess == false)
                                     {
                                         <td>
-                                            <a onclick="IsSuccessComment('@comment.Id')" class="text-warning">
+                                            <a class="text-warning">
                                                 <i class="fa fa-check small" style="color:darkgray"></i>
                                             </a>
                                         </td>
@@ -109,58 +109,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts
-{
-    <script>
-        function IsSuccessComment(id) {
-            swal({
-                title: "آیا مطمئن هستی ؟",
-                text: "در صورت انجام این عملیات قادر به بازگردانی آن نمی باشید.",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            url: "/admin/Account/IsSuccessComment",
-                            type: "post",
-                            data: {
-                                id: id
-                            },
-                            beforeSend: function () {
-
-                            },
-                            success: function (response) {
-                                if (response.status === "error") {
-                                    swal({
-                                        title: "خطا",
-                                        text: response.message,
-                                        icon: "error",
-                                        button: "باشه"
-                                    });
-                                }
-                                else {
-                                    swal({
-                                        title: "اعلان",
-                                        text: response.message,
-                                        icon: "success",
-                                        button: "باشه"
-                                    });
-                                }
-                            },
-                            error: function () {
-                                swal({
-                                    title: "خطا",
-                                    text: "عملیات با خطا مواجه شد لطفا مجدد تلاش کنید .",
-                                    icon: "error",
-                                    button: "باشه"
-                                });
-                            }
-                        });
-                    }
-                });
-        }
-    </script>
-}

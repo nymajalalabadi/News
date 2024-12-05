@@ -96,6 +96,22 @@
                 <li class="active">
                     <a href="#" onClick="return false;" class="menu-toggle">
                         <i class="menu-icon ti-user"></i>
+                        <span>مدیریت نظرات</span>
+                    </a>
+                    <ul>
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="Account" asp-action="FilterCommentsNotSuccess"> لیست نظرات نخوانده شده</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="active">
+                            <a asp-area="Admin" asp-controller="Account" asp-action="FilterCommentsIsSuccess"> لیست نظرات خوانده شده</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" onClick="return false;" class="menu-toggle">
+                        <i class="menu-icon ti-user"></i>
                         <span>مدیریت تماس با ما</span>
                     </a>
                     <ul class="ml-menu">

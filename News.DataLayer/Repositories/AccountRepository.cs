@@ -27,11 +27,18 @@ namespace News.DataLayer.Repositories
 
         #region Comment
 
-        public async Task<IQueryable<Comment>> GetCommentsQuery()
+        public async Task<IQueryable<Comment>> GetCommentsIsSuccesQuery()
         {
             return  _context.Comments
                 .Include(c => c.Report)
-                .Where(c => !c.IsDelete).AsQueryable();
+                .Where(c => !c.IsDelete && c.IsSuccess).AsQueryable();
+        }
+
+        public async Task<IQueryable<Comment>> GetCommentsNotSuccesQuery()
+        {
+            return _context.Comments
+                .Include(c => c.Report)
+                .Where(c => !c.IsDelete && !c.IsSuccess).AsQueryable();
         }
 
         public async Task<List<Comment>> AllReportCommentByreportId(long reportId)

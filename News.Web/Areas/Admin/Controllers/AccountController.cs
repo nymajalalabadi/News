@@ -23,12 +23,24 @@ namespace News.Web.Areas.Admin.Controllers
 
         #region Comment
 
-        #region Filter Comments
+        #region Filter Comments Not Success
 
         [HttpGet]
-        public async Task<IActionResult> FilterComments(FilterCommentViewModel filter)
+        public async Task<IActionResult> FilterCommentsNotSuccess(FilterCommentViewModel filter)
         {
-            var model = await _accountService.GetFilterComments(filter);
+            var model = await _accountService.GetFilterCommentNotSuucess(filter);
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Filter Comments is Success
+
+        [HttpGet]
+        public async Task<IActionResult> FilterCommentsIsSuccess(FilterCommentViewModel filter)
+        {
+            var model = await _accountService.GetFilterCommentIsSuucess(filter);
 
             return View(model);
         }
