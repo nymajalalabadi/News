@@ -139,7 +139,11 @@ namespace News.DataLayer.Repositories
 
         public async Task<List<ReportGroup>> GetReportGroupsForIndex()
         {
-            return await _context.ReportGroups.Where(u => !u.IsDelete).Take(10).ToListAsync();
+            return await _context.ReportGroups
+                .OrderByDescending(u => u.CreateDate)
+                .Where(u => !u.IsDelete)
+                .Take(10)
+                .ToListAsync();
         }
 
         public async Task<bool> IsExistReportGroupByUrlName(string urlName)

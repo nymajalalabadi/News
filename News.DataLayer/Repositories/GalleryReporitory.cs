@@ -97,7 +97,12 @@ namespace News.DataLayer.Repositories
 
         public async Task<List<Image>> GetImagesForIndex()
         {
-            return  await _context.Images.Include(i => i.Gallery).Where(i => !i.IsDelete && i.IsSuccess).Take(10).ToListAsync(); 
+            return  await _context.Images
+                .Include(i => i.Gallery)
+                .Where(i => !i.IsDelete && i.IsSuccess)
+                .OrderByDescending(i => i.CreateDate)
+                .Take(10)
+                .ToListAsync(); 
         }
 
         public async Task<Image?> GetImageyById(long id)
