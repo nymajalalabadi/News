@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.Images;
 
 namespace News.Web.Components
 {
@@ -9,10 +10,12 @@ namespace News.Web.Components
         #region consractor
 
         private readonly IGalleryService _galleryService;
+        private readonly IReportService _reportService;
 
-        public SiteMenoViewComponent(IGalleryService galleryService)
+        public SiteMenoViewComponent(IGalleryService galleryService, IReportService reportService)
         {
             _galleryService = galleryService;
+            _reportService = reportService;
         }
 
         #endregion
@@ -21,9 +24,13 @@ namespace News.Web.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var gallery = await _galleryService.GetGalleriesForIndex();
+            var imgesReportGroups = new ImagesAndReportGroupsViewModel()
+            {
+                Images = await _galleryService.GetImagesForIndex(),
+                ReportGroups = await _reportService.GetReportGroupsForIndex()
+            };
 
-            return View("SiteMenoViewComponent", gallery);
+            return View("SiteMenoViewComponent", imgesReportGroups);
         }
 
         #endregion

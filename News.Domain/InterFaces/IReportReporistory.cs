@@ -44,6 +44,8 @@ namespace News.Domain.InterFaces
 
         Task<IQueryable<ReportGroup>> GetReportGroupsQuery();
 
+        Task<List<ReportGroup>> GetReportGroupsForIndex();
+
         Task<bool> IsExistReportGroupByUrlName(string urlName);
 
         Task<ReportGroup?> GetReportGroupById(long id);

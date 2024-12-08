@@ -62,6 +62,8 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterReportGroupsViewModel> GetFilterReportGroups(FilterReportGroupsViewModel filter);
 
+        Task<List<ReportGroup>> GetReportGroupsForIndex(); 
+
         Task<CreateReportGroupResult> CreateReportGroup(CreateReportGroupViewModel reportGroup);
 
         Task<EditReportGroupViewModel> GetReportGroupForEdit(long reportGroupId);
