@@ -12,7 +12,7 @@
 <body>
     <partial name="_Header" />
     <!--Side Menu Start-->
-    <partial name="_SideMenu" />
+    @await Component.InvokeAsync("SiteMenoViewComponent")
     <!--Side Menu End-->
     <!--Main Start-->
     <main>
@@ -26,6 +26,7 @@
     <!--End Footer -->
     <!-- header and nav scripts -->
     <partial name="_FooterReferences" />
+    <partial name="_MenuScriptsPartial" />
     @await RenderSectionAsync("Scripts", false)
 </body>
 </html>
