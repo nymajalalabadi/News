@@ -26,6 +26,8 @@ namespace News.Application.Services.Interfaces
 
         Task<Report?> GetHotNewsReportForIndex();
 
+        Task<List<Report>> GetReportsForFooter();
+
         Task<List<Report>> GetReportsForIndex(string groupUrl);
 
         Task<List<Report>> GetTopReportsForIndex(string groupUrl);

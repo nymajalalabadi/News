@@ -22,7 +22,7 @@
     </main>
     <!--End Main -->
     <!--Start Footer -->
-    <partial name="_Footer" />
+    @await Component.InvokeAsync("FooterViewComponent")
     <!--End Footer -->
     <!-- header and nav scripts -->
     <partial name="_FooterReferences" />

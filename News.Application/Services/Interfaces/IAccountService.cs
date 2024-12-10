@@ -19,6 +19,8 @@ namespace News.Application.Services.Interfaces
 
         Task<FilterCommentViewModel> GetFilterCommentIsSuucess(FilterCommentViewModel filter);
 
+        Task<List<Comment>> GetCommentsForIndex();
+
         Task<List<Comment>> AllReportCommentByreportId(long reportId);
 
         Task<CreateCommentResult> CreateComment(CreateCommentViewModel create);

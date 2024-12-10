@@ -78,6 +78,11 @@ namespace News.Application.Services.Implementations
             return filter;
         }
 
+        public async Task<List<Comment>> GetCommentsForIndex()
+        {
+            return await _accountRepository.GetCommentsForIndex();
+        }
+
         public async Task<List<Comment>> AllReportCommentByreportId(long reportId)
         {
             return await _accountRepository.AllReportCommentByreportId(reportId);
