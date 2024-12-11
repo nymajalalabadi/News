@@ -60,6 +60,16 @@ namespace News.DataLayer.Repositories
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<List<Report>> GetLastReportsForIndex()
+        {
+            return await _context.Reports
+               .Include(r => r.ReportGroup)
+               .OrderByDescending(r => r.CreateDate)
+               .Where(r => r.IsSuccess && !r.IsDelete)
+               .Take(15)
+               .ToListAsync();
+        }
+
         public async Task<List<Report>> GetReportsForFooter()
         {
             return await _context.Reports

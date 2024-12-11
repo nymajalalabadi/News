@@ -272,4 +272,34 @@ namespace News.Web.Components
     }
 
     #endregion
+
+    #region Last News reports
+
+    [ViewComponent(Name = "LastNewsReportsViewComponent")]
+    public class LastNewsReportsViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IReportService _reportService;
+
+        public LastNewsReportsViewComponent(IReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _reportService.GetLastReportsForIndex();
+
+            return View("LastNewsReportsViewComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
 }

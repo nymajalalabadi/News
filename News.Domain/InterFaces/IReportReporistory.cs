@@ -22,6 +22,8 @@ namespace News.Domain.InterFaces
 
         Task<Report?> GetHotNewsReportForIndex();
 
+        Task<List<Report>> GetLastReportsForIndex();
+
         Task<List<Report>> GetReportsForFooter();
 
         Task<List<Report>> GetReportsForIndex(string groupUrl);

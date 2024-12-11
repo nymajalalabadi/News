@@ -128,6 +128,11 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetHotNewsReportForIndex();
         }
 
+        public async Task<List<Report>> GetLastReportsForIndex()
+        {
+            return await _reportReporistory.GetLastReportsForIndex();
+        }
+
         public async Task<List<Report>> GetReportsForFooter()
         {
             return await _reportReporistory.GetReportsForFooter();

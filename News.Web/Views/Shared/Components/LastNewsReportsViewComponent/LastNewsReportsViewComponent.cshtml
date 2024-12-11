@@ -1,0 +1,38 @@
+﻿@using News.Application.Extensions
+@using News.Application.Statics
+@using News.Domain.Entities.Reports
+@model List<Report>
+
+<div class="row ">
+    <div class="bg-body-secondary rounded shadow position-relative LastNews-body">
+        <div class="position-absolute bg-body-secondary px-3 pt-2 LastNews-text">آخرین اخبار</div>
+        @if (Model != null && Model.Any())
+        {
+            <ul class="list-unstyled mt-3">
+                @foreach (var report in Model)
+                {
+                    <li class="border-bottom py-2">
+                        <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id">
+                            class="text-decoration-none">
+                            <p class="LastNews-items">
+                                @if (report.ReportGroup.GroupName == "MultiMedia")
+                                {
+                                    <video src="@(SiteTools.ReportImagesName + report.Image) preload="metadata" class="d-inline" style="width:60px; height:50px; vertical-align:middle" alt="@report.ImageAlt" title="@report.ImageTitle"></video>
+                                    <span style="color:red"> فیلم | </span>
+                                }
+                                else
+                                {
+                                    <img src="@(SiteTools.ReportImagesName + report.Image) style="width:60px; height:50px;" alt="@report.ImageAlt" title="@report.ImageTitle" />
+                                }
+                                @report.Title
+                            </p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+        <div class="text-center p-3">
+            <a class="btn btn-secondary w-100">آخــرین اخبـــار ...</a>
+        </div>
+    </div>
+</div>
