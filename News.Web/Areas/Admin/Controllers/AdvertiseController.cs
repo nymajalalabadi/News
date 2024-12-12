@@ -34,10 +34,10 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
-        #region Create Hashtag
+        #region Create Advertise
 
         [HttpGet]
-        public async Task<IActionResult> CreateHashtag()
+        public async Task<IActionResult> CreateAdvertise()
         {
             return View();
         }
