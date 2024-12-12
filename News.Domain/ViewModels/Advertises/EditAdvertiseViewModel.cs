@@ -33,7 +33,7 @@ namespace News.Domain.ViewModels.Advertises
         public int? price { get; set; } = default!;
 
         [Display(Name = "تاریخ انقضاء")]
-        public DateTime? ExpireDate { get; set; } = default!;
+        public string? ExpireDate { get; set; } = default!;
 
         [Display(Name = "تصویر تبلیغ")]
         public IFormFile? AvatarImage { get; set; }

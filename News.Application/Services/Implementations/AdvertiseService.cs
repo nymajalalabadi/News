@@ -1,4 +1,5 @@
-﻿using News.Application.Generators;
+﻿using News.Application.Extensions;
+using News.Application.Generators;
 using News.Application.Services.Interfaces;
 using News.Application.Statics;
 using News.DataLayer.Repositories;
@@ -71,7 +72,7 @@ namespace News.Application.Services.Implementations
                     AdsName = create.AdsName,
                     Image = imageName,
                     Email = create.Email,
-                    ExpireDate = create.ExpireDate,
+                    ExpireDate = create.ExpireDate!.ToMiladi(),
                     Subject = create.Subject,
                     PhoneNumber = create.PhoneNumber,
                     price = create.price,
@@ -88,7 +89,7 @@ namespace News.Application.Services.Implementations
             {
                 AdsName = create.AdsName,
                 Email = create.Email,
-                ExpireDate = create.ExpireDate,
+                ExpireDate = create.ExpireDate!.ToMiladi(),
                 Subject = create.Subject,
                 PhoneNumber = create.PhoneNumber,
                 price = create.price,
@@ -114,7 +115,7 @@ namespace News.Application.Services.Implementations
                 AdvertiseId = advertise.Id,
                 AdsName = advertise.AdsName,
                 Email = advertise.Email,
-                ExpireDate = advertise.ExpireDate,
+                ExpireDate = advertise.ExpireDate.ToString(),
                 Subject = advertise.Subject,
                 PhoneNumber = advertise.PhoneNumber,
                 price = advertise.price,
@@ -140,7 +141,7 @@ namespace News.Application.Services.Implementations
                 advertise.LastUpdateDate = DateTime.Now;
                 advertise.AdsName = editAdvertise.AdsName;
                 advertise.Email = editAdvertise.Email;
-                advertise.ExpireDate = editAdvertise.ExpireDate;
+                advertise.ExpireDate = editAdvertise.ExpireDate!.ToMiladi();
                 advertise.Subject = editAdvertise.Subject;
                 advertise.PhoneNumber = editAdvertise.PhoneNumber;
                 advertise.price = editAdvertise.price;
@@ -154,7 +155,7 @@ namespace News.Application.Services.Implementations
             advertise.LastUpdateDate = DateTime.Now;
             advertise.AdsName = editAdvertise.AdsName;
             advertise.Email = editAdvertise.Email;
-            advertise.ExpireDate = editAdvertise.ExpireDate;
+            advertise.ExpireDate = editAdvertise.ExpireDate!.ToMiladi();
             advertise.Subject = editAdvertise.Subject;
             advertise.PhoneNumber = editAdvertise.PhoneNumber;
             advertise.price = editAdvertise.price;
@@ -179,7 +180,7 @@ namespace News.Application.Services.Implementations
                 AdvertiseId = advertise.Id,
                 AdsName = advertise.AdsName,
                 Email = advertise.Email,
-                ExpireDate = advertise.ExpireDate,
+                ExpireDate = advertise.ExpireDate.ToString(),
                 Subject = advertise.Subject,
                 PhoneNumber = advertise.PhoneNumber,
                 price = advertise.price,
