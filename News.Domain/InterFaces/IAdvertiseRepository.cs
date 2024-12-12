@@ -1,4 +1,6 @@
-﻿using System;
+﻿using News.Domain.Entities.Advertises;
+using News.Domain.Entities.Hashtags;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,17 @@ namespace News.Domain.InterFaces
     {
         #region Methods
 
+        Task<IQueryable<Advertise>> GetAdvertisesQuery();
 
+        Task<List<Advertise>> GetAdvertisesForIndex();
+
+        Task<Advertise?> GetAdvertiseById(long id);
+
+        Task AddAdvertise(Advertise advertise);
+
+        void UpdateAdvertise(Advertise advertise);
+
+        Task SaveChanges();
 
         #endregion
     }
