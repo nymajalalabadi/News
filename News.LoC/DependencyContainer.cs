@@ -25,6 +25,9 @@ namespace News.LoC
 
             services.AddScoped<IAccountRepository, AccountRepository>();
 
+            services.AddScoped<IAdvertiseRepository, AdvertiseRepository>();
+
+
             #endregion
 
             #region Service
@@ -36,6 +39,8 @@ namespace News.LoC
             services.AddScoped<IGalleryService, GalleryService>();
 
             services.AddScoped<IAccountService, AccountService>();
+
+            services.AddScoped<IAdvertiseService, AdvertiseService>();
 
             #endregion
         }
