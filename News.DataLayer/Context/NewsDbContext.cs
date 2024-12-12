@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using News.Domain.Entities.Account;
+using News.Domain.Entities.Advertises;
 using News.Domain.Entities.Galleries;
 using News.Domain.Entities.Hashtags;
 using News.Domain.Entities.Reports;
@@ -28,6 +29,8 @@ namespace News.DataLayer.Context
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Advertise> Advertises { get; set; }
 
         #endregion
     }
