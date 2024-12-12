@@ -34,5 +34,12 @@ namespace News.Application.Statics
         }
 
         #endregion
+
+
+        #region Ads
+
+        public static string AdsImagesName { get; set; } = "/Img/AdsImages/";
+
+        #endregion
     }
 }

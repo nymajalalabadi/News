@@ -36,4 +36,10 @@ namespace News.Domain.ViewModels.Advertises
         [Display(Name = "تصویر تبلیغ")]
         public IFormFile? AvatarImage { get; set; }
     }
+
+    public enum CreateAdvertiseResult
+    {
+        created,
+        error
+    }
 }

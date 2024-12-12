@@ -40,4 +40,10 @@ namespace News.Domain.ViewModels.Advertises
 
         public string? Image { get; set; } = default!;
     }
+
+    public enum EditAdvertiseResult
+    {
+        success,
+        NotFound
+    }
 }
