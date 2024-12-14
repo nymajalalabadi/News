@@ -32,6 +32,9 @@ namespace News.DataLayer.Context
 
         public DbSet<Advertise> Advertises { get; set; }
 
+        public DbSet<ContactUs> ContactUs { get; set; }
+
+
         #endregion
     }
 }
