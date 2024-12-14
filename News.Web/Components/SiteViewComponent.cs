@@ -302,4 +302,34 @@ namespace News.Web.Components
     }
 
     #endregion
+
+    #region Ads
+
+    [ViewComponent(Name = "AdsViewComponent")]
+    public class AdsViewComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IAdvertiseService _advertiseService;
+
+        public AdsViewComponent(IAdvertiseService advertiseService)
+        {
+            _advertiseService = advertiseService;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _advertiseService.GetAdvertisesForIndex();
+
+            return View("AdsViewComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
 }

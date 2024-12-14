@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Advertise>
+@using News.Application.Statics
+@using News.Domain.Entities.Advertises
+
+
+<div class="bg-body-secondary shadow Ads">
+    <ul class="list-unstyled my-2 ">
+        @foreach (var item in Model)
+        {
+            <li class="mb-2"><a><img class="w-100 h-100" src="@(SiteTools.AdsImagesName + item.Image)" alt="@item.AdsName" title="@item.AdsName"></a></li>
+        }
+    </ul>
+</div>

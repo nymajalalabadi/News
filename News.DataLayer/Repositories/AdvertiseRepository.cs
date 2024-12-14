@@ -32,7 +32,7 @@ namespace News.DataLayer.Repositories
 
         public async Task<List<Advertise>> GetAdvertisesForIndex()
         {
-            return await _context.Advertises.Where(a => !a.IsDelete).ToListAsync();
+            return await _context.Advertises.Take(4).Where(a => !a.IsDelete).ToListAsync();
         }
 
         public async Task<Advertise?> GetAdvertiseById(long id)

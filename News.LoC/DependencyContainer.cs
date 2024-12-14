@@ -27,7 +27,6 @@ namespace News.LoC
 
             services.AddScoped<IAdvertiseRepository, AdvertiseRepository>();
 
-
             #endregion
 
             #region Service
