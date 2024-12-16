@@ -21,7 +21,7 @@
             {
                 <li class="hex">
                     <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@group.UrlName" class="hexIn">
-                        <img src="@(SiteTools.ReportImagesName + group.GroupImage)" alt="" />
+                        <img src="@(SiteTools.ReportImagesName + group.GroupImage)" alt="@group.GroupName" />
                         <h1 style="color: darkorange"> @group.GroupName </h1>
                         <p>  </p>
                     </a>

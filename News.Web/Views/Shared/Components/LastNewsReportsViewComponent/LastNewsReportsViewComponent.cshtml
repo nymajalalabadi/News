@@ -13,18 +13,17 @@
                 {
                     <li class="border-bottom py-2">
                         <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@report.Id">
-                            class="text-decoration-none">
                             <p class="LastNews-items">
                                 @if (report.ReportGroup.GroupName == "MultiMedia")
                                 {
-                                    <video src="@(SiteTools.ReportImagesName + report.Image) preload="metadata" class="d-inline" style="width:60px; height:50px; vertical-align:middle" alt="@report.ImageAlt" title="@report.ImageTitle"></video>
+                                    <video src="@(SiteTools.ReportImagesName + report.Image)" preload="metadata" class="d-inline" style="width:60px; height:50px; vertical-align:middle" alt="@report.ImageAlt" title="@report.ImageTitle"></video>
                                     <span style="color:red"> فیلم | </span>
                                 }
                                 else
                                 {
-                                    <img src="@(SiteTools.ReportImagesName + report.Image) style="width:60px; height:50px;" alt="@report.ImageAlt" title="@report.ImageTitle" />
+                                    <img src="@(SiteTools.ReportImagesName + report.Image)" style="width:60px; height:50px;" alt="@report.ImageAlt" title="@report.ImageTitle" />
                                 }
-                                @report.Title
+                                @Html.Raw(report.Title)
                             </p>
                         </a>
                     </li>
