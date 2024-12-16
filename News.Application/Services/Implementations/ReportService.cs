@@ -424,6 +424,11 @@ namespace News.Application.Services.Implementations
             return await _reportReporistory.GetReportGroupsForIndex();
         }
 
+        public async Task<List<ReportGroup>> GetAllReportGroupsForIndex()
+        {
+            return await _reportReporistory.GetAllReportGroupsForIndex();
+        }
+
         public async Task<CreateReportGroupResult> CreateReportGroup(CreateReportGroupViewModel reportGroup)
         {
             if (string.IsNullOrEmpty(reportGroup.GroupName)) 

@@ -50,6 +50,8 @@ namespace News.Domain.InterFaces
 
         Task<List<ReportGroup>> GetReportGroupsForIndex();
 
+        Task<List<ReportGroup>> GetAllReportGroupsForIndex();
+
         Task<bool> IsExistReportGroupByUrlName(string urlName);
 
         Task<ReportGroup?> GetReportGroupById(long id);

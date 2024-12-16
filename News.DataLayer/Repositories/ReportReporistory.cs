@@ -166,6 +166,14 @@ namespace News.DataLayer.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<ReportGroup>> GetAllReportGroupsForIndex()
+        {
+            return await _context.ReportGroups
+                .OrderByDescending(u => u.CreateDate)
+                .Where(u => !u.IsDelete)
+                .ToListAsync();
+        }
+
         public async Task<bool> IsExistReportGroupByUrlName(string urlName)
         {
             return await _context.ReportGroups.AnyAsync(g => g.UrlName.Equals(urlName));
