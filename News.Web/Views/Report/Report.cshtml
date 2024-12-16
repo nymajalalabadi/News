@@ -188,203 +188,23 @@
         <div class="col-12 d-none col-lg-3 d-lg-block ">
             <!-- Start Color-Palet -->
             <div class="row mb-5">
-                <div class="bg-body-secondary shadow">
-                    <p class="mt-3">رنگ مورد نظر خود را انتخاب کنید.</p>
-                    <div class="theme-tray">
-                        <section class="pl-color">
-                            <h5>رنگ پایه</h5>
-                            <span title="Love Red" class="red"> </span>
-                            <span title="Clover Green" class="green"> </span>
-                            <span title="Dodger Blue" class="blue"> </span>
-                            <span title="Bright Neon Pink" class="bnp"> </span>
-                            <span title="Pumpkin Orange" class="orange"> </span>
-                            <span title="Black" class="black"> </span>
-                            <span title="Neon Pink" class="pink"> </span>
-                            <span title="Golden Brown" class="gol-b"> </span>
-                            <span title="Greenish Blue" class="greenish"> </span>
-                            <span title="Wood" class="wood"> </span>
-                        </section>
-                        <section class="gr-color">
-                            <h5>طیف رنگی</h5>
-                            <span title="Flickr" class="flickr"> </span>
-                            <span title="Facebook Messenger" class="fb-messenger"> </span>
-                            <span title="Moonlit Asteroid" class="moonlit"> </span>
-                            <span title="Park Life" class="park-life"> </span>
-                            <span title="Dance to Forget" class="d2f"> </span>
-                            <span title="Man of the Steel" class="steel-man"> </span>
-                            <span title="Amethyst" class="amethyst"> </span>
-                            <span title="Between the Clouds" class="between-clouds"> </span>
-                            <span title="Crazy Orange" class="crazy-orange"> </span>
-                            <span title="Endless River" class="endless-river"> </span>
-                        </section>
-                    </div>
-                </div>
+            <partial name="_ColorPalet" />
             </div>
             <!-- End Color-Palet -->
             <!-- Start Ad -->
             <div class="row mb-5">
-                <div class="bg-body-secondary shadow Ads">
-                    <ul class="list-unstyled my-2 ">
-                        <!-- Ads 1 -->
-                        <li class="mb-2"><a><img class="w-100 h-100" src="Assets/Img/AdsImages/ab0df50b-6240-4e1d-96e3-1666e2db889d.gif"></a></li>
-                        <!-- Ads 2 -->
-                        <li class="mb-2"><a><img class="w-100 h-100" src="Assets/Img/AdsImages/7d35ea74-ef43-4989-8de7-8503663b0999.gif"></a></li>
-                        <!-- Ads 3 -->
-                        <li class="mb-2"><a><img class="w-100 h-100" src="Assets/Img/AdsImages/e78606fd-718e-4f72-a767-2040c026a3d5.gif"></a></li>
-                        <!-- Ads 4 -->
-                        <li class="mb-2"><a><img class="w-100 h-100" src="Assets/Img/AdsImages/2657e694-1364-41b8-8d75-5a302e43b03e.gif"></a></li>
-
-                    </ul>
-                </div>
+            @await Component.InvokeAsync("AdsViewComponent")
             </div>
             <!-- End Ad -->
             <!-- LastNews -->
             <div class="my-3">
                 <!-- Start LastNews -->
-                <div class="row ">
-                    <div class="bg-body-secondary rounded shadow position-relative LastNews-body">
-                        <div class="position-absolute bg-body-secondary px-3 pt-2 LastNews-text">آخرین اخبار</div>
-                        <ul class="list-unstyled mt-3">
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        ماجرای قهر و آشتی‌ها در صداوسیما/ زندگی شیرین می‌شود
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-video" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="video" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z"></path></svg><!-- <i class="fa fa-video"></i> Font Awesome fontawesome.com -->
-                                        سکوهای ورزشگاه آزادی آذرماه آماده می‌شود
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-video" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="video" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z"></path></svg><!-- <i class="fa fa-video"></i> Font Awesome fontawesome.com -->
-                                        تصاویری از بازیگوشی خانواده جدید پلنگ ایرانی در پارک ملی تندوره
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        ضایعات غذا در کشور بیش از ۲.۵ برابر اتحادیه اروپا/ "نان، برنج و میوه" بیشترین دورریز غذایی ایرانی‌ها
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        توصیه‌های طب سنتی برای کاهش "استرس و اضطراب" + اینفوگرافیک
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        اجرای فاز آزمایشی سامانه هشدار سریع زلزله در تهران/ کدام دستگاه‌ها باید به سامانه متصل شوند؟
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        خواص باورنکردنی «دانه چیا» را بشناسید
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        حذف بند بیمه خدمات سلامت روان از برنامه هفتم توسعه
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        دستاورد‌های موسسه رازی در نشست تولیدکنندگان واکسن
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        چرا خوردن صبحانه برای دانش‌آموزان بسیار مهم است؟
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        عرضه خودروهای وارداتی در سامانه یکپارچه از فردا آغاز می‌شود
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        واکنش «رئیس‌ کل بانک مرکزی قطر» به ادعای «مسدود کردن دوباره ۶ میلیارد دلار ایران در قطر»
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        امیرعبداللهیان: در صورت ادامه جنایات رژیم صهیونیستی، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="border-bottom py-2">
-                                <a class="text-decoration-none">
-                                    <p class="LastNews-items">
-                                        <svg class="svg-inline--fa fa-newspaper" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"></path></svg><!-- <i class="fa fa-newspaper"></i> Font Awesome fontawesome.com -->
-                                        نهمین روز «طوفان الاقصی»| تداوم نسل کشی در غزه/ گفت‌وگوی نتانیاهو برای پنجمین بار با بایدن / پیام غزه برای متجاوزان صهیونیست
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="text-center p-3">
-                            <a class="btn btn-secondary w-100">آخــرین اخبـــار ...</a>
-                        </div>
-                    </div>
-                </div>
+            @await Component.InvokeAsync("LastNewsReportsViewComponent")
                 <!-- End LastNews -->
             </div>
             <!-- End LasrNews -->
         </div>
         <!--End Col-3 -->
-    </div>
 </div>
 
 @section Scripts{
