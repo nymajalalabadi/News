@@ -55,6 +55,18 @@ namespace News.Web.Controllers
 
         #endregion
 
+        #region Search
+
+        [HttpGet]
+        public async Task<IActionResult> Search(FilterReportsMostViewsViewModel filter)
+        {
+            var model = await _reportService.GetFilterReportsForMostViews(filter);
+
+            return View(model);
+        }
+
+        #endregion
+
         #endregion
     }
 }

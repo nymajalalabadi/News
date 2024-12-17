@@ -1,0 +1,60 @@
+﻿@using News.Domain.Entities.Reports
+@using News.Domain.ViewModels.Reports
+@using News.Application.Extensions
+@using News.Application.Statics
+@model FilterReportsMostViewsViewModel
+
+@{
+    ViewData["Title"] = "MostViewed";
+}
+
+<div class="col-12 col-lg-9 mb-5">
+    <form asp-area="" asp-controller="Site" asp-action="Search" method="get" id="filter-search">
+        <input type="hidden" asp-for="CurrentPage" />
+        <input type="hidden" asp-for="Title" />
+        <div class=" bg-light-subtle border-style rounded p-3">
+            <h6 class="mb-2 alert alert-info" style="font-size:.7rem; font-weight:600"> تعداد <span class="text-danger"> @Model.Entities.Count() </span>   خبر با عبارات <span class="text-danger"> @Model.Title </span> یافت شد. </h6>
+            <ul class="  d-sm-flex row mb-3 list-unstyled">
+                @foreach (var item in Model.Entities)
+                {
+                    <li class="sport-card col-xl-3 col-lg-4 col-sm-6 my-sm-2">
+                        <div class=" card shadow">
+                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id">
+                                @if (item.ReportGroup.GroupName == "MultiMedia")
+                                {
+                                    <video src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" style="max-width: 100%; height: 150px ; max-height: 150px;" preload="metadata" controls alt="@item.ImageAlt" title="@item.ImageTitle"></video>
+                                }
+                                else
+                                {
+                                    <img src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" style="max-width: 100%; height: 150px ; max-height: 150px;" alt="@item.ImageAlt" title="@item.ImageTitle">
+                                }
+                            </a>
+                            <div class="card-body bg-body-secondary p-2" style="max-width: 100%; height:110px; max-height: 110px; overflow:hidden; border-top: 2px solid red;">
+                                <a class="text-decoration-none" asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id">
+                                    <p class="m-0">  @item.Title  </p>
+                                    <div class="position-absolute" style="top: 90%; width: 95%;">
+                                        <p class="d-inline-block bg-body-secondary px-1 m-0" style="color: #b9b9bb; font-size: .7rem; width: 100%;">   <i class="fas fa-clock" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary">  @item.CreateDate.ToShamsiDate()  </small> </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+
+            <!-- Pagination -->
+            <partial name="_Pagination" model="@Model.GetPaging()" />
+            <!-- End Pagination -->
+
+        </div>
+    </form>
+</div>
+
+<div class="col-12 d-none col-lg-3 d-lg-block ">
+    <!-- Start ColorPalet -->
+    <partial name="_ColorPalet" />
+    <!-- Start LastNews -->
+    @await Component.InvokeAsync("LastNewsReportsViewComponent")
+</div>
+
