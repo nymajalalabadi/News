@@ -10,7 +10,7 @@ namespace News.Domain.ViewModels.Reports
 {
     public class FilterReportForShowViewModel : Paging<Report>
     {
-        public string UrlName { get; set; } = default!;
+        public string? UrlName { get; set; } = default!;
 
         public string? GroupName { get; set; } = default!;
     }

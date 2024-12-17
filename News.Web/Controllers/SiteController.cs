@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.Reports;
 
 namespace News.Web.Controllers
 {
@@ -18,6 +19,8 @@ namespace News.Web.Controllers
 
         #region Methods
 
+        #region Quick Access
+
         [HttpGet]
         public async Task<IActionResult> QuickAccess()
         {
@@ -25,6 +28,20 @@ namespace News.Web.Controllers
 
             return View(reslut);
         }
+
+        #endregion
+
+        #region Archive
+
+        [HttpGet]
+        public async Task<IActionResult> Archive(FilterReportForShowViewModel filter)
+        {
+            var reslut = await _reportService.GetFilterReportForIndex(filter);
+
+            return View(reslut);
+        }
+
+        #endregion
 
         #endregion
     }

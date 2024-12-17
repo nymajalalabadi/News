@@ -1,0 +1,59 @@
+﻿@using News.Domain.Entities.Reports
+@using News.Domain.ViewModels.Reports
+@using News.Application.Extensions
+@using News.Application.Statics
+@model FilterReportForShowViewModel
+
+@{
+    ViewData["Title"] = "لیست اخبارات";
+}
+
+<div class="container">
+    <div class="col-12 col-lg-9 mb-5">
+        <div class=" bg-light-subtle border-style rounded p-5">
+            <h5 class="mb-3" style="font-weight:600;"> آرشیو اخبار </h5>
+            @foreach (var item in Model.Entities)
+            {
+                <div class="card mb-3" style="border-top:3px solid #00b8d4;">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id">
+                                @if (Model.UrlName == "MultiMedia")
+                                {
+                                    <video src="@(SiteTools.ReportImagesName + item.Image)" preload="metadata" controls class="img-fluid rounded-start" alt="@item.ImageAlt" title="@item.ImageTitle" style="width:100%;height:100%;"></video>
+                                }
+                                else
+                                {
+                                    <img src="@(SiteTools.ReportImagesName + item.Image)" class="img-fluid rounded-start" alt="@item.ImageAlt" title="@item.ImageTitle" style="width:100%;height:100%;">
+                                }
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body p-2">
+                                <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id" class="card-title text-decoration-none" style="font-size:.8rem;font-weight:900;"> @item.Title </a>
+                                <p class="card-text">  @Html.Raw(item.Description) </p>
+                                <p class="card-text float-end my-0"> <i class="fas fa-clock" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary">  @item.CreateDate.ToShamsiDate() </small></p>
+                                <a asp-area="" asp-controller="Report" asp-action="ReportGroup" asp-route-urlName="@item.ReportGroup.UrlName">
+                                    <p class="card-text float-end mx-3"> <i class="fas fa-folder-open" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary"> @item.ReportGroup.GroupName </small></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- Pagination -->
+            <partial name="_Pagination" model="@Model.GetPaging()" />
+            <!-- End Pagination -->
+
+        </div>
+    </div>
+
+    <div class="col-12 d-none col-lg-3 d-lg-block ">
+        <!-- Start ColorPalet -->
+        <partial name="_ColorPalet" />
+        <!-- Start LastNews -->
+        @await Component.InvokeAsync("LastNewsReportsViewComponent")
+    </div>
+</div>
+

@@ -87,7 +87,7 @@ namespace News.Web.Controllers
 
             filter.UrlName = group!.UrlName;
             filter.GroupName = group.GroupName;
-            filter.TakeEntity = 1;
+            filter.TakeEntity = 5;
             var model = await _reportService.GetFilterReportForIndex(filter);
 
             if (model == null)
