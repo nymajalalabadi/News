@@ -79,6 +79,30 @@ namespace News.Application.Services.Implementations
             return filter;  
         }
 
+        public async Task<FilterReportsMostViewsViewModel> GetFilterReportsForMostViews(FilterReportsMostViewsViewModel filter)
+        {
+            var query = await _reportReporistory.GetReportsQuery();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.Title))
+            {
+                query = query.Where(r => r.Title.Contains(filter.Title));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(r => r.Visit);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
         public async Task<FilterReportForShowViewModel> GetFilterReportForIndex(FilterReportForShowViewModel filter)
         {
             var query = await _reportReporistory.GetReportsQuery();

@@ -11,52 +11,50 @@
 <div class="container">
     <div class="row" style="margin-top: 50px;">
         <!-- Start Col-9 -->
-        <div class="col-12 col-lg-9 mb-5">
-            <div class=" bg-light-subtle border-style rounded p-3">
-                <form asp-area="" asp-controller="report" asp-action="ReportGroup" asp-route-urlName="@Model.UrlName" method="get" id="filter-search">
-                    <input type="hidden" asp-for="CurrentPage" />
-                    <input type="hidden" asp-for="UrlName" />
-                    <input type="hidden" asp-for="GroupName" />
-                    <h5> @Model!.GroupName </h5>
-                </form>
-                @if(Model.Entities != null && Model.Entities.Any())
-                {
-                    <ul class=" d-none d-sm-flex row mb-3 list-unstyled">
-                        <!-- Card 1 -->
-                        @foreach (var item in Model.Entities)
-                        {
-                            <li class="sport-card col-xl-3 col-lg-4 col-sm-6 my-sm-2">
-                                <div class=" card shadow">
-                                    <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id">
-                                        @if (Model.UrlName == "MultiMedia")
-                                        {
-                                            <video src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" preload="metadata" controls style="max-width: 100%; height: 150px ; max-height: 150px;" title="@item.ImageTitle" alt="@item.ImageAlt"></video>
-                                        }
-                                        else
-                                        {
-                                            <img src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" style="max-width: 100%; height: 150px ; max-height: 150px;" title="@item.ImageTitle" alt="@item.ImageAlt">
-                                        }
-                                    </a>
-                                    <div class="card-body bg-body-secondary p-2" style="max-width: 100%; height:110px; max-height: 110px; overflow:hidden; border-top: 2px solid red;">
-                                        <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id" class="text-decoration-none">
-                                            <p class="m-0"> @item.Title </p>
-                                            <div class="position-absolute" style="top: 90%; width: 95%;">
-                                                <p class="d-inline-block bg-body-secondary px-1 m-0" style="color: #b9b9bb; font-size: .7rem; width: 100%;">   <i class="fas fa-clock" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary"> @item.CreateDate.ToShamsiDateTime() </small> </p>
-                                            </div>
+        <form asp-area="" asp-controller="report" asp-action="ReportGroup" asp-route-urlName="@Model.UrlName" method="get" id="filter-search">
+            <input type="hidden" asp-for="CurrentPage" />
+            <input type="hidden" asp-for="UrlName" />
+            <input type="hidden" asp-for="GroupName" />
+            <h5> @Model!.GroupName </h5>
+            <div class="col-12 col-lg-9 mb-5">
+                <div class="bg-light-subtle border-style rounded p-3">
+                    @if (Model.Entities != null && Model.Entities.Any())
+                    {
+                        <ul class=" d-none d-sm-flex row mb-3 list-unstyled">
+                            <!-- Card 1 -->
+                            @foreach (var item in Model.Entities)
+                            {
+                                <li class="sport-card col-xl-3 col-lg-4 col-sm-6 my-sm-2">
+                                    <div class=" card shadow">
+                                        <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id">
+                                            @if (Model.UrlName == "MultiMedia")
+                                            {
+                                                <video src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" preload="metadata" controls style="max-width: 100%; height: 150px ; max-height: 150px;" title="@item.ImageTitle" alt="@item.ImageAlt"></video>
+                                            }
+                                            else
+                                            {
+                                                <img src="@(SiteTools.ReportImagesName + item.Image)" class="card-img-top" style="max-width: 100%; height: 150px ; max-height: 150px;" title="@item.ImageTitle" alt="@item.ImageAlt">
+                                            }
                                         </a>
+                                        <div class="card-body bg-body-secondary p-2" style="max-width: 100%; height:110px; max-height: 110px; overflow:hidden; border-top: 2px solid red;">
+                                            <a asp-area="" asp-controller="report" asp-action="report" asp-route-reportId="@item.Id" class="text-decoration-none">
+                                                <p class="m-0"> @item.Title </p>
+                                                <div class="position-absolute" style="top: 90%; width: 95%;">
+                                                    <p class="d-inline-block bg-body-secondary px-1 m-0" style="color: #b9b9bb; font-size: .7rem; width: 100%;">   <i class="fas fa-clock" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary"> @item.CreateDate.ToShamsiDateTime() </small> </p>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                }
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+                <!-- Pagination -->
+                <partial name="_Pagination" model="@Model.GetPaging()" />
+                <!-- End Pagination -->
             </div>
-            
-            <!-- Pagination -->
-            <partial name="_Pagination" model="@Model.GetPaging()" />
-            <!-- End Pagination -->
-
-        </div>
+        </form>
         <!--End Col-9 -->
         <!--Start Col-3 -->
         <div class="col-12 d-none col-lg-3 d-lg-block ">
