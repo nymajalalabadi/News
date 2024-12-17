@@ -36,6 +36,7 @@ namespace News.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Archive(FilterReportForShowViewModel filter)
         {
+            filter.TakeEntity = 2;
             var reslut = await _reportService.GetFilterReportForIndex(filter);
 
             return View(reslut);
