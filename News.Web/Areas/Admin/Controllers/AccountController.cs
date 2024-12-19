@@ -150,6 +150,40 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Details Contactus
+
+        [HttpGet]
+        public async Task<IActionResult> DetailsContactus(long contactusId)
+        {
+            var model = await _accountService.DetailsContactUs(contactusId);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Delete Contact us
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteContactus(long Id)
+        {
+            var result = await _accountService.DeleteContactUs(Id);
+
+            if (!result)
+            {
+                return new JsonResult(new { status = "error", message = "مقادیر ورودی معتبر نمی باشد." });
+            }
+
+            return new JsonResult(new { status = "success", message = "عملیات با موفقیت انجام شد." });
+        }
+
+        #endregion
+
         #endregion
 
         #endregion
