@@ -1,0 +1,78 @@
+﻿@using News.Application.Extensions
+@using News.Domain.Entities.Account
+@model ContactUs
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    فیلتر ها
+                </h2>
+            </div>
+            <div class="body">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>@ViewData["Title"]</strong>
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                @if (Model != null)
+                {
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th> ایمیل</th>
+                                <th> شماره تماس</th>
+                                <th>نام</th>
+                                <th> تاریخ نظر</th>
+                                <th>پیام</th>
+                                <th>موضوع</th>
+                                <th>موضوع</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="comment-row-@Model.Id">
+                                <td><p>@Model.Email</p></td>
+                                <td><p>@Model.PhoneNumber</p></td>
+                                <td>@Model.Name</td>
+                                <td>@Model.CreateDate.ToShamsiDate()</td>
+                                <td>@Html.Raw(Model.Message)</td>
+                                <td>@Html.Raw(Model.Subject)</td>
+                                <td>
+                                    <a asp-area="Admin" asp-controller="Account" asp-action="DetailsContactUs" asp-route-contactUsId="@Model.Id" class="text-warning">
+                                        <i class="fa fa-eye small"></i>
+                                    </a>
+                                    <a asp-area="Admin" asp-controller="Account" asp-action="CreateOrEditContactUs" class="text-warning">
+                                        <i class="fa fa-pen small"></i>
+                                    </a>
+                                    <a onclick="ContactUsComment('@Model.Id')" class="text-warning">
+                                        <i class="fa fa-trash small"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info mb-0">
+                        آیتمی پیدا نشد.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

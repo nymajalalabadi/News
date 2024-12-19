@@ -102,7 +102,17 @@ namespace News.Web.Areas.Admin.Controllers
 
         #region Contact us
 
+        #region Show Contact us
 
+        [HttpGet]
+        public async Task<IActionResult> ShowContactus()
+        {
+            var model = await _accountService.GetContactUsForShow();
+
+            return View(model);
+        }
+
+        #endregion
 
         #endregion
 
