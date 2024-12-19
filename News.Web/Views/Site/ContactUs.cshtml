@@ -1,0 +1,65 @@
+﻿@using News.Domain.Entities.Account
+@model ContactUs
+@{
+    ViewData["Title"] = "ContactUs";
+}
+
+@section Styles{
+    <link href="~/assets/contactus/contactus-style.css" rel="stylesheet" />
+}
+
+<div class="col-12 col-lg-9 mb-5">
+    <div class=" bg-light-subtle border-style rounded p-3">
+        <div class="contact1">
+            <div class="container-contact1">
+                <div class="contact1-pic js-tilt" data-tilt>
+                    <img src="Assets/ContactUs/ContactUs-img1.png" alt="IMG">
+                </div>
+                <form asp-area="" asp-controller="site" asp-action="ContactUs" method="post" class="validate-form">
+                    <span class="contact1-form-title">ارسال پیام</span>
+                    <div class="wrap-input1 validate-input" data-validate="لطفا نام خود را وارد کنید!">
+                        <input asp-for="Name" class="input1" type="text" name="name" placeholder="نام شما">
+                        <span class="shadow-input1"></span>
+                    </div>
+                    <div class="wrap-input1 validate-input" data-validate="لطفا ایمیل خود را وارد کنید!">
+                        <input asp-for="Email" class="input1" type="text" name="email" placeholder="پست الکترونیک">
+                        <span class="shadow-input1"></span>
+                    </div>
+                    <div class="wrap-input1 validate-input" data-validate="لطفا شماره تماس خود را وارد کنید!">
+                        <input asp-for="PhoneNumber" class="input1" type="text" name="PhoneNumber" placeholder="شماره تماس">
+                        <span class="shadow-input1"></span>
+                    </div>
+                    <div class="wrap-input1 validate-input" data-validate="لطفا موضوع پیام را وارد کنید!">
+                        <input asp-for="Subject" class="input1" type="text" name="subject" placeholder="موضوع پیام">
+                        <span class="shadow-input1"></span>
+                    </div>
+                    <div class="wrap-input1 validate-input" data-validate="لطفا پیام خود را وارد کنید!">
+                        <input asp-for="Message" class="input1" ckeditor="2" name="message" placeholder="متن پیام">
+                        <span class="shadow-input1"></span>
+                    </div>
+                    <div class="container-contact1-form-btn">
+                        <button class="contact1-form-btn">
+                            <span>
+                                ارسال پیام
+                                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="d-block">
+                <p class="Body-Address"> راه های ارتباطی ما: </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script src="~/assets/contactus/contactus-scripts.js"></script>
+}
+

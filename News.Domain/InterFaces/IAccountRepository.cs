@@ -32,7 +32,9 @@ namespace News.Domain.InterFaces
 
         #region contact us
 
-        Task<ContactUs?> GetContactUs();
+        Task<IQueryable<ContactUs>> GetContactUssQuery();
+
+        Task<ContactUs?> GetContactUsById(long id);
 
         Task AddContactUs(ContactUs contactUs);
 

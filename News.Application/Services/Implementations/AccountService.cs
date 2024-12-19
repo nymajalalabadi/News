@@ -175,75 +175,60 @@ namespace News.Application.Services.Implementations
 
         #region Contact Us
 
-        public async Task<ContactUs?> GetContactUsForShow()
+        public async Task<FilterContactUsViewModel> GetContactUsForShow(FilterContactUsViewModel filter)
         {
-            return await _accountRepository.GetContactUs();
-        }
+            var query = await _accountRepository.GetContactUssQuery();
 
-        public async Task<CreateOrEditContactUsViewModel> GetCreateOrEditContactUsViewModel()
-        {
-            var contactUs = await _accountRepository.GetContactUs();
+            #region Filter
 
-            if (contactUs == null)
+            if (!string.IsNullOrWhiteSpace(filter.Email))
             {
-                return new CreateOrEditContactUsViewModel()
-                {
-                    Id = 0
-                };
+                query = query.Where(p => p.Email!.Contains(filter.Email));
             }
 
-            return new CreateOrEditContactUsViewModel()
+            if (!string.IsNullOrWhiteSpace(filter.Name))
             {
-                Id = contactUs.Id,
-                Email = contactUs.Email,
-                PhoneNumber = contactUs.PhoneNumber,
-                Name = contactUs.Name,
-                Subject = contactUs.Subject,
-                Message = contactUs.Message,
+                query = query.Where(p => p.Name!.Contains(filter.Name));
+            }
+
+            #endregion
+
+            query = query.OrderByDescending(p => p.CreateDate);
+
+            #region paging
+
+            await filter.SetPaging(query);
+
+            #endregion
+
+            return filter;
+        }
+
+        public async Task<CreateContactUsReslut> CreateContactUs(CreateContactUsViewModel create)
+        {
+            if (create.Name == null || create.Message == null)
+            {
+                return CreateContactUsReslut.Error;
+            }
+
+            var newContactUs = new ContactUs()
+            {
+                Name = create.Name,
+                Email = create.Email,
+                PhoneNumber = create.PhoneNumber,
+                Subject = create.Subject,
+                Message = create.Message
             };
-        }
 
-        public async Task<EditContactUsReslut> CreateOrEditContactUs(CreateOrEditContactUsViewModel edit)
-        {
-            if (edit.Id == 0)
-            {
-                var contactUs = new ContactUs()
-                {
-                    Email = edit.Email,
-                    PhoneNumber = edit.PhoneNumber,
-                    Name = edit.Name,
-                    Subject = edit.Subject,
-                    Message = edit.Message,
-                };
-
-                await _accountRepository.AddContactUs(contactUs);
-                await _accountRepository.SaveChanges();
-
-                return EditContactUsReslut.Success;
-            }
-            
-            var currentContactUs = await _accountRepository.GetContactUs();
-
-            if (currentContactUs == null)
-            {
-                return EditContactUsReslut.Error;
-            }
-
-            currentContactUs.Email = edit.Email;
-            currentContactUs.PhoneNumber = edit.PhoneNumber;
-            currentContactUs.Name = edit.Name;
-            currentContactUs.Subject = edit.Subject;
-            currentContactUs.Message = edit.Message;
-
-            _accountRepository.UpdateContactUs(currentContactUs);
+            await _accountRepository.AddContactUs(newContactUs);
             await _accountRepository.SaveChanges();
 
-            return EditContactUsReslut.Success;
+            return CreateContactUsReslut.Success;
         }
 
         public async Task<DetailsContactUsViewModel> DetailsContactUs(long contactUsId)
         {
-            var contactUs = await _accountRepository.GetContactUs();
+            var contactUs = await _accountRepository.GetContactUsById(contactUsId);
 
             if (contactUs == null)
             {
@@ -263,7 +248,7 @@ namespace News.Application.Services.Implementations
 
         public async Task<bool> DeleteContactUs(long contactUsId)
         {
-            var contactUs = await _accountRepository.GetContactUs();
+            var contactUs = await _accountRepository.GetContactUsById(contactUsId);
 
             if (contactUs == null)
             {

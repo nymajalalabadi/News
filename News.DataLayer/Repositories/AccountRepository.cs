@@ -74,9 +74,14 @@ namespace News.DataLayer.Repositories
 
         #region contact us
 
-        public async Task<ContactUs?> GetContactUs()
+        public async Task<IQueryable<ContactUs>> GetContactUssQuery()
         {
-            return await _context.ContactUs.Where(r => !r.IsDelete).FirstOrDefaultAsync();  
+            return _context.ContactUs.Where(r => !r.IsDelete).AsQueryable();  
+        }
+
+        public async Task<ContactUs?> GetContactUsById(long id)
+        {
+            return await _context.ContactUs.Where(r => !r.IsDelete).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task AddContactUs(ContactUs contactUs)

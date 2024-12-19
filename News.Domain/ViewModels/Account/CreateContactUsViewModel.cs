@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace News.Domain.ViewModels.Account
 {
-    public class CreateOrEditContactUsViewModel
+    public class CreateContactUsViewModel
     {
         #region properties
-
-        public long Id { get; set; }
 
         [Display(Name = "نام")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -38,7 +36,7 @@ namespace News.Domain.ViewModels.Account
         #endregion
     }
 
-    public enum EditContactUsReslut
+    public enum CreateContactUsReslut
     {
         Success,
         Error,

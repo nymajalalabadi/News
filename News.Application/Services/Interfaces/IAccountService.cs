@@ -36,11 +36,9 @@ namespace News.Application.Services.Interfaces
 
         #region Contact Us
 
-        Task<ContactUs?> GetContactUsForShow();
+        Task<FilterContactUsViewModel> GetContactUsForShow(FilterContactUsViewModel filter);
 
-        Task<CreateOrEditContactUsViewModel> GetCreateOrEditContactUsViewModel();
-
-        Task<EditContactUsReslut> CreateOrEditContactUs(CreateOrEditContactUsViewModel edit);
+        Task<CreateContactUsReslut> CreateContactUs(CreateContactUsViewModel create);
 
         Task<DetailsContactUsViewModel> DetailsContactUs(long contactUsId);
 

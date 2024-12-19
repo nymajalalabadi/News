@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using News.Application.Services.Interfaces;
+using News.Domain.ViewModels.Account;
 using News.Domain.ViewModels.Reports;
 
 namespace News.Web.Controllers
@@ -10,9 +11,12 @@ namespace News.Web.Controllers
 
         private readonly IReportService _reportService;
 
-        public SiteController(IReportService reportService)
+        private readonly IAccountService _accountService;
+
+        public SiteController(IReportService reportService, IAccountService accountService)
         {
             _reportService = reportService;
+            _accountService = accountService;
         }
 
         #endregion
@@ -63,6 +67,39 @@ namespace News.Web.Controllers
             var model = await _reportService.GetFilterReportsForMostViews(filter);
 
             return View(model);
+        }
+
+        #endregion
+
+        #region Contact Us
+
+        [HttpGet]
+        public async Task<IActionResult> ContactUs()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(CreateContactUsViewModel create)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(create);
+            }
+
+            var reslut = await _accountService.CreateContactUs(create);
+
+            switch (reslut)
+            {
+                case CreateContactUsReslut.Success:
+                    TempData[SuccessMessage] = " تماس با ما جدید ساخته شد";
+                    return RedirectToAction("/");
+                case CreateContactUsReslut.Error:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+            }
+
+            return View(create);
         }
 
         #endregion
