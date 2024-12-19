@@ -1,4 +1,5 @@
-﻿using News.Domain.Entities.Account;
+﻿using Microsoft.AspNetCore.Mvc;
+using News.Domain.Entities.Account;
 using News.Domain.ViewModels.Account;
 using News.Domain.ViewModels.ReportGroups;
 using System;
@@ -35,7 +36,15 @@ namespace News.Application.Services.Interfaces
 
         #region Contact Us
 
+        Task<ContactUs?> GetContactUsForShow();
 
+        Task<CreateOrEditContactUsViewModel> GetCreateOrEditContactUsViewModel();
+
+        Task<EditContactUsReslut> CreateOrEditContactUs(CreateOrEditContactUsViewModel edit);
+
+        Task<DetailsContactUsViewModel> DetailsContactUs(long contactUsId);
+
+        Task<bool> DeleteContactUs(long contactUsId);
 
         #endregion
 

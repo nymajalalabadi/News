@@ -32,9 +32,7 @@ namespace News.Domain.InterFaces
 
         #region contact us
 
-        Task<ContactUs?> GetContactUsForIndex();
-
-        Task<ContactUs?> GetContactUsForEdit();
+        Task<ContactUs?> GetContactUs();
 
         Task AddContactUs(ContactUs contactUs);
 

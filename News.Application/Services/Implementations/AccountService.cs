@@ -173,6 +173,113 @@ namespace News.Application.Services.Implementations
 
         #endregion
 
+        #region Contact Us
+
+        public async Task<ContactUs?> GetContactUsForShow()
+        {
+            return await _accountRepository.GetContactUs();
+        }
+
+        public async Task<CreateOrEditContactUsViewModel> GetCreateOrEditContactUsViewModel()
+        {
+            var contactUs = await _accountRepository.GetContactUs();
+
+            if (contactUs == null)
+            {
+                return new CreateOrEditContactUsViewModel()
+                {
+                    Id = 0
+                };
+            }
+
+            return new CreateOrEditContactUsViewModel()
+            {
+                Id = contactUs.Id,
+                Email = contactUs.Email,
+                PhoneNumber = contactUs.PhoneNumber,
+                Name = contactUs.Name,
+                Subject = contactUs.Subject,
+                Message = contactUs.Message,
+            };
+        }
+
+        public async Task<EditContactUsReslut> CreateOrEditContactUs(CreateOrEditContactUsViewModel edit)
+        {
+            if (edit.Id == 0)
+            {
+                var contactUs = new ContactUs()
+                {
+                    Email = edit.Email,
+                    PhoneNumber = edit.PhoneNumber,
+                    Name = edit.Name,
+                    Subject = edit.Subject,
+                    Message = edit.Message,
+                };
+
+                await _accountRepository.AddContactUs(contactUs);
+                await _accountRepository.SaveChanges();
+
+                return EditContactUsReslut.Success;
+            }
+            
+            var currentContactUs = await _accountRepository.GetContactUs();
+
+            if (currentContactUs == null)
+            {
+                return EditContactUsReslut.Error;
+            }
+
+            currentContactUs.Email = edit.Email;
+            currentContactUs.PhoneNumber = edit.PhoneNumber;
+            currentContactUs.Name = edit.Name;
+            currentContactUs.Subject = edit.Subject;
+            currentContactUs.Message = edit.Message;
+
+            _accountRepository.UpdateContactUs(currentContactUs);
+            await _accountRepository.SaveChanges();
+
+            return EditContactUsReslut.Success;
+        }
+
+        public async Task<DetailsContactUsViewModel> DetailsContactUs(long contactUsId)
+        {
+            var contactUs = await _accountRepository.GetContactUs();
+
+            if (contactUs == null)
+            {
+                return null;
+            }
+
+            return new DetailsContactUsViewModel()
+            {
+                Email = contactUs.Email,
+                PhoneNumber = contactUs.PhoneNumber,
+                Name = contactUs.Name,
+                Subject = contactUs.Subject,
+                Message = contactUs.Message,
+                Id = contactUs.Id
+            };
+        }
+
+        public async Task<bool> DeleteContactUs(long contactUsId)
+        {
+            var contactUs = await _accountRepository.GetContactUs();
+
+            if (contactUs == null)
+            {
+                return false;
+            }
+
+            contactUs.IsDelete = true;
+
+            _accountRepository.UpdateContactUs(contactUs);
+            await _accountRepository.SaveChanges();
+
+            return true;
+        }
+
+        #endregion
+
         #endregion
     }
 }
