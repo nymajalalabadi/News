@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using News.Application.Services.Implementations;
 using News.Application.Services.Interfaces;
 using News.Domain.ViewModels.Account;
@@ -110,6 +111,41 @@ namespace News.Web.Areas.Admin.Controllers
             var model = await _accountService.GetContactUsForShow();
 
             return View(model);
+        }
+
+        #endregion
+
+        #region Edit Or Create Contact us
+
+        [HttpGet]
+        public async Task<IActionResult> EditOrCreateContactus()
+        {
+            var model = await _accountService.GetCreateOrEditContactUsViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditOrCreateContactus(CreateOrEditContactUsViewModel createOrEdit)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(createOrEdit);
+            }
+
+            var reslut = await _accountService.CreateOrEditContactUs(createOrEdit);
+
+            switch (reslut)
+            {
+                case EditContactUsReslut.Success:
+                    TempData[SuccessMessage] = " تماس با ما جدید ساخته شد";
+                    return RedirectToAction("ShowContactus");
+                case EditContactUsReslut.Error:
+                    TempData[ErrorMessage] = "خطای رخ داده است";
+                    break;
+            }
+
+            return View(createOrEdit);
         }
 
         #endregion
