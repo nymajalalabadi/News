@@ -30,6 +30,18 @@ namespace News.Domain.InterFaces
 
         #endregion
 
+        #region contact us
+
+        Task<ContactUs?> GetContactUsForIndex();
+
+        Task<ContactUs?> GetContactUsForEdit();
+
+        Task AddContactUs(ContactUs contactUs);
+
+        void UpdateContactUs(ContactUs contactUs);
+
+        #endregion
+
         Task SaveChanges();
 
         #endregion

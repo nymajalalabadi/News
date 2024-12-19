@@ -72,6 +72,30 @@ namespace News.DataLayer.Repositories
 
         #endregion
 
+        #region contact us
+
+        public async Task<ContactUs?> GetContactUsForIndex()
+        {
+            return await _context.ContactUs.Where(r => !r.IsDelete).FirstOrDefaultAsync();  
+        }
+
+        public async Task<ContactUs?> GetContactUsForEdit()
+        {
+            return await _context.ContactUs.Where(r => !r.IsDelete).FirstOrDefaultAsync();
+        }
+
+        public async Task AddContactUs(ContactUs contactUs)
+        {
+            await  _context.ContactUs.AddAsync(contactUs);   
+        }
+
+        public void UpdateContactUs(ContactUs contactUs)
+        {
+            _context.ContactUs.Update(contactUs);
+        }
+
+        #endregion
+
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync(); 

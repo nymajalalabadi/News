@@ -100,6 +100,12 @@ namespace News.Web.Areas.Admin.Controllers
 
         #endregion
 
+        #region Contact us
+
+
+
+        #endregion
+
         #endregion
     }
 }

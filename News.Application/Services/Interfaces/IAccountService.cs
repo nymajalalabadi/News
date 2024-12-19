@@ -33,6 +33,12 @@ namespace News.Application.Services.Interfaces
 
         #endregion
 
+        #region Contact Us
+
+
+
+        #endregion
+
         #endregion
     }
 }
