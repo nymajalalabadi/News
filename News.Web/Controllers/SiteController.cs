@@ -126,6 +126,7 @@ namespace News.Web.Controllers
         public async Task<IActionResult> GalleryImages(long id, string GalleryName)
         {
             var model = await _galleryService.GetImagesByGroupId(id);
+            ViewData["GalleryName"] = GalleryName;
 
             return View(model);
         }

@@ -15,7 +15,7 @@
             @foreach (var item in Model)
             {
                 <li class="hex">
-                    <a asp-area="" asp-controller="" asp-action="GalleryImages" asp-route-id="@item.Id" asp-route-GalleryName="@item.GallryName" class="hexIn" style=" background-color:antiquewhite">
+                    <a asp-area="" asp-controller="site" asp-action="GalleryImages" asp-route-id="@item.Id" asp-route-GalleryName="@item.GallryName" class="hexIn" style=" background-color:antiquewhite">
                         <h1> @item.GallryName </h1>
                         <p> @item.Description </p>
                     </a>

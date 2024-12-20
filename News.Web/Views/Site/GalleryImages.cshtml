@@ -1,0 +1,60 @@
+﻿@using News.Application.Statics
+@using News.Domain.Entities.Galleries
+@model List<Image>
+
+@{
+    ViewData["Title"] = "GalleryImages";
+    var gallerName = ViewData["GalleryName"] as Gallery;
+}
+
+<div class="col-12 col-lg-9 mb-5">
+    <div class=" bg-light-subtle border-style rounded p-5">
+        <h4 style="font-size:1.3rem">@gallerName</h4>
+        @foreach (var image in Model)
+        {
+            <img id="@image.Id" class="responsive gallery mb-2" src="@(SiteTools.GalleryImagesMethod(image.Gallery.GallryName) + image.ImageName)" alt="@image.Gallery.GallryName" height="200">
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+            <script>
+                var modal = document.getElementById('myModal');
+                var img = document.getElementById('@image.Id');
+                var modalImg = document.getElementById('img01');
+                modalImg.style.height = "90%";
+                modalImg.style.width = "90%";
+                var captionText = document.getElementById('caption');
+                img.onclick = function () {
+                    modal.style.display = "block";
+                    modal.style.height = "100%";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                }
+                var span = document.getElementsByClassName("close")[0];
+                span.onclick = function () {
+                    modal.style.display = "none";
+                }
+            </script>
+        }
+
+        <div class="clearfix"></div>
+
+        <div style="padding:6px;">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="col-12 d-none col-lg-3 d-lg-block ">
+    <!-- Start ColorPalet -->
+    <partial name="_ColorPalet" />
+    <!-- Start SideGallery -->
+    @await Component.InvokeAsync("SideGalleryComponent")
+    <!-- Start LastNews -->
+    @await Component.InvokeAsync("LastNewsReportsViewComponent")
+</div>
+

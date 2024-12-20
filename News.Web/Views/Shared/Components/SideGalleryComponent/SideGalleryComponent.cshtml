@@ -1,0 +1,13 @@
+﻿@using News.Domain.Entities.Galleries
+@model IEnumerable<Gallery>
+
+<div class="row mb-5">
+    <div class="bg-body-secondary  shadow">
+        <ul class="list-unstyled my-2 ">
+            @foreach (var item in Model)
+            {
+                <li><a asp-area="" asp-controller="site" asp-action="GalleryImages" asp-route-id="@item.Id" asp-route-GalleryName="@item.GallryName" class="text-decoration-none text-black"><img style="width:50px; height:30px;" src="~/Assets/Img/Icons/Folder.png"> @item.GallryName </a></li>
+            }
+        </ul>
+    </div>
+</div>

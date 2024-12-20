@@ -332,4 +332,34 @@ namespace News.Web.Components
     }
 
     #endregion
+
+    #region Side Gallery
+
+    [ViewComponent(Name = "SideGalleryComponent")]
+    public class SideGalleryComponent : ViewComponent
+    {
+        #region consractor
+
+        private readonly IGalleryService _galleryService;
+
+        public SideGalleryComponent(IGalleryService galleryServic)
+        {
+            _galleryService = galleryServic;
+        }
+
+        #endregion
+
+        #region Method
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var data = await _galleryService.GetGalleriesForIndex();
+
+            return View("SideGalleryComponent", data);
+        }
+
+        #endregion
+    }
+
+    #endregion
 }
