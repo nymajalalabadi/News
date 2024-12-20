@@ -105,6 +105,15 @@ namespace News.DataLayer.Repositories
                 .ToListAsync(); 
         }
 
+        public async Task<List<Image>> GetImagesByGroupId(long groupId)
+        {
+            return await _context.Images
+                .Include(i => i.Gallery)
+                .Where(i => !i.IsDelete && i.IsSuccess && i.GalleryId.Equals(groupId))
+                .OrderByDescending(i => i.CreateDate)
+                .ToListAsync();
+        }
+
         public async Task<Image?> GetImageyById(long id)
         {
             return await _context.Images.Include(i => i.Gallery).FirstOrDefaultAsync(i => i.Id.Equals(id));

@@ -13,10 +13,14 @@ namespace News.Web.Controllers
 
         private readonly IAccountService _accountService;
 
-        public SiteController(IReportService reportService, IAccountService accountService)
+        private readonly IGalleryService _galleryService;
+
+
+        public SiteController(IReportService reportService, IAccountService accountService, IGalleryService galleryService)
         {
             _reportService = reportService;
             _accountService = accountService;
+            _galleryService = galleryService;
         }
 
         #endregion
@@ -100,6 +104,30 @@ namespace News.Web.Controllers
             }
 
             return View(create);
+        }
+
+        #endregion
+
+        #region Gallery
+
+        [HttpGet]
+        public async Task<IActionResult> Galleries()
+        {
+            var model = await _galleryService.GetGalleriesForIndex();
+
+            return View(model);
+        }
+
+        #endregion
+
+        #region Gallery Images
+
+        [HttpGet]
+        public async Task<IActionResult> GalleryImages(long id, string GalleryName)
+        {
+            var model = await _galleryService.GetImagesByGroupId(id);
+
+            return View(model);
         }
 
         #endregion

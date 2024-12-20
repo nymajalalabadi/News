@@ -196,6 +196,11 @@ namespace News.Application.Services.Implementations
             return await _galleryReporitory.GetImagesForIndex();
         }
 
+        public async Task<List<Image>> GetImagesByGroupId(long groupId)
+        {
+            return await _galleryReporitory.GetImagesByGroupId(groupId);
+        }
+
         public async Task<CreateImageResult> CreateImage(CreateImageViewModel create)
         {
             var gallery = await _galleryReporitory.GetGalleryById(create.GalleryId);

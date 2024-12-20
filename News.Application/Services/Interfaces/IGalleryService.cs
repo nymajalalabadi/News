@@ -46,6 +46,8 @@ namespace News.Application.Services.Interfaces
 
         Task<List<Image>> GetImagesForIndex();
 
+        Task<List<Image>> GetImagesByGroupId(long groupId);
+
         Task<CreateImageResult> CreateImage(CreateImageViewModel create);
 
         Task<EditImageViewModel> GetImageForEdit(long imageId);

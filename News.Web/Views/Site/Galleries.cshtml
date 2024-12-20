@@ -1,0 +1,26 @@
+﻿@using News.Domain.Entities.Galleries
+@model List<Gallery>
+@{
+    ViewData["Title"] = "Galleries";
+}
+
+@section Styles {
+    <link href="~/assets/css/honeycombstyle.css" rel="stylesheet" />
+}
+
+<div class="col-12 col-lg-9 mb-5">
+    <div class=" bg-light-subtle border-style rounded p-5">
+        <h4 class="text-center">گالری تصاویر</h4>
+        <ul id="hexGrid" style="padding-top: 20px; padding-bottom: 75px;">
+            @foreach (var item in Model)
+            {
+                <li class="hex">
+                    <a asp-area="" asp-controller="" asp-action="GalleryImages" asp-route-id="@item.Id" asp-route-GalleryName="@item.GallryName" class="hexIn" style=" background-color:antiquewhite">
+                        <h1> @item.GallryName </h1>
+                        <p> @item.Description </p>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

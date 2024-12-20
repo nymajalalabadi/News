@@ -43,6 +43,8 @@ namespace News.Domain.InterFaces
 
         Task<List<Image>> GetImagesForIndex();
 
+        Task<List<Image>> GetImagesByGroupId(long groupId);
+
         Task<Image?> GetImageyById(long id);
 
         Task AddImage(Image image);
