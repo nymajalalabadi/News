@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace News.DataLayer.Context
 {
@@ -34,7 +35,35 @@ namespace News.DataLayer.Context
 
         public DbSet<ContactUs> ContactUs { get; set; }
 
+        public DbSet<Links> links { get; set; }
+
+
 
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
+            {
+                relation.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            #region seed date
+
+            var date = DateTime.MinValue;
+
+            modelBuilder.Entity<Links>().HasData(new Links()
+            {
+                CreateDate = date,
+                Id = 1,
+                LinkAddress = "test",
+                IsSuccess = true,
+                LinkName = "test",
+                LastUpdateDate = date
+            });
+    
+            #endregion
+                base.OnModelCreating(modelBuilder);
+        }
     }
 }
