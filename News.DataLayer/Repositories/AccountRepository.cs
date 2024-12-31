@@ -25,6 +25,32 @@ namespace News.DataLayer.Repositories
 
         #region Methods
 
+        #region user
+
+        public async Task<IQueryable<Users>> GetUsersQuery()
+        {
+            return _context.Users
+                .Where(u => u.IsDelete == false)
+                .AsQueryable();
+        }
+
+        public async Task<Users?> GetUserById(long id)
+        {
+            return await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task AddUser(Users users)
+        {
+            await _context.Users.AddAsync(users);
+        }
+
+        public void UpdateUser(Users users)
+        {
+           _context.Users.Update(users);
+        }
+
+        #endregion
+
         #region Comment
 
         public async Task<IQueryable<Comment>> GetCommentsIsSuccesQuery()

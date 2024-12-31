@@ -12,6 +12,18 @@ namespace News.Domain.InterFaces
     {
         #region Methods
 
+        #region user
+
+        Task<IQueryable<Users>> GetUsersQuery();
+
+        Task<Users?> GetUserById(long id);
+
+        Task AddUser(Users users);
+
+        void UpdateUser(Users users);
+
+        #endregion
+
         #region Comment
 
         Task<IQueryable<Comment>> GetCommentsIsSuccesQuery();

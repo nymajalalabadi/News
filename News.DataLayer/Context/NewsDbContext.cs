@@ -37,7 +37,7 @@ namespace News.DataLayer.Context
 
         public DbSet<Links> links { get; set; }
 
-
+        public DbSet<Users> Users { get; set; }
 
         #endregion
 
